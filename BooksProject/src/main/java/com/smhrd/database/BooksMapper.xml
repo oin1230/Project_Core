@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- mapper 태그 : 해당하는 영역 안쪽에 SQL구문 작성 -->
+<mapper namespace="com.smhrd.database.DAO">
+
+	<insert id="Join" parameterType="com.smhrd.model.UserVO">
+		insert into USER_INFO (email,
+		pw, nick, address, phone)
+		values(#{email},#{pw},#{nick},#{address},
+		#{phone})
+	</insert>
+
+	<select id="eventList" resultType="com.smhrd.model.EventVO">
+		select event_id, event_name,
+		event_date, event_loc, event_img
+		from EVENT_INFO
+	</select>
+
+	<select id="Login" parameterType="com.smhrd.model.UserVO"
+		resultType="com.smhrd.model.UserVO">
+		select email, pw from USER_INFO
+		where email=#{email} and pw=#{pw}
+	</select>
+
+	<select id="Shuttle" resultType="com.smhrd.model.ShuttleVO">
+		select s.*, e.event_img,
+		e.event_name, e.event_loc
+		from SHUTTLE_INFO s
+		join EVENT_INFO e
+		on
+		s.event_id=e.event_id
+	</select>
+
+	<update id="userUpdate" parameterType="com.smhrd.model.UserVO">
+		update USER_INFO
+		set
+		nick =#{nick}, address =#{address}, phone =#{phone}
+		where
+		email=#{email}
+	</update>
+
+	<insert id="Register" parameterType="com.smhrd.model.ShuttleVO">
+		insert into SHUTTLE_INFO (start_rg, start_date, end_date, price, riding_date, event_id)
+		values (#{start_rg}, #{start_date}, #{end_date}, #{price}, #{riding_date}, 
+        (select event_id from EVENT_INFO where event_name = #{event_name}))
+	</insert>
+	
+	<delete id="userDelete" parameterType="com.smhrd.model.UserVO" >
+		delete from USER_INFO
+		where email=#{email} and pw=#{pw}
+	</delete>
+	
+	<update id="pwUpdate" parameterType="com.smhrd.model.UserVO">
+		update USER_INFO
+		set pw = #{newPw}
+		where email = #{email} and pw =#{pw}
+	</update>
+	
+	<select id="boardLike" parameterType="com.smhrd.model.UserVO">
+		select like_state from LIKE_INFO
+		where email=#{email} b_id=#{b_id}
+	</select>
+	
+	<update id="boardLikeUpdate" parameterType="com.smhrd.model.LikeVO">
+		update LIKE_INFO
+		set like_state = 'Y'
+		where b_id = #{b_id}
+	</update>
+	
+	<update id="boardLikePlus" parameterType="com.smhrd.model.LikeVO">
+		update BOARD_INFO
+		set b_like = b_like+1
+		where email = #{email}
+	</update>
+	
+	<select id="boardList" parameterType="com.smhrd.model.BoardVO" 
+	resultType="com.smhrd.model.BoardVO">
+		select *
+		from BOARD_INFO
+		where b_id = #{b_id}
+	</select>
+	
+	<delete id="boardDelete" parameterType="com.smhrd.model.BoardVO" >
+		delete from BOARD_INFO
+		where email=#{email} and b_id=#{b_id}
+	</delete>
+
+</mapper>
+
