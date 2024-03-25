@@ -84,9 +84,9 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="board.jsp" class="dropdown-item">자유게시판</a> <a
-									href="board.jsp" class="dropdown-item">질문게시판</a> <a
-									href="board.jsp" class="dropdown-item">후기게시판</a>
+								<a href="boardList.do?value=1" class="dropdown-item">자유게시판</a> <a
+									href="boardList.do?value=2" class="dropdown-item">질문게시판</a> <a
+									href="boardList.do?value=3" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -142,7 +142,7 @@
 					<div class="like">좋아요</div>
 				</div>
 
-				<c:forEach  var="mvo" items="${boardList}" varStatus="loop">
+				<c:forEach var="mvo" items="${boardList}" varStatus="loop">
 					<div>
 						<div class="num" id="num_${loop.index}"></div>
 						<div class="title">

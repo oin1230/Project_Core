@@ -80,9 +80,9 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="board.jsp" class="dropdown-item">자유게시판</a> <a
-									href="board.jsp" class="dropdown-item">질문게시판</a> <a
-									href="board.jsp" class="dropdown-item">후기게시판</a>
+								<a href="boardList.do?value=1" class="dropdown-item">자유게시판</a> <a
+									href="boardList.do?value=2" class="dropdown-item">질문게시판</a> <a
+									href="boardList.do?value=3" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -177,8 +177,8 @@
 						</datalist>
 
 						<label class="phonenumber">핸드폰번호</label> <input type="text"
-							class="form-control" placeholder="숫자만 입력해주세요" value="" name="phone"> <input
-							type="submit" value="수정하기" >
+							class="form-control" placeholder="숫자만 입력해주세요" value=""
+							name="phone"> <input type="submit" value="수정하기">
 					</form>
 				</div>
 			</div>
