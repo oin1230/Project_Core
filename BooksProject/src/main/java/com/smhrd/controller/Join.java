@@ -13,12 +13,9 @@ public class Join implements command {
 		
 		String email = request.getParameter("email");
 		String pw = request.getParameter("pw");
-		
-		
-		
 		String nick = request.getParameter("nickname");
 		String address = request.getParameter("address");
-		String phone = request.getParameter("phone");
+		String phone = request.getParameter("phonenumber");
 		
 		
 		
@@ -30,7 +27,7 @@ public class Join implements command {
 		int row = dao.Join(vo);
 		
 		
-		return "index";
+		return "redirect:/gomain.do";
 		
 		
 		

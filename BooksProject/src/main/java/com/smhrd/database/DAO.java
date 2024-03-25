@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.model.BoardVO;
 import com.smhrd.model.EventVO;
-import com.smhrd.model.LikeVO;
+import com.smhrd.model.BoardLikeVO;
 import com.smhrd.model.ShuttleVO;
 import com.smhrd.model.UserVO;
 
@@ -81,11 +81,11 @@ public class DAO {
 		session.close();
 	}
 	
-	public int Register(ShuttleVO vo) {
+	public int shuttRegister(ShuttleVO vo) {
 
 		SqlSession session = factory.openSession(true);
 
-		int row = session.insert("Register", vo);
+		int row = session.insert("shuttRegister", vo);
 
 		session.close();
 
@@ -115,10 +115,10 @@ public class DAO {
 		return row;
 	}
 	
-	public int boardLike(LikeVO vo) {
+	public int boardLike(BoardLikeVO vo) {
 		SqlSession session = factory.openSession(true);
 
-		int row = session.selectOne("Like", vo);
+		int row = session.selectOne("boardLike", vo);
 
 		session.close();
 
@@ -126,18 +126,18 @@ public class DAO {
 
 	}
 	
-	public int boardLikeUpdate(LikeVO vo) {
+	public int boardLikeInsert(BoardLikeVO vo) {
 		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
 		// 2. 세션 사용하기
-		int row = session.update("likeUpdate", vo);
+		int row = session.update("boardLikeInsert", vo);
 		// 3. 세션 반납하기
 		session.close();
 		
 		return row;
 	}
 	
-	public int boardLikePlus(LikeVO vo) {
+	public int boardLikePlus(BoardLikeVO vo) {
 		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
 		// 2. 세션 사용하기
@@ -148,13 +148,13 @@ public class DAO {
 		return row;
 	}
 	
-	public List<BoardVO> boardList(BoardVO vo) {
+	public List<BoardVO> boardDetail(BoardVO vo) {
 
 		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
 		// 2. 연결객체 사용하기
-		List<BoardVO> resultVo = session.selectList("boardList", vo);
+		List<BoardVO> resultVo = session.selectList("boardDetail", vo);
 
 		// 3. 연결객체 반납하기
 		session.close();
@@ -174,6 +174,22 @@ public class DAO {
 		return row;
 
 	}
+	
+	public List<BoardVO> boardList(BoardVO vo) {
+
+		// 1. 연결객체 생성하기
+		SqlSession session = factory.openSession(true);
+
+		// 2. 연결객체 사용하기
+		List<BoardVO> resultVo = session.selectList("boardList", vo);
+
+		// 3. 연결객체 반납하기
+		session.close();
+
+		// 4. 결과값 반환하기
+		return resultVo;
+	}
+
 	
 
 }

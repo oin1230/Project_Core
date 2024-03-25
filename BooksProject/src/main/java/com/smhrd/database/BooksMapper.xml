@@ -23,7 +23,8 @@
 	<select id="Login" parameterType="com.smhrd.model.UserVO"
 		resultType="com.smhrd.model.UserVO">
 		select email, pw from USER_INFO
-		where email=#{email} and pw=#{pw}
+		where email=#{email} and
+		pw=#{pw}
 	</select>
 
 	<select id="Shuttle" resultType="com.smhrd.model.ShuttleVO">
@@ -38,56 +39,76 @@
 	<update id="userUpdate" parameterType="com.smhrd.model.UserVO">
 		update USER_INFO
 		set
-		nick =#{nick}, address =#{address}, phone =#{phone}
+		nick
+		=#{nick}, address =#{address}, phone =#{phone}
 		where
 		email=#{email}
 	</update>
 
-	<insert id="Register" parameterType="com.smhrd.model.ShuttleVO">
-		insert into SHUTTLE_INFO (start_rg, start_date, end_date, price, riding_date, event_id)
-		values (#{start_rg}, #{start_date}, #{end_date}, #{price}, #{riding_date}, 
-        (select event_id from EVENT_INFO where event_name = #{event_name}))
+	<insert id="shuttRegister"
+		parameterType="com.smhrd.model.ShuttleVO">
+		insert into SHUTTLE_INFO (start_rg, start_date,
+		end_date, price, riding_date, event_id)
+		values (#{start_rg},
+		#{start_date}, #{end_date}, #{price}, #{riding_date},
+		(select event_id
+		from EVENT_INFO where event_name = #{event_name}))
 	</insert>
-	
-	<delete id="userDelete" parameterType="com.smhrd.model.UserVO" >
+
+	<delete id="userDelete" parameterType="com.smhrd.model.UserVO">
 		delete from USER_INFO
 		where email=#{email} and pw=#{pw}
 	</delete>
-	
+
 	<update id="pwUpdate" parameterType="com.smhrd.model.UserVO">
 		update USER_INFO
-		set pw = #{newPw}
+		set pw =
+		#{newPw}
 		where email = #{email} and pw =#{pw}
 	</update>
-	
+
 	<select id="boardLike" parameterType="com.smhrd.model.UserVO">
-		select like_state from LIKE_INFO
+		select like_state from
+		LIKE_INFO
 		where email=#{email} b_id=#{b_id}
 	</select>
-	
-	<update id="boardLikeUpdate" parameterType="com.smhrd.model.LikeVO">
-		update LIKE_INFO
-		set like_state = 'Y'
-		where b_id = #{b_id}
+
+	<update id="boardLikeInsert"
+		parameterType="com.smhrd.model.BoardLikeVO">
+		insert into BOARD_LIKE_INFO (b_like_state,
+		b_id, email)
+		values('Y',#{b_id},#{email})
 	</update>
-	
-	<update id="boardLikePlus" parameterType="com.smhrd.model.LikeVO">
+
+	<update id="boardLikePlus"
+		parameterType="com.smhrd.model.BoardLikeVO">
 		update BOARD_INFO
 		set b_like = b_like+1
-		where email = #{email}
+		where b_id =
+		#{b_id}
 	</update>
-	
-	<select id="boardList" parameterType="com.smhrd.model.BoardVO" 
-	resultType="com.smhrd.model.BoardVO">
+
+	<select id="boardDetail" parameterType="com.smhrd.model.BoardVO"
+		resultType="com.smhrd.model.BoardVO">
 		select *
 		from BOARD_INFO
 		where b_id = #{b_id}
 	</select>
-	
-	<delete id="boardDelete" parameterType="com.smhrd.model.BoardVO" >
+
+	<delete id="boardDelete" parameterType="com.smhrd.model.BoardVO">
 		delete from BOARD_INFO
 		where email=#{email} and b_id=#{b_id}
 	</delete>
+
+	<select id="boardList" parameterType="com.smhrd.model.BoardVO"
+		resultType="com.smhrd.model.BoardVO">
+		SELECT b_title, b_date, b_views, b_likes,
+		(SELECT nick FROM
+		USER_INFO WHERE email = BOARD_INFO.email) as nick
+		FROM BOARD_INFO
+		WHERE
+		b_category = #{b_category};
+	</select>
 
 </mapper>
 

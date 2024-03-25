@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.controller.eventList;
 import com.smhrd.controller.boardLikeUpdate;
+import com.smhrd.controller.boardList;
 import com.smhrd.controller.Join;
 import com.smhrd.controller.Login;
-import com.smhrd.controller.Register;
+import com.smhrd.controller.shuttRegister;
 import com.smhrd.controller.Shuttle;
 import com.smhrd.controller.boardDelete;
-import com.smhrd.controller.boardList;
+import com.smhrd.controller.boardDetail;
 import com.smhrd.controller.userUpdate;
 import com.smhrd.controller.command;
 import com.smhrd.controller.pwUpdate;
@@ -42,12 +43,13 @@ public class FrontController extends HttpServlet {
 		map.put("Login.do", new Login());
 		map.put("Shuttle.do", new Shuttle());
 		map.put("userUpdate.do", new userUpdate());
-		map.put("Register.do", new Register());
+		map.put("shuttRegister.do", new shuttRegister());
 		map.put("userDelete.do", new userDelete());
 		map.put("pwUpdate.do", new pwUpdate());
 		map.put("likeUpdate.do", new boardLikeUpdate());
-		map.put("boardList.do", new boardList());
+		map.put("boardDetail.do", new boardDetail());
 		map.put("boardDelete.do", new boardDelete());
+		map.put("boardList.do", new boardList());
 
 		// 새로운 기능을 만들때마다 map 자료구조 안에
 		// 경로 - 실행해야하는 클래스 한세틀 묶어서 추가해주기만 하면 됨

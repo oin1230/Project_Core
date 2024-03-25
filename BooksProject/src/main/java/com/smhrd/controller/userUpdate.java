@@ -13,8 +13,7 @@ public class userUpdate implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 		// 1. 요청 데이터 수집
-		String pw = request.getParameter("pw");
-		String nick = request.getParameter("nick");
+		String nick = request.getParameter("nickname");
 		String address = request.getParameter("address");
 		String phone = request.getParameter("phone");
 		
@@ -22,12 +21,16 @@ public class userUpdate implements command {
 		String email = sessionVo.getEmail();
 		
 		// 2. 데이터 하나로 묶기
-		UserVO vo = new UserVO(email, pw, nick, address, phone, null);
+		UserVO vo = new UserVO();
+		vo.setNick(nick);
+		vo.setAddress(address);
+		vo.setPhone(phone);
+		vo.setEmail(email);
 		
 		// 3. DAO생성
 		DAO dao = new DAO();
 		
-		// 4. dao.update 기능 사용
+		// 4. dao.userUpdate 기능 사용
 		dao.userUpdate(vo);
 		
 		// * session 안에 있는 데이터를 수정한 데이터로 변경
@@ -36,7 +39,7 @@ public class userUpdate implements command {
 		
 		// 5. main.jsp로 redirect 방식으로 이동
 		
-		return "redirect:/gomain.do";
+		return "redirect:/gomyPage.do";
 	}
 
 	

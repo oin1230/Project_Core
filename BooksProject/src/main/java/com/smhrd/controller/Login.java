@@ -41,7 +41,7 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 			System.out.println("실패");
 		}
 		
-		return "index";
+		return "redirect:/gomain.do";
 		
 	}
 	

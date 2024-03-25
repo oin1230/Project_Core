@@ -7,7 +7,7 @@ import com.smhrd.database.DAO;
 import com.smhrd.model.ShuttleVO;
 
 // 등록 클래스
-public class Register implements command {
+public class shuttRegister implements command {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -29,7 +29,7 @@ public class Register implements command {
 		vo.setEnd_date(end_date);
 		
 		
-		int row = dao.Register(vo);
+		int row = dao.shuttRegister(vo);
 		
 		
 		return null;

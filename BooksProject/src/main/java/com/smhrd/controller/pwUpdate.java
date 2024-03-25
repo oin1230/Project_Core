@@ -15,8 +15,8 @@ public class pwUpdate implements command {
 		HttpSession session = request.getSession();
 		response.setCharacterEncoding("UTF-8");
 		
-		String pw = request.getParameter("pw");
-		String newPw = request.getParameter("pw_check");
+		String pw = request.getParameter("nPw");
+		String newPw = request.getParameter("ePw");
 
 		
 		
@@ -42,7 +42,7 @@ public class pwUpdate implements command {
 		
 		session.setAttribute("row", row);
 		
-		return "check";
+		return "redirect:/gomyPage.do";
 		
 		
 		

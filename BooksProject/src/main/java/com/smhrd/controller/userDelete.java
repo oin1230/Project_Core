@@ -34,11 +34,14 @@ public class userDelete implements command {
 		
 		System.out.println(row);
 		
+		
 		session.setAttribute("row", row);
 		
+		// member 세션안에 있는 정보 삭제
+		session.removeAttribute("member");
 		
 		
-		return "check";
+		return "redirect:/gomain.do";
 	}
 
 }

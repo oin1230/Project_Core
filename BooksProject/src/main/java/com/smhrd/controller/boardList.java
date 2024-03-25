@@ -4,30 +4,28 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.mysql.cj.Session;
 import com.smhrd.database.DAO;
 import com.smhrd.model.BoardVO;
+import com.smhrd.model.UserVO;
 
 public class boardList implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		// 목록의 해당 태그의 value값(b_id) 받아오기
-		// <a href="a.jsp?value=aaa">
-		int b_id = Integer.parseInt(request.getParameter("value"));
+		String b_category = request.getParameter("value");
+		System.out.println(b_category);
 		
 		BoardVO vo = new BoardVO();
-		vo.setB_id(b_id);
-		
+		vo.setB_category(b_category);
 		
 		DAO dao = new DAO();
-		List<BoardVO> boardlist = dao.boardList(vo);
-		request.setAttribute("boardlist", boardlist);
-		request.setAttribute("b_id", b_id);
 		
+		List<BoardVO> boardList = dao.boardList(vo);
 		
+		request.setAttribute("boardList", boardList);
 		
-		return "";
-	
+		return "board";
 	}
-
 }

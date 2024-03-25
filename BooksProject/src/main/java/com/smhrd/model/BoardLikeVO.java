@@ -1,6 +1,6 @@
 package com.smhrd.model;
 
-public class LikeVO {
+public class BoardLikeVO {
 
 	// like 식별자
 	private int like_id;
@@ -12,7 +12,7 @@ public class LikeVO {
 	private String email;
 	
 	
-	public LikeVO(int like_id, String like_state, int b_id, String email) {
+	public BoardLikeVO(int like_id, String like_state, int b_id, String email) {
 		super();
 		this.like_id = like_id;
 		this.like_state = like_state;
@@ -21,7 +21,7 @@ public class LikeVO {
 	}
 
 
-	public LikeVO() {
+	public BoardLikeVO() {
 		// TODO Auto-generated constructor stub
 	}
 
