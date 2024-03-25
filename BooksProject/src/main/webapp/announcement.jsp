@@ -62,7 +62,7 @@
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
-				<a href="index.html" class="navbar-brand"> <img
+				<a href="gomain.do" class="navbar-brand"> <img
 					src="./img/logo2.png" alt="" class="logoimg">
 				</a>
 				<button class="navbar-toggler py-2 px-3" type="button"
@@ -91,32 +91,32 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="board.html" class="dropdown-item">자유게시판</a> <a
-									href="board.html" class="dropdown-item">질문게시판</a> <a
-									href="board.html" class="dropdown-item">후기게시판</a>
+								<a href="board.jsp" class="dropdown-item">자유게시판</a> <a
+									href="board.jsp" class="dropdown-item">질문게시판</a> <a
+									href="board.jsp" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="qna.html" class="nav-link dropdown-toggle"
+							<a href="qna.jsp" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="qna.html" class="dropdown-item">Q&A</a> <a
-									href="announcement.html" class="dropdown-item">공지사항</a> <a
-									href="refund_Policy.html" class="dropdown-item">환불규정</a>
+								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
+									href="announcement.jsp" class="dropdown-item">공지사항</a> <a
+									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<!-- 로그인X 시 나타날 회원가입 버튼 -->
-						<a href="signin.html" class="my-auto"> <i
+						<a href="signin.jsp" class="my-auto"> <i
 							class="fa-solid fa-pen-nib fa-2xl"></i>
 						</a>
 						<!-- 로그인X 시 나타날 로그인 버튼 -->
-						<a href="login.html" class="my-auto"> <i
+						<a href="login.jsp" class="my-auto"> <i
 							class="fas fa-user fa-2x"></i>
 						</a>
 						<!--로그인 시 나타날 마이페이지 버튼-->
-						<a href="myPage.html" class="my-auto"> <i
+						<a href="myPage.jsp" class="my-auto"> <i
 							class="fas fa-user fa-2x"></i>
 						</a>
 					</div>
@@ -130,9 +130,9 @@
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">INFO CENTER</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item"><a href="qna.html">Q&A</a></li>
-			<li class="breadcrumb-item"><a href="announcement.html">공지사항</a></li>
-			<li class="breadcrumb-item"><a href="refund_Policy.html">환불규정</a></li>
+			<li class="breadcrumb-item"><a href="qna.jsp">Q&A</a></li>
+			<li class="breadcrumb-item"><a href="announcement.jsp">공지사항</a></li>
+			<li class="breadcrumb-item"><a href="refund_Policy.jsp">환불규정</a></li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -155,7 +155,7 @@
 				<div>
 					<div class="num">5</div>
 					<div class="title">
-						<a href="boardView.html">글 제목이 들어갑니다.</a>
+						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
 					</div>
 					<div class="writer">살려줘</div>
 					<div class="date">2024.3.21</div>
@@ -164,7 +164,7 @@
 				<div>
 					<div class="num">4</div>
 					<div class="title">
-						<a href="boardView.html">글 제목이 들어갑니다.</a>
+						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
 					</div>
 					<div class="writer">살려줘</div>
 					<div class="date">2024.3.21</div>
@@ -173,7 +173,7 @@
 				<div>
 					<div class="num">3</div>
 					<div class="title">
-						<a href="boardView.html">글 제목이 들어갑니다.</a>
+						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
 					</div>
 					<div class="writer">살려줘</div>
 					<div class="date">2024.3.21</div>
@@ -182,7 +182,7 @@
 				<div>
 					<div class="num">2</div>
 					<div class="title">
-						<a href="boardView.html">글 제목이 들어갑니다.</a>
+						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
 					</div>
 					<div class="writer">살려줘</div>
 					<div class="date">2024.3.21</div>
@@ -191,7 +191,7 @@
 				<div>
 					<div class="num">1</div>
 					<div class="title">
-						<a href="boardView.html">글 제목이 들어갑니다.</a>
+						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
 					</div>
 					<div class="writer">살려줘</div>
 					<div class="date">2024.3.21</div>
@@ -207,7 +207,7 @@
 			</div>
 			<!-- 해당 구역은 관리자 계정만 등록 할 수 있게 변경 -->
 			<!-- <div class="bt_wrap">
-                        <a href="boardWrite.html" class="on">등록</a>
+                        <a href="boardWrite.jsp" class="on">등록</a>
                         <a href="#">수정</a>
                     </div> -->
 		</div>

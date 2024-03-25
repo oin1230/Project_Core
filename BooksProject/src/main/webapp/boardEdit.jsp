@@ -71,7 +71,7 @@
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
-				<a href="index.html" class="navbar-brand"> <img
+				<a href="gomain.do" class="navbar-brand"> <img
 					src="./img/logo2.png" alt="" class="logoimg">
 				</a>
 				<button class="navbar-toggler py-2 px-3" type="button"
@@ -100,32 +100,32 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="board.html" class="dropdown-item">자유게시판</a> <a
-									href="board.html" class="dropdown-item">질문게시판</a> <a
-									href="board.html" class="dropdown-item">후기게시판</a>
+								<a href="board.jsp" class="dropdown-item">자유게시판</a> <a
+									href="board.jsp" class="dropdown-item">질문게시판</a> <a
+									href="board.jsp" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="qna.html" class="dropdown-item">Q&A</a> <a
-									href="announcement.html" class="dropdown-item">공지사항</a> <a
-									href="refund_Policy.html" class="dropdown-item">환불규정</a>
+								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
+									href="announcement.jsp" class="dropdown-item">공지사항</a> <a
+									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<!-- 로그인X 시 나타날 회원가입 버튼 -->
-						<a href="signin.html" class="my-auto"> <i
+						<a href="signin.jsp" class="my-auto"> <i
 							class="fa-solid fa-pen-nib fa-2xl"></i>
 						</a>
 						<!-- 로그인X 시 나타날 로그인 버튼 -->
-						<a href="login.html" class="my-auto"> <i
+						<a href="login.jsp" class="my-auto"> <i
 							class="fas fa-user fa-2x"></i>
 						</a>
 						<!--로그인 시 나타날 마이페이지 버튼-->
-						<a href="myPage.html" class="my-auto"> <i
+						<a href="myPage.jsp" class="my-auto"> <i
 							class="fas fa-user fa-2x"></i>
 						</a>
 					</div>
@@ -169,7 +169,7 @@
 			</div>
 		</div>
 		<div class="bt_wrap">
-			<a href="boardView.html" class="on">수정</a> <a href="boardView.html">취소</a>
+			<a href="boardView.jsp" class="on">수정</a> <a href="boardView.jsp">취소</a>
 		</div>
 	</div>
 	</div>

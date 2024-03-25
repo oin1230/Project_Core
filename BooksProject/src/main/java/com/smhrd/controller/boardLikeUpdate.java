@@ -44,8 +44,7 @@ public class boardLikeUpdate implements command {
 			// vo에 담겨있는 사용자 이메일 값 DAO의 likeUpdate로 보내주기
 			// like_state Y로 변경
 			DAO dao2 = new DAO();
-			dao2.boardLikeUpdate
-			(vo);
+			dao2.boardLikeUpdate(vo);
 			
 			// b_like 값 +1
 			DAO dao3 = new DAO();
