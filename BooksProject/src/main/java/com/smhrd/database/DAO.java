@@ -71,7 +71,7 @@ public class DAO {
 		// 4. 결과값 반환하기
 		return resultVo;
 	}
-	
+
 	public void userUpdate(UserVO vo) {
 		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
@@ -80,7 +80,7 @@ public class DAO {
 		// 3. 세션 반납하기
 		session.close();
 	}
-	
+
 	public int shuttRegister(ShuttleVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -91,19 +91,19 @@ public class DAO {
 
 		return row;
 	}
-	
+
 	public int userDelete(UserVO vo) {
-		
+
 		SqlSession session = factory.openSession(true);
-		
+
 		int row = session.delete("userDelete", vo);
-		
+
 		session.close();
-		
+
 		return row;
-		
+
 	}
-	
+
 	public int pwUpdate(UserVO vo) {
 		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
@@ -111,10 +111,10 @@ public class DAO {
 		int row = session.update("pwUpdate", vo);
 		// 3. 세션 반납하기
 		session.close();
-		
+
 		return row;
 	}
-	
+
 	public int boardLike(BoardLikeVO vo) {
 		SqlSession session = factory.openSession(true);
 
@@ -125,7 +125,7 @@ public class DAO {
 		return row;
 
 	}
-	
+
 	public int boardLikeInsert(BoardLikeVO vo) {
 		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
@@ -133,10 +133,10 @@ public class DAO {
 		int row = session.update("boardLikeInsert", vo);
 		// 3. 세션 반납하기
 		session.close();
-		
+
 		return row;
 	}
-	
+
 	public int boardLikePlus(BoardLikeVO vo) {
 		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
@@ -144,10 +144,10 @@ public class DAO {
 		int row = session.update("likePlus", vo);
 		// 3. 세션 반납하기
 		session.close();
-		
+
 		return row;
 	}
-	
+
 	public List<BoardVO> boardDetail(BoardVO vo) {
 
 		// 1. 연결객체 생성하기
@@ -174,7 +174,7 @@ public class DAO {
 		return row;
 
 	}
-	
+
 	public List<BoardVO> boardList(BoardVO vo) {
 
 		// 1. 연결객체 생성하기
@@ -190,6 +190,15 @@ public class DAO {
 		return resultVo;
 	}
 
-	
+	public UserVO AFindInfo(UserVO vo) {
+		SqlSession session = factory.openSession(true);
+
+		UserVO resultId = session.selectOne("AFindInfo", vo);
+
+		session.close();
+
+		return resultId;
+
+	}
 
 }

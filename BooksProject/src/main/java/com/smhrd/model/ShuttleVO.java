@@ -48,7 +48,6 @@ public class ShuttleVO {
 
 
 	public ShuttleVO() {
-		// TODO Auto-generated constructor stub
 	}
 
 

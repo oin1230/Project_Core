@@ -110,5 +110,15 @@
 		b_category = #{b_category};
 	</select>
 
+	<select id="AFindInfo" parameterType="com.smhrd.model.UserVO"
+		resultType="com.smhrd.model.UserVO">
+		select email
+		from USER_INFO
+		where phone = #{phone}
+		or email =
+		#{email}
+
+	</select>
+
 </mapper>
 

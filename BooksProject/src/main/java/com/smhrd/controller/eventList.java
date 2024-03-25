@@ -16,7 +16,7 @@ public class eventList implements command {
 		request.setAttribute("eventlist", eventlist);
 		System.out.println(eventlist.get(0).getEvent_name());
 		
-		return "index";
+		return "main";
 	
 	}
 }
