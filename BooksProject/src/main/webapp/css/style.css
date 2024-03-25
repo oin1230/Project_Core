@@ -934,7 +934,7 @@ a {
 }
 
 .board_list .title {
-    width: 60%;
+    width: 50%;
     text-align: left;
 }
 
@@ -947,6 +947,9 @@ a {
 }
 
 .board_list .date {
+    width: 10%;
+}
+.board_list .like {
     width: 10%;
 }
 
