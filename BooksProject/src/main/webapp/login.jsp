@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,17 +102,21 @@
 					</div>
 					<div class="d-flex m-3 me-0">
 						<!-- 로그인X 시 나타날 회원가입 버튼 -->
-						<a href="signin.jsp" class="my-auto"> <i
-							class="fa-solid fa-pen-nib fa-2xl"></i>
-						</a>
-						<!-- 로그인X 시 나타날 로그인 버튼 -->
-						<a href="login.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member == null }">
+							<a href="signin.jsp" class="my-auto"> <i
+								class="fa-solid fa-pen-nib fa-2xl"></i>
+							</a>
+							<!-- 로그인X 시 나타날 로그인 버튼 -->
+							<a href="login.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
-						<a href="myPage.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member != null }">
+							<a href="myPage.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 					</div>
 				</div>
 			</nav>
@@ -125,7 +130,7 @@
 
 
 			<!-- EMAIL, PW 입력 -->
-			<form method="post" action="서버의url" id="login-form">
+			<form method="post" action="Login.do" id="login-form">
 				<input type="text" name="EMAIL" placeholder="Email"> <input
 					type="password" name="PW" placeholder="Password"> <label
 					for="remember-check"> <input type="checkbox"

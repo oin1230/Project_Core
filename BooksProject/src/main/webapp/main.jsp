@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -92,9 +93,9 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="board.jsp" class="dropdown-item">자유게시판</a> <a
-									href="board.jsp" class="dropdown-item">질문게시판</a> <a
-									href="board.jsp" class="dropdown-item">후기게시판</a>
+								<a href="boardList.do?value=1" class="dropdown-item" >자유게시판</a> <a
+									href="boardList.do?value=2" class="dropdown-item">질문게시판</a> <a
+									href="boardList.do?value=3" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -108,18 +109,23 @@
 						</div>
 					</div>
 					<div class="d-flex m-3 me-0">
-						<!-- 로그인X 시 나타날 회원가입 버튼 -->
-						<a href="signin.jsp" class="my-auto"> <i
-							class="fa-solid fa-pen-nib fa-2xl"></i>
-						</a>
-						<!-- 로그인X 시 나타날 로그인 버튼 -->
-						<a href="login.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member == null }">
+							<!-- 로그인X 시 나타날 회원가입 버튼 -->
+							<a href="signin.jsp" class="my-auto"> <i
+								class="fa-solid fa-pen-nib fa-2xl"></i>
+							</a>
+							<!-- 로그인X 시 나타날 로그인 버튼 -->
+							<a href="login.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
-						<a href="myPage.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member != null }">
+							<a href="myPage.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
+						
 					</div>
 				</div>
 			</nav>

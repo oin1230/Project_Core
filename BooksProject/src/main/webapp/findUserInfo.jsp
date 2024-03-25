@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FindIdPw</title>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -39,7 +39,6 @@
 
 <!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
-<script src="js/main.js"></script>
 <script src="https://kit.fontawesome.com/fdb678099a.js"
 	crossorigin="anonymous"></script>
 </head>
@@ -86,34 +85,38 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="board.html" class="dropdown-item">자유게시판</a> <a
-									href="board.html" class="dropdown-item">질문게시판</a> <a
-									href="board.html" class="dropdown-item">후기게시판</a>
+								<a href="board.jsp" class="dropdown-item">자유게시판</a> <a
+									href="board.jsp" class="dropdown-item">질문게시판</a> <a
+									href="board.jsp" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="qna.html" class="dropdown-item">Q&A</a> <a
-									href="announcement.html" class="dropdown-item">공지사항</a> <a
-									href="refund_Policy.html" class="dropdown-item">환불규정</a>
+								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
+									href="announcement.jsp" class="dropdown-item">공지사항</a> <a
+									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<!-- 로그인X 시 나타날 회원가입 버튼 -->
-						<a href="signin.html" class="my-auto"> <i
-							class="fa-solid fa-pen-nib fa-2xl"></i>
-						</a>
-						<!-- 로그인X 시 나타날 로그인 버튼 -->
-						<a href="login.html" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member == null }">
+							<a href="signin.jsp" class="my-auto"> <i
+								class="fa-solid fa-pen-nib fa-2xl"></i>
+							</a>
+							<!-- 로그인X 시 나타날 로그인 버튼 -->
+							<a href="login.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
-						<a href="myPage.html" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member != null }">
+							<a href="myPage.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 					</div>
 				</div>
 			</nav>
@@ -126,22 +129,21 @@
 			<h1>ID/Pw 찾기</h1>
 
 
-			<!-- ******************************이메일 찾기******************************************** -->
 			<!-- EMAIL, PW 입력 -->
 
 			<div class="findID-PW">
-				아이디 찾기<br> <input class="find-input" type="text" name="findID"
-					id="findID" placeholder="가입 시 입력한 핸드폰을 입력해주세요"><br>
+				아이디 찾기<br> <input class="find-input" type="text" name="findId"
+					placeholder="가입 시 입력한 핸드폰을 입력해주세요"><br>
 			</div>
 			<button class="btn btn-primary btn-lg btn-block find-button"
-				onclick="AFindID()" type="button">이메일 찾기</button>
+				onclick="findId()" type="submit">이메일 찾기</button>
 
 			<div class="findID-PW">
-				비밀번호 찾기<br> <input class="find-input" type="text" name="findPW"
-					id="findPW" placeholder="가입한 이메일을 입력해주세요"><br>
+				비밀번호 찾기<br> <input class="find-input" type="text" name="findPw"
+					placeholder="가입한 이메일을 입력해주세요"><br>
 			</div>
 			<button class="btn btn-primary btn-lg btn-block find-button"
-				onclick="AFindPW()" type="button">비밀번호 찾기</button>
+				onclick="findPw()" type="submit">비밀번호 찾기</button>
 		</div>
 	</div>
 
@@ -167,16 +169,18 @@
 
 
 		<!-- JavaScript Libraries -->
-
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="lib/easing/easing.min.js"></script>
 		<script src="lib/waypoints/waypoints.min.js"></script>
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-		</script>
+
+
 		<!-- Template Javascript -->
-		<script src="js/Ajax.js"></script>
+		<script src="js/main.js"></script>
 </body>
 
 </html>

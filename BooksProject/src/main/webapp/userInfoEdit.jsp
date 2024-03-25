@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,17 +97,21 @@
 					</div>
 					<div class="d-flex m-3 me-0">
 						<!-- 로그인X 시 나타날 회원가입 버튼 -->
-						<a href="signin.jsp" class="my-auto"> <i
-							class="fa-solid fa-pen-nib fa-2xl"></i>
-						</a>
-						<!-- 로그인X 시 나타날 로그인 버튼 -->
-						<a href="login.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member == null }">
+							<a href="signin.jsp" class="my-auto"> <i
+								class="fa-solid fa-pen-nib fa-2xl"></i>
+							</a>
+							<!-- 로그인X 시 나타날 로그인 버튼 -->
+							<a href="login.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
-						<a href="myPage.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member != null }">
+							<a href="myPage.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 					</div>
 				</div>
 			</nav>
@@ -154,13 +159,13 @@
 			<!-- user profile 개인정보 수정란 -->
 			<div class="col-lg-8 pb-5">
 				<div class="d-flex justify-content-end pb-3">
-					<form action="myPage.jsp" id="edit-form">
+					<form action="userUpdate.do" id="edit-form">
 
 						<label for="nickname">닉네임</label> <input type="text"
-							class="form-control" value="" id="nickname"
+							class="form-control" value="" id="nickname" name="nickname"
 							placeholder="수정하실 닉네임"> <label for="address">주소</label> <input
 							list="Address_option" class="inputset-input form-control"
-							id="address" placeholder="지역을 선택해주세요">
+							id="address" name="address" placeholder="지역을 선택해주세요">
 						<datalist id="Address_option">
 							<option value="서울특별시"></option>
 							<option value="인천광역시"></option>
@@ -172,8 +177,8 @@
 						</datalist>
 
 						<label class="phonenumber">핸드폰번호</label> <input type="text"
-							class="form-control" placeholder="숫자만 입력해주세요" value=""> <input
-							type="submit" value="수정하기">
+							class="form-control" placeholder="숫자만 입력해주세요" value="" name="phone"> <input
+							type="submit" value="수정하기" >
 					</form>
 				</div>
 			</div>

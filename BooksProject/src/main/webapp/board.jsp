@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false" %>	
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,17 +101,21 @@
 					</div>
 					<div class="d-flex m-3 me-0">
 						<!-- 로그인X 시 나타날 회원가입 버튼 -->
-						<a href="signin.jsp" class="my-auto"> <i
-							class="fa-solid fa-pen-nib fa-2xl"></i>
-						</a>
-						<!-- 로그인X 시 나타날 로그인 버튼 -->
-						<a href="login.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member == null }">
+							<a href="signin.jsp" class="my-auto"> <i
+								class="fa-solid fa-pen-nib fa-2xl"></i>
+							</a>
+							<!-- 로그인X 시 나타날 로그인 버튼 -->
+							<a href="login.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
-						<a href="myPage.jsp" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i>
-						</a>
+						<c:if test="${member != null }">
+							<a href="myPage.jsp" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i>
+							</a>
+						</c:if>
 					</div>
 				</div>
 			</nav>
@@ -134,52 +139,22 @@
 					<div class="writer">글쓴이</div>
 					<div class="date">작성일</div>
 					<div class="count">조회</div>
+					<div class="like">좋아요</div>
 				</div>
-				<div>
-					<div class="num">5</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
+
+				<c:forEach  var="mvo" items="${boardList}" varStatus="loop">
+					<div>
+						<div class="num" id="num_${loop.index}"></div>
+						<div class="title">
+							<a href="boardView.jsp">${mvo.b_title}</a>
+						</div>
+						<div class="writer">${mvo.nick}</div>
+						<div class="date">${mvo.b_date}</div>
+						<div class="count">${mvo.b_views}</div>
+						<div class="like">${mvo.b_likes}</div>
 					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">0</div>
-				</div>
-				<div>
-					<div class="num">4</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">1111</div>
-				</div>
-				<div>
-					<div class="num">3</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">111</div>
-				</div>
-				<div>
-					<div class="num">2</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">11</div>
-				</div>
-				<div>
-					<div class="num">1</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">1</div>
-				</div>
+				</c:forEach>
+
 			</div>
 			<div class="board_page">
 				<a href="#" class="bt first"> <<</a> <a href="#" class="bt prev">
@@ -220,6 +195,18 @@
 
 
 
+
+
+
+	<script>
+		// JavaScript를 사용하여 각 num div에 1부터 1씩 증가하는 값을 출력
+		window.onload = function() {
+			var numDivs = document.querySelectorAll('.num');
+			numDivs.forEach(function(numDiv, index) {
+				numDiv.textContent = index + 1;
+			});
+		};
+	</script>
 	<!-- JavaScript Libraries -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
