@@ -70,6 +70,13 @@ public class FrontController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charser=UTF-8");
 		
+	    if("gomain.do".equals(path)) {
+	        command eventListCommand = map.get("eventList.do");
+	        if(eventListCommand != null) {
+	            eventListCommand.execute(request, response);
+	        }
+	    }
+		
 		String finalPath = null;
 		command com = map.get(path);
 		
