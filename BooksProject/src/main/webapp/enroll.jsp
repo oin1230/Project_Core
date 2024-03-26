@@ -60,7 +60,7 @@
 	<!-- Spinner End -->
 
 
-	<!-- Navbar start -->
+<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -77,9 +77,8 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BUSTIVAL</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="#" class="dropdown-item">신청게시판</a> <a href="#"
-									class="dropdown-item">예약게시판</a> <a href="#"
-									class="dropdown-item">요청게시판</a>
+								<a href="goenroll.do" class="dropdown-item">신청게시판</a> <a
+									href="#" class="dropdown-item">요청게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">

@@ -125,6 +125,12 @@
 	</div>
 	<!-- Navbar End -->
 
+	<%
+	String eventId = request.getParameter("event_id");
+	String eventImg = request.getParameter("event_img");
+	String eventName = request.getParameter("event_name");
+	String eventDate = request.getParameter("event_date");
+	%>
 	<!-- Concert infomation 콘서트 정보 -->
 	<div class="container-fluid contact py-5">
 		<div class="container py-5">
@@ -139,16 +145,14 @@
 					</div>
 					<div class="flex-container">
 						<div class="h-100 rounded">
-							<h6>공연명</h6>
-							<img
-								src="https://ticketimage.interpark.com/Play/image/large/24/24003561_p.gif"
-								alt="concertImg" id="EVENT_IMG">
+							<h6><%=eventName%></h6>
+							<img src="<%=eventImg%>" id="EVENT_IMG">
 						</div>
 						<div class="conInfo">
 							<div>
 								<!-- 지역 추가 -->
-								<h5>광주-서울</h5>
-								<h6 class="m">일정</h6>
+								<h5>Going from 서울</h5>
+								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
 										<div class="progressBar"></div>
@@ -162,88 +166,122 @@
 										</button>
 									</div>
 								</div>
-								<!-- 지역 추가 -->
-								<h5>부산-서울</h5>
-								<h6 class="m">일정</h6>
-								<div class="flex-container">
-									<div class="progressBarContainer">
-										<div class="progressBar"></div>
-									</div>
-									<div class="buttons">
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
-										</button>
-									</div>
-								</div>
-								<!-- 지역 추가 -->
-								<h5>대구-서울</h5>
-								<h6 class="m">일정</h6>
-								<div class="flex-container">
-									<div class="progressBarContainer">
-										<div class="progressBar"></div>
-									</div>
-									<div class="buttons">
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
-										</button>
-									</div>
-								</div>
-								<!-- 지역 추가 -->
-								<h5>인천-서울</h5>
-								<h6 class="m">일정</h6>
-								<div class="flex-container">
-									<div class="progressBarContainer">
-										<div class="progressBar"></div>
-									</div>
-									<div class="buttons">
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
-										</button>
-									</div>
-								</div>
-								<!-- 지역 추가 -->
-								<h5>대전-서울</h5>
-								<h6 class="m">일정</h6>
-								<div class="flex-container">
-									<div class="progressBarContainer">
-										<div class="progressBar"></div>
-									</div>
-									<div class="buttons">
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
-										</button>
-									</div>
-								</div>
-								<!-- 지역 추가 -->
-								<h5>울산-서울</h5>
-								<h6 class="m">일정</h6>
-								<div class="flex-container">
-									<div class="progressBarContainer">
-										<div class="progressBar"></div>
-									</div>
-									<div class="buttons">
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
-										</button>
-									</div>
-								</div>
-								<!-- 지역 추가 -->
 							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 광주</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 부산</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 대구</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 인천</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 대전</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 울산</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
 						</div>
 					</div>
 				</div>
