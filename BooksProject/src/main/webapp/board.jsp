@@ -134,7 +134,7 @@
 		<div class="board_list_wrap">
 			<div class="board_list">
 				<div class="top">
-					<div class="num">번호</div>
+					<div class="num1">번호</div>
 					<div class="title">제목</div>
 					<div class="writer">글쓴이</div>
 					<div class="date">작성일</div>
@@ -146,7 +146,7 @@
 					<div>
 						<div class="num" id="num_${loop.index}"></div>
 						<div class="title">
-							<a href="boardView.jsp">${mvo.b_title}</a>
+							<a href="boardDetail.do?value=${mvo.b_id}">${mvo.b_title}</a>
 						</div>
 						<div class="writer">${mvo.nick}</div>
 						<div class="date">${mvo.b_date}</div>
@@ -164,7 +164,7 @@
 					href="#" class="bt last">>></a>
 			</div>
 			<div class="bt_wrap">
-				<a href="boardWrite.jsp" class="on">등록</a>
+				<a href="boardWrite.jsp?value=${boardList.get(0).getB_category()}" class="on">등록</a>
 				<!--<a href="#">수정</a>-->
 			</div>
 		</div>

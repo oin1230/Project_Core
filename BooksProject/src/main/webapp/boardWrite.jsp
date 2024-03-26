@@ -130,11 +130,15 @@
 		<div class="board_write_wrap">
 			<div class="board_write">
 				<div class="title">
+					<%
+					String value = request.getParameter("value");
+					%>
 					<dl>
-						<dt>제목</dt>
-						<dd>
-							<input type="text" placeholder="제목 입력">
-						</dd>
+						<form action="boardRegister.do?value=<%=value%>" method="post">
+							<dt>제목</dt>
+							<dd>
+								<input type="text" placeholder="제목 입력" name="title">
+							</dd>
 					</dl>
 				</div>
 				<div class="info">
@@ -142,7 +146,7 @@
 						<!-- 글쓴이는 세션에 저장되어 있는 작성자의 닉네임을 가져와서 자동 등록 -->
 						<dt>글쓴이</dt>
 						<dd>
-							<h6 class="left-align">닉네임</h6>
+							<h6 class="left-align">${member.nick}</h6>
 						</dd>
 					</dl>
 					<dl>
@@ -154,14 +158,21 @@
 					</dl>
 				</div>
 				<div class="cont">
-					<textarea placeholder="내용 입력">
+					<textarea placeholder="내용 입력" name="text">
                             첨부파일 기능은 자바와 연결 후 진행 예정
                             첨부파일 기능은 자바와 연결 후 진행 예정
                         </textarea>
+
 				</div>
 			</div>
 			<div class="bt_wrap">
-				<a href="boardView.jsp" class="on">등록</a> <a href="board.jsp">취소</a>
+
+
+				<button type="submit">
+					<a class="on">등록</a>
+				</button>
+				<a href="boardList.do?value=<%=value%>">취소</a>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -182,6 +193,8 @@
 		<!--깃허브 주소 넣기.-->
 	</div>
 	<!-- Copyright End -->
+
+
 
 
 

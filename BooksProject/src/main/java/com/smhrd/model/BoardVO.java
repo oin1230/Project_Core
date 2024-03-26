@@ -7,13 +7,13 @@ public class BoardVO {
 	private String b_title;
 	private String b_content;
 	private String b_date;
-	private String b_views;
+	private int b_views;
 	private int b_likes;
 	private String email;
 	private String nick;
 	
 	
-	public BoardVO(int b_id, String b_category, String b_title, String b_content, String b_date, String b_views, String email, String nick, int b_likes) {
+	public BoardVO(int b_id, String b_category, String b_title, String b_content, String b_date, int b_views, String email, String nick, int b_likes) {
 		super();
 		this.b_id = b_id;
 		this.b_category = b_category;
@@ -92,11 +92,11 @@ public class BoardVO {
 		this.b_date = b_date;
 	}
 
-	public String getB_views() {
+	public int getB_views() {
 		return b_views;
 	}
 
-	public void setB_views(String b_views) {
+	public void setB_views(int b_views) {
 		this.b_views = b_views;
 	}
 	

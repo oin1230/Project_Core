@@ -5,17 +5,17 @@ public class BoardLikeVO {
 	// like 식별자
 	private int like_id;
 	// like 상태
-	private String like_state;
+	private String b_like_state;
 	// 게시물 식별자
 	private int b_id;
 	// 유저 이메일
 	private String email;
 	
 	
-	public BoardLikeVO(int like_id, String like_state, int b_id, String email) {
+	public BoardLikeVO(int like_id, String b_like_state, int b_id, String email) {
 		super();
 		this.like_id = like_id;
-		this.like_state = like_state;
+		this.b_like_state = b_like_state;
 		this.b_id = b_id;
 		this.email = email;
 	}
@@ -36,13 +36,13 @@ public class BoardLikeVO {
 	}
 
 
-	public String getLike_state() {
-		return like_state;
+	public String getB_Like_state() {
+		return b_like_state;
 	}
 
 
-	public void setLike_state(String like_state) {
-		this.like_state = like_state;
+	public void setB_Like_state(String b_like_state) {
+		this.b_like_state = b_like_state;
 	}
 
 

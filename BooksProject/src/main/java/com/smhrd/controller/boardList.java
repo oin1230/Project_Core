@@ -15,8 +15,8 @@ public class boardList implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String b_category = request.getParameter("value");
-		System.out.println(b_category);
 		
+
 		BoardVO vo = new BoardVO();
 		vo.setB_category(b_category);
 		

@@ -15,6 +15,8 @@ public class boardDelete implements command {
 		// 해당 게시물의 b_id 받아오기
 		int b_id = Integer.parseInt(request.getParameter("value"));
 		
+		String b_category = request.getParameter("value");
+		
 		HttpSession session = request.getSession();
 		response.setCharacterEncoding("UTF-8");
 		
@@ -32,9 +34,13 @@ public class boardDelete implements command {
 		
 		session.setAttribute("row", row);
 		
+		request.setAttribute("value", b_category);
 		
 		
-		return "";
+		boardList boardListCommand = new boardList();
+        return boardListCommand.execute(request, response);
+		
+		
 		
 	}
 		

@@ -130,7 +130,7 @@
 		</div>
 		<div class="board_view_wrap">
 			<div class="board_view">
-				<div class="title">글 제목이 들어갑니다.</div>
+				<div class="title">${boardDetail.b_title}</div>
 				<div class="info">
 					<dl>
 						<dt>번호</dt>
@@ -138,24 +138,27 @@
 					</dl>
 					<dl>
 						<dt>글쓴이</dt>
-						<dd>김이름</dd>
+						<dd>${boardDetail.nick}</dd>
 					</dl>
 					<dl>
 						<dt>작성일</dt>
-						<dd>2021.1.16</dd>
+						<dd>${boardDetail.b_date}</dd>
 					</dl>
 					<dl>
-						<dt>조회</dt>
-						<dd>33</dd>
+						<dt>좋아요</dt>
+						<dd id = "likePlus">${boardDetail.b_likes} <button onclick="likePlus(${boardDetail.b_id})">추천</button></dd>
 					</dl>
 				</div>
 				<div class="cont">
-					좋아요 기능은 자바에 연결 후 만들 예정<br> 좋아요 기능은 자바에 연결 후 만들 예정<br> 좋아요
-					기능은 자바에 연결 후 만들 예정<br> 좋아요 기능은 자바에 연결 후 만들 예정<br>
+					${boardDetail.b_content}
 				</div>
 			</div>
 			<div class="bt_wrap">
-				<a href="board.jsp" class="on">목록</a> <a href="boardEdit.jsp">수정</a>
+				<a href="boardList.do?value=${boardDetail.b_category}" class="on">목록</a> 
+				<c:if test="${member.email == boardDetail.email}">
+				<a href="boardEdit.jsp?value=${boardDetail.b_category}">수정</a>
+				<a href="boardDelete.do?value=${boardDetail.b_category}">삭제</a>
+				</c:if>
 			</div>
 		</div>
 	</div>
@@ -209,6 +212,7 @@
 
 	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
+	<script src="js/Ajax.js"></script>
 
 	</body>
 </html>

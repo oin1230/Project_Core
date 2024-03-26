@@ -22,7 +22,7 @@
 
 	<select id="Login" parameterType="com.smhrd.model.UserVO"
 		resultType="com.smhrd.model.UserVO">
-		select email, pw from USER_INFO
+		select email, pw, nick from USER_INFO
 		where email=#{email} and
 		pw=#{pw}
 	</select>
@@ -67,10 +67,11 @@
 		where email = #{email} and pw =#{pw}
 	</update>
 
-	<select id="boardLike" parameterType="com.smhrd.model.UserVO">
-		select like_state from
-		LIKE_INFO
-		where email=#{email} b_id=#{b_id}
+	<select id="boardLike" parameterType="com.smhrd.model.BoardLikeVO"
+	resultType="com.smhrd.model.BoardLikeVO">
+		select b_like_state from
+		BOARD_LIKE_INFO
+		where email=#{email} and b_id=#{b_id}
 	</select>
 
 	<update id="boardLikeInsert"
@@ -90,7 +91,8 @@
 
 	<select id="boardDetail" parameterType="com.smhrd.model.BoardVO"
 		resultType="com.smhrd.model.BoardVO">
-		select *
+		select * , (SELECT nick FROM
+		USER_INFO WHERE email = BOARD_INFO.email) as nick
 		from BOARD_INFO
 		where b_id = #{b_id}
 	</select>
@@ -102,7 +104,7 @@
 
 	<select id="boardList" parameterType="com.smhrd.model.BoardVO"
 		resultType="com.smhrd.model.BoardVO">
-		SELECT b_title, b_date, b_views, b_likes,
+		SELECT b_title, b_date, b_views, b_likes, b_id, b_category,
 		(SELECT nick FROM
 		USER_INFO WHERE email = BOARD_INFO.email) as nick
 		FROM BOARD_INFO
@@ -119,6 +121,13 @@
 		#{email}
 
 	</select>
+		<insert id="boardRegister"
+		parameterType="com.smhrd.model.BoardVO">
+		insert into BOARD_INFO (b_category, b_title,
+		b_content, b_date, email)
+		values (#{b_category},
+		#{b_title}, #{b_content}, #{b_date}, #{email})
+	</insert>
 
 </mapper>
 

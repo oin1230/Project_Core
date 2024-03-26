@@ -93,7 +93,7 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="boardList.do?value=1" class="dropdown-item" >자유게시판</a> <a
+								<a href="boardList.do?value=1" class="dropdown-item">자유게시판</a> <a
 									href="boardList.do?value=2" class="dropdown-item">질문게시판</a> <a
 									href="boardList.do?value=3" class="dropdown-item">후기게시판</a>
 							</div>
@@ -125,7 +125,7 @@
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>
-						
+
 					</div>
 				</div>
 			</nav>
@@ -448,7 +448,6 @@
 
 
 
-
 		<!-- JavaScript Libraries -->
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -464,6 +463,18 @@
 		<script src="js/main.js"></script>
 		<!-- 슬라이드용 -->
 		<script src="js/slide.js"></script>
+
+		<script type="text/javascript">
+			function category1() {
+				sessionStorage.setItem("b_category", "1");
+			}
+			function category2() {
+				sessionStorage.setItem("b_category", "2");
+			}
+			function category3() {
+				sessionStorage.setItem("b_category", "3");
+			}
+		</script>
 </body>
 
 </html>

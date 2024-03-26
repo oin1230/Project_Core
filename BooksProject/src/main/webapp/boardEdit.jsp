@@ -173,8 +173,14 @@
                     </textarea>
 			</div>
 		</div>
+
+		<%
+		String value = request.getParameter("value");
+		%>
+		
+		
 		<div class="bt_wrap">
-			<a href="boardView.jsp" class="on">수정</a> <a href="boardView.jsp">취소</a>
+			<a href="?value=<%=value %>" class="on">수정</a> <a href="boardList.do?value=<%=value %>">취소</a>
 		</div>
 	</div>
 	</div>

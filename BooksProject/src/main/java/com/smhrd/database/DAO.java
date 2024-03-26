@@ -115,14 +115,14 @@ public class DAO {
 		return row;
 	}
 
-	public int boardLike(BoardLikeVO vo) {
+	public BoardLikeVO boardLike(BoardLikeVO vo) {
 		SqlSession session = factory.openSession(true);
 
-		int row = session.selectOne("boardLike", vo);
+		BoardLikeVO resultVo = session.selectOne("boardLike", vo);
 
 		session.close();
 
-		return row;
+		return resultVo;
 
 	}
 
@@ -148,13 +148,13 @@ public class DAO {
 		return row;
 	}
 
-	public List<BoardVO> boardDetail(BoardVO vo) {
+	public BoardVO boardDetail(BoardVO vo) {
 
 		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
 		// 2. 연결객체 사용하기
-		List<BoardVO> resultVo = session.selectList("boardDetail", vo);
+		BoardVO resultVo = session.selectOne("boardDetail", vo);
 
 		// 3. 연결객체 반납하기
 		session.close();
@@ -198,6 +198,16 @@ public class DAO {
 		session.close();
 
 		return resultId;
+
+	}
+	
+	public void boardRegister (BoardVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		int row = session.insert("boardRegister", vo);
+
+		session.close();
 
 	}
 

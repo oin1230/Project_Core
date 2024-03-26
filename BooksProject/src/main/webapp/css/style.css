@@ -933,6 +933,10 @@ a {
     width: 10%;
 }
 
+.board_list .num1{
+	text-align: center;
+}
+
 .board_list .title {
     width: 50%;
     text-align: left;

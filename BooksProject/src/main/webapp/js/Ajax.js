@@ -42,3 +42,34 @@ function AFindPW(){
 		}
 	})
 }
+
+function likePlus(num){
+	console.log("함수성공");
+	let b_id = {
+		"b_id" : num
+	};
+	
+	$.ajax({
+		
+		url: "boardLikeUpdate.do",
+		type : "post",
+		data : b_id,
+		dataType : "json",
+		success : function(res) {
+			
+			console.log(res);
+
+			 
+			
+		},
+		error : function(){
+			alert("추천X")
+		}
+		 
+		
+		
+	})
+	
+}
+
+
