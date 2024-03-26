@@ -13,7 +13,7 @@ public class boardDelete implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		// 해당 게시물의 b_id 받아오기
-		int b_id = Integer.parseInt(request.getParameter("value"));
+		int b_id = Integer.parseInt(request.getParameter("ValueCategory"));
 		
 		String b_category = request.getParameter("value");
 		

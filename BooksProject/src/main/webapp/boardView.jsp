@@ -157,7 +157,7 @@
 				<a href="boardList.do?value=${boardDetail.b_category}" class="on">목록</a> 
 				<c:if test="${member.email == boardDetail.email}">
 				<a href="boardEdit.jsp?value=${boardDetail.b_category}">수정</a>
-				<a href="boardDelete.do?value=${boardDetail.b_category}">삭제</a>
+				<a href="boardDelete.do?value=${boardDetail.b_category&ValueCategory=${boardDetail.b_id}">삭제</a>
 				</c:if>
 			</div>
 		</div>
