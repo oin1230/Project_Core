@@ -42,6 +42,21 @@ public class DAO {
 		// 4. 결과값 반환하기
 		return resultVo;
 	}
+	
+	public List<EventVO> mainEventlist() {
+		
+		// 1. 연결객체 생성하기
+		SqlSession session = factory.openSession(true);
+		
+		// 2. 연결객체 사용하기
+		List<EventVO> resultVo = session.selectList("mainEventlist");
+		
+		// 3. 연결객체 반납하기
+		session.close();
+		
+		// 4. 결과값 반환하기
+		return resultVo;
+	}
 
 	public UserVO Login(UserVO vo) {
 		SqlSession session = factory.openSession(true);

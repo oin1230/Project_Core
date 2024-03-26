@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.controller.eventList;
+import com.smhrd.controller.mainEventlist;
 import com.smhrd.controller.boardLikeUpdate;
 import com.smhrd.controller.boardList;
 import com.smhrd.controller.boardRegister;
@@ -37,6 +38,7 @@ public class FrontController extends HttpServlet {
 		// map 자료구조에 경로-실행시켜야되는 클래스 파일들을 하나씩 추가
 		map.put("Join.do", new Join());
 		map.put("eventList.do", new eventList());
+		map.put("mainEventlist.do", new mainEventlist());
 		map.put("Login.do", new Login());
 		map.put("Shuttle.do", new Shuttle());
 		map.put("userUpdate.do", new userUpdate());
@@ -67,9 +69,26 @@ public class FrontController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charser=UTF-8");
+		
+		if("gomain.do".equals(path)) {
+			command eventListCommand = null;
+			eventListCommand = map.get("mainEventlist.do");
+			if(eventListCommand != null) {
+				eventListCommand.execute(request, response);
+			}
+		}
+		if("goenroll.do".equals(path)) {
+			command eventListCommand = null;
+			eventListCommand = map.get("eventList.do");
+			if(eventListCommand != null) {
+				eventListCommand.execute(request, response);
+			}
+		}
 
 		String finalPath = null;
 		command com = map.get(path);
+
+		
 
 		if (path.startsWith("go")) {
 			// go가 포함이 되어있다면 DAO를 사용하지 않고 .jsp파일로 이동하겠다

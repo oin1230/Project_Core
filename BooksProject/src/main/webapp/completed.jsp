@@ -6,8 +6,9 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<title>compeleted</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -35,22 +36,15 @@
 <!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Template Stylesheet css연결하는 곳-->
+<!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
-<!-- 슬라이드 -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script
-	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://kit.fontawesome.com/fdb678099a.js"
 	crossorigin="anonymous"></script>
-
 
 </head>
 
 <body>
+
 	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -131,81 +125,176 @@
 	</div>
 	<!-- Navbar End -->
 
-
-
-
-	<!-- Single Page Header start -->
-	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">탑승 완료</h1>
-	</div>
-	<!-- Single Page Header End -->
-
-	<br>
-	<br>
-	<div class="container mb-4 main-container">
-		<div class="row">
-			<div class="col-lg-4 pb-5">
-				<!-- Account Sidebar-->
-				<div class="author-card pb-3">
-					<div class="author-card-profile">
-						<div class="author-card-details">
-							<h4 class="author-card-name text-lg">Nickname</h4>
-							<span></span>
+	<%
+	String eventId = request.getParameter("event_id");
+	String eventImg = request.getParameter("event_img");
+	String eventName = request.getParameter("event_name");
+	String eventDate = request.getParameter("event_date");
+	%>
+	<!-- Concert infomation 콘서트 정보 -->
+	<div class="container-fluid contact py-5">
+		<div class="container py-5">
+			<!-- 전체 모양 지정 -->
+			<div class="p-5 bg-light rounded custom-wide">
+				<div class="row g-4">
+					<!-- 콘서트 이름  -->
+					<div class="col-12">
+						<div class="text-center mx-auto" style="max-width: 700px;">
+							<h1 class="text-primary">행사 정보</h1>
+						</div>
+					</div>
+					<div class="flex-container">
+						<div class="h-100 rounded">
+							<h6><%=eventName%></h6>
+							<img src="<%=eventImg%>" id="EVENT_IMG">
+						</div>
+						<div class="conInfo">
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 서울</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 광주</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 부산</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 대구</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 인천</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 대전</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
+							<div>
+								<!-- 지역 추가 -->
+								<h5>Going from 울산</h5>
+								<h6 class="m"><%=eventDate%></h6>
+								<div class="flex-container">
+									<div class="progressBarContainer">
+										<div class="progressBar"></div>
+									</div>
+									<div class="buttons">
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">등록</a>
+										</button>
+										<button class="btn btn-one btn-lg btn-block">
+											<a href="#">신청</a>
+										</button>
+									</div>
+								</div>
+							</div>
+							<!-- 지역 추가 끝 -->
 						</div>
 					</div>
 				</div>
-				<div class="wizard">
-					<nav class="list-group list-group-flush">
-						<a class="list-group-item" href="myPage.jsp" tagert="__blank"><i
-							class="fa fa-tag mr-1 text-muted"></i>마이페이지</a> <a
-							class="list-group-item" href="userInfoEdit.jsp" target="__blank"><i
-							class="fa fa-user text-muted"></i> 회원정보 수정</a> <a
-							class="list-group-item" href="userPwEdit.jsp" tagert="__blank"><i
-							class="fa fa-heart mr-1 text-muted"></i>비밀번호 변경</a> <a
-							class="list-group-item" href="#" target="__blank"><i
-							class="fa fa-user text-muted"></i> 회원탈퇴</a>
-					</nav>
-				</div>
 			</div>
-			<!-- Orders Table-->
-			<div class="col-lg-8 pb-5">
-				<div class="table-two">
-					<table class="table table-hover mb-0">
-						<thead>
-							<tr>
-								<th>예약번호</th>
-								<th>제목</th>
-								<th>상태</th>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>3</td>
-								<td><a href="#">2NE1콘서트</a></td>
-								<td><span>예매완료</span></td>
-							</tr>
-
-							<tr>
-								<td>2</td>
-								<td><a href="#">투바투 팬미팅</a></td>
-								<td><span>예매완료</span></td>
-							</tr>
-
-
-							<tr>
-								<td>1</td>
-								<td><a href="#">San Diego padres vs LA dodgers</a></td>
-								<td><span>예매완료</span></td>
-							</tr>
-
-
-						</tbody>
-					</table>
-				</div>
-			</div>
 		</div>
+
 	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<!-- Concert infomation End -->
 
 
 	<!-- Footer Start -->

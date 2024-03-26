@@ -20,10 +20,21 @@
 		from EVENT_INFO
 	</select>
 
+	<select id="mainEventlist" resultType="com.smhrd.model.EventVO">
+		select event_id,
+		event_name,
+		event_date, event_loc, event_img
+		FROM EVENT_INFO
+		ORDER BY
+		ABS(DATEDIFF(event_date, NOW()))
+		LIMIT 6;
+	</select>
+
 	<select id="Login" parameterType="com.smhrd.model.UserVO"
 		resultType="com.smhrd.model.UserVO">
 		select email, pw, nick from USER_INFO
-		where email=#{email} and
+		where email=#{email}
+		and
 		pw=#{pw}
 	</select>
 
@@ -67,11 +78,13 @@
 		where email = #{email} and pw =#{pw}
 	</update>
 
-	<select id="boardLike" parameterType="com.smhrd.model.BoardLikeVO"
-	resultType="com.smhrd.model.BoardLikeVO">
+	<select id="boardLike"
+		parameterType="com.smhrd.model.BoardLikeVO"
+		resultType="com.smhrd.model.BoardLikeVO">
 		select b_like_state from
 		BOARD_LIKE_INFO
-		where email=#{email} and b_id=#{b_id}
+		where email=#{email}
+		and b_id=#{b_id}
 	</select>
 
 	<update id="boardLikeInsert"
@@ -92,7 +105,8 @@
 	<select id="boardDetail" parameterType="com.smhrd.model.BoardVO"
 		resultType="com.smhrd.model.BoardVO">
 		select * , (SELECT nick FROM
-		USER_INFO WHERE email = BOARD_INFO.email) as nick
+		USER_INFO WHERE email =
+		BOARD_INFO.email) as nick
 		from BOARD_INFO
 		where b_id = #{b_id}
 	</select>
@@ -121,12 +135,14 @@
 		#{email}
 
 	</select>
-		<insert id="boardRegister"
+	<insert id="boardRegister"
 		parameterType="com.smhrd.model.BoardVO">
 		insert into BOARD_INFO (b_category, b_title,
-		b_content, b_date, email)
+		b_content,
+		b_date, email)
 		values (#{b_category},
-		#{b_title}, #{b_content}, #{b_date}, #{email})
+		#{b_title}, #{b_content},
+		#{b_date}, #{email})
 	</insert>
 
 </mapper>
