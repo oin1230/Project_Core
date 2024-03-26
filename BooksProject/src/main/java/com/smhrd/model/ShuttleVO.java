@@ -31,7 +31,6 @@ public class ShuttleVO {
 	public ShuttleVO(int shtl_id, String start_rg, int shtl_num, String start_date, String end_date, int price,
 			String riding_date, String shtl_state, int event_id, String event_img, String event_name,
 			String event_loc) {
-		super();
 		this.shtl_id = shtl_id;
 		this.start_rg = start_rg;
 		this.shtl_num = shtl_num;

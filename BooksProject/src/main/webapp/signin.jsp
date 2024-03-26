@@ -136,13 +136,11 @@
 							<label for="name">이메일</label> <input type="text"
 								class="form-control" id="name" name="email" placeholder=""
 								value="" required>
-							<div>여기에 비동기 확인</div>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="nickname">닉네임</label> <input type="text"
 								class="form-control" id="nickname" name="nickname"
 								placeholder="" value="" required>
-							<div>여기에 비동기 확인</div>
 						</div>
 					</div>
 

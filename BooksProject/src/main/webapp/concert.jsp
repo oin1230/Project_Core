@@ -159,10 +159,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
+											<a href="#">예약</a>
 										</button>
 									</div>
 								</div>
@@ -178,10 +175,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
+											<a href="#">예약</a>
 										</button>
 									</div>
 								</div>
@@ -197,10 +191,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
+											<a href="#">예약</a>
 										</button>
 									</div>
 								</div>
@@ -215,11 +206,8 @@
 										<div class="progressBar"></div>
 									</div>
 									<div class="buttons">
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
+											<button class="btn btn-one btn-lg btn-block">
+											<a href="#">예약</a>
 										</button>
 									</div>
 								</div>
@@ -235,10 +223,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
+											<a href="#">예약</a>
 										</button>
 									</div>
 								</div>
@@ -254,10 +239,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
+											<a href="#">예약</a>
 										</button>
 									</div>
 								</div>
@@ -273,10 +255,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">등록</a>
-										</button>
-										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">신청</a>
+											<a href="#">예약</a>
 										</button>
 									</div>
 								</div>

@@ -145,5 +145,23 @@
 		#{b_date}, #{email})
 	</insert>
 
+	<select id="progressBar" parameterType="com.smhrd.model.SeatVO"
+		resultType="com.smhrd.model.SeatVO">
+		SELECT
+		SI.SHTL_ID,
+		EI.EVENT_ID,
+		COUNT(SI.SEAT_STATUS) AS RESERVED_SEAT_COUNT
+		FROM
+		SEAT_INFO SI
+		JOIN
+		SHUTTLE_INFO SHI ON SI.SHTL_ID = SHI.SHTL_ID
+		JOIN
+		EVENT_INFO EI ON SHI.EVENT_ID = EI.EVENT_ID
+		WHERE
+		EI.EVENT_ID = 1
+		AND SI.SEAT_STATUS = 'Y'
+		GROUP BY
+		SI.SHTL_ID, EI.EVENT_ID;
+	</select>
 </mapper>
 
