@@ -36,6 +36,7 @@
 	
 		private HashMap<String, command> map = new HashMap<String, command>();
 		
+
 	
 		@Override
 		public void init() throws ServletException {
@@ -57,8 +58,8 @@
 	
 			// 새로운 기능을 만들때마다 map 자료구조 안에
 			// 경로 - 실행해야하는 클래스 한세틀 묶어서 추가해주기만 하면 됨
+
 		}
-		
 		
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
