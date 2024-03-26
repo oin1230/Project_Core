@@ -41,6 +41,8 @@
 <link href="css/style.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/fdb678099a.js"
 	crossorigin="anonymous"></script>
+<!-- alert 스타일 -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body id="login">
@@ -133,17 +135,17 @@
 
 			<div class="findID-PW">
 				아이디 찾기<br> <input class="find-input" type="text" name="findId"
-					placeholder="가입 시 입력한 핸드폰을 입력해주세요"><br>
+					id="findID" placeholder="가입 시 입력한 핸드폰을 입력해주세요"><br>
 			</div>
 			<button class="btn btn-primary btn-lg btn-block find-button"
-				onclick="findId()" type="submit">이메일 찾기</button>
+				onclick="AFindID()" type="button">이메일 찾기</button>
 
 			<div class="findID-PW">
 				비밀번호 찾기<br> <input class="find-input" type="text" name="findPw"
-					placeholder="가입한 이메일을 입력해주세요"><br>
+					id="findPW" placeholder="가입한 이메일을 입력해주세요"><br>
 			</div>
 			<button class="btn btn-primary btn-lg btn-block find-button"
-				onclick="findPw()" type="submit">비밀번호 찾기</button>
+				onclick="AFindPW()" type="button">비밀번호 찾기</button>
 		</div>
 	</div>
 
@@ -177,10 +179,12 @@
 		<script src="lib/waypoints/waypoints.min.js"></script>
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3"></script>
 
 
 		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
+		<script src="js/Ajax.js"></script>
 </body>
 
 </html>
