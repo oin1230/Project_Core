@@ -44,7 +44,7 @@ public class myPage implements command {
 		session.setAttribute("myPageEnd", myPageEnd);
 		System.out.println("myPageReEnd 확인 : "+ myPageEnd);
 		
-		
+	
 
 		return "myPage";
 	}
