@@ -236,5 +236,19 @@ public class DAO {
 		
 		return resultVo;
 	}
+	
+
+	
+	public void boardUpdate(BoardVO vo) {
+		// 1. 세션 빌려오기
+		SqlSession session = factory.openSession(true);
+		// 2. 세션 사용하기
+		session.update("boardUpdate", vo);
+		// 3. 세션 반납하기
+		session.close();
+	}
 
 }
+
+
+

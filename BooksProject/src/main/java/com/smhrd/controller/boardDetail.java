@@ -26,7 +26,8 @@ public class boardDetail implements command {
 		BoardVO boardDetail = dao.boardDetail(vo);
 		
 		
-		request.setAttribute("boardDetail", boardDetail);
+		HttpSession session = request.getSession();
+		session.setAttribute("boardDetail", boardDetail);
 		System.out.println("ㅋㅋ카테고리 값::"+boardDetail.getB_category());
 		
 		request.setAttribute("b_id", b_id2);

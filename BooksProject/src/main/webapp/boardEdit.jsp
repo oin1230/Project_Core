@@ -1,7 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 <!DOCTYPE html>
@@ -136,44 +136,44 @@
 	<div class="board_write_wrap">
 		<div class="board_write">
 			<div class="title">
+				<%
+				String value = request.getParameter("value");
+				String valueId = request.getParameter("valueId");
+				String valueLike = request.getParameter("valueLike");
+				
+				%>
+
 				<dl>
-					<dt>제목</dt>
-					<dd>
-						<input type="text" placeholder="제목 입력" value="글 제목이 들어갑니다">
-					</dd>
+					<form action="boardUpdate.do?value=<%=value%>&valueId=<%=valueId%>&valueLike=<%=valueLike%>" method="post">
+						<dt>제목</dt>
+						<dd>
+							<input type="text" name="title" placeholder="제목 입력" value=${boardDetail.b_title} >
+						</dd>
 				</dl>
 			</div>
 			<div class="info">
 				<dl>
 					<dt>글쓴이</dt>
 					<dd>
-						<input type="text" placeholder="글쓴이 입력" value="김이름">
+						<input type="text" placeholder="글쓴이 입력" value=${member.nick}>
 					</dd>
 				</dl>
 				<dl>
 					<dt>비밀번호</dt>
 					<dd>
-						<input type="password" placeholder="비밀번호 입력" value="1234">
+						<input type="password" placeholder="비밀번호 입력">
 					</dd>
 				</dl>
 			</div>
 			<div class="cont">
-				<textarea placeholder="내용 입력">
-                        그
-                        아
-                        아
-                        악
-                    </textarea>
+				<textarea placeholder="내용 입력" name="text" >${boardDetail.b_content}</textarea>
 			</div>
 		</div>
-
-		<%
-		String value = request.getParameter("value");
-		%>
-		
-		
 		<div class="bt_wrap">
-			<a href="?value=<%=value %>" class="on">수정</a> <a href="boardList.do?value=<%=value %>">취소</a>
+			<button type="submit">
+				<a class="on">등록</a>
+			</button>
+			<a href="boardList.do?value=<%=value%>">취소</a>
 		</div>
 	</div>
 	</div>
