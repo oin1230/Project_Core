@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.smhrd.controller.eventList;
 import com.smhrd.controller.mainEventlist;
 import com.smhrd.controller.myPage;
+import com.smhrd.controller.progressBar;
 import com.smhrd.controller.boardLikeUpdate;
 import com.smhrd.controller.boardList;
 import com.smhrd.controller.boardRegister;
@@ -56,6 +57,7 @@ public class FrontController extends HttpServlet {
 		map.put("boardRegister.do", new boardRegister());
 		map.put("boardUpdate.do", new boardUpdate());
 		map.put("myPage.do", new myPage());
+		map.put("progressBar.do", new progressBar());
 
 		// 새로운 기능을 만들때마다 map 자료구조 안에
 		// 경로 - 실행해야하는 클래스 한세틀 묶어서 추가해주기만 하면 됨
