@@ -176,5 +176,16 @@
 		where b_id =
 		#{b_id}
 	</update>
+	
+	<update id="boardUpdate" parameterType="com.smhrd.model.BoardVO">
+		update BOARD_INFO
+		set
+		b_category
+		=#{b_category}, b_title =#{b_title}, b_content
+		=#{b_content}, b_date=#{b_date},
+		email=#{email}, b_likes=#{b_likes}
+		where
+		b_id=#{b_id}
+	</update>
 </mapper>
 

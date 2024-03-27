@@ -135,16 +135,16 @@
 <body class="board">
 	<div class="board_write_wrap">
 		<div class="board_write">
-			<div class="title">
 				<%
 				String value = request.getParameter("value");
 				String valueId = request.getParameter("valueId");
 				String valueLike = request.getParameter("valueLike");
 				
 				%>
+				<form action="boardUpdate.do?value=<%=value%>&valueId=<%=valueId%>&valueLike=<%=valueLike%>" method="post">
+			<div class="title">
 
 				<dl>
-					<form action="boardUpdate.do?value=<%=value%>&valueId=<%=valueId%>&valueLike=<%=valueLike%>" method="post">
 						<dt>제목</dt>
 						<dd>
 							<input type="text" name="title" placeholder="제목 입력" value=${boardDetail.b_title} >
@@ -175,6 +175,7 @@
 			</button>
 			<a href="boardList.do?value=<%=value%>">취소</a>
 		</div>
+		</form>
 	</div>
 	</div>
 </body>
