@@ -158,16 +158,20 @@
 													class="p-4 border border-secondary border-top-0 rounded-bottom">
 													<h6>${event2.event_name}</h6>
 													<div class="button-container">
-														<form id="event2Form" action="goconcert.do" method="post">
+														<form id="event2Form" action="progressBar.do"
+															method="post">
 															<input type="hidden" name="event_id"
 																value="${event2.event_id}"> <input type="hidden"
 																name="event_img" value="${event2.event_img}"> <input
 																type="hidden" name="event_name"
 																value="${event2.event_name}"> <input
 																type="hidden" name="event_date"
-																value="${event2.event_date}">
+																value="${event2.event_date}"> <input
+																type="hidden" name="event_loc"
+																value="${event2.event_loc}">
 															<button class="btn btn-one btn-lg btn-block"
 																type="submit">상세보기</button>
+																</form>
 													</div>
 												</div>
 											</div>
@@ -261,31 +265,6 @@
 				}
 			</script>
 
-			<script>
-				document.getElementById('event2Form').addEventListener(
-						'submit',
-						function(event) {
-							event.preventDefault();
-							var eventId = this.event_id.value;
-							$.ajax({
-								url : "progressBar.do",
-								type : "post",
-								data : {
-									event_id : event_id
-								},
-								success : function(response) {
-									console.log("성공:", response);
-								},
-								error : function(xhr, status, error) {
-									console.error("실패:", error);
-								},
-								complete : function() {
-									document.getElementById('eventForm')
-											.submit();
-								}
-							});
-						});
-			</script>
 
 			<!-- Template Javascript -->
 			<script src="js/main.js"></script>

@@ -15,7 +15,8 @@ public class progressBar implements command {
 		
 		int event_id =Integer.parseInt(request.getParameter("event_id"));
 		
-		SeatVO vo = new SeatVO(0, 0, 0, null, event_id, 0);
+		SeatVO vo = new SeatVO();
+		vo.setEVENT_ID(event_id);
 
 		DAO dao = new DAO();
 		
@@ -23,6 +24,7 @@ public class progressBar implements command {
 		
 		request.setAttribute("progressBar",progressBar);
 		
+		// redirect: 데이터 보낼 수 있는 방법
 		return "concert";
 		
 	}

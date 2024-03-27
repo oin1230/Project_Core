@@ -161,7 +161,8 @@
 													<h6>
 														<h6>
 															<div class="button-container">
-																<form class="eventForm" action="goconcert.do" method="post">
+																<form class="eventForm" action="progressBar.do"
+																	method="post">
 																	<input type="hidden" name="event_img"
 																		value="${event.event_img}"> <input
 																		type="hidden" name="event_name"
@@ -169,7 +170,9 @@
 																		type="hidden" name="event_date"
 																		value="${event.event_date}"> <input
 																		type="hidden" name="event_id"
-																		value="${event.event_id}">
+																		value="${event.event_id}"> <input
+																		type="hidden" name="event_loc"
+																		value="${event2.event_loc}">
 																	<button class="btn btn-one btn-lg btn-block"
 																		type="submit">상세보기</button>
 																</form>
@@ -206,32 +209,6 @@
 				<!--깃허브 주소 넣기.-->
 			</div>
 			<!-- Copyright End -->
-
-
-			<script>
-			document.querySelectorAll('.eventForm').forEach(form => {
-			    form.addEventListener('submit', function(event) {
-			        event.preventDefault();
-			        var eventId = this.event_id.value;
-			        $.ajax({
-			            url : "progressBar.do",
-			            type : "post",
-			            data : {
-			                event_id : eventId
-			            },
-			            success : function(response) {
-			                console.log("성공:", response);
-			            },
-			            error : function(xhr, status, error) {
-			                console.error("실패:", error);
-			            },
-			            complete : function() {
-			                form.submit(); // 이 부분에서는 this 대신 form을 사용
-			            }
-			        });
-			    });
-			});
-			</script>
 
 
 			<!-- JavaScript Libraries -->

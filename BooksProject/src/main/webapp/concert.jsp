@@ -1,10 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.smhrd.model.SeatVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +47,7 @@
 </head>
 
 <body>
-	
+
 	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -73,16 +73,8 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BUSTIVAL</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="#" class="dropdown-item">신청게시판</a> <a href="#"
-									class="dropdown-item">요청게시판</a>
-							</div>
-						</div>
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-item nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">CONCERT</a>
-							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="#" class="dropdown-item">발라드</a> <a href="#"
-									class="dropdown-item">아이돌</a> <a href="#" class="dropdown-item">트로트</a>
+								<a href="goenroll.do" class="dropdown-item">신청게시판</a> <a
+									href="#" class="dropdown-item">요청게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -129,10 +121,13 @@
 	<!-- Navbar End -->
 
 	<%
-	String eventId = request.getParameter("event_id");
-	String eventImg = request.getParameter("event_img");
-	String eventName = request.getParameter("event_name");
-	String eventDate = request.getParameter("event_date");
+	String event_id = request.getParameter("event_id");
+	String event_img = request.getParameter("event_img");
+	String event_name = request.getParameter("event_name");
+	String event_date = request.getParameter("event_date");
+	String event_loc = request.getParameter("event_loc");
+	List<SeatVO> progressBar = (List<SeatVO>) request.getAttribute("progressBar");
+	int index= 0;
 	%>
 	<!-- Concert infomation 콘서트 정보 -->
 	<div class="container-fluid contact py-5">
@@ -148,21 +143,24 @@
 					</div>
 					<div class="flex-container">
 						<div class="h-100 rounded">
-							<h6><%=eventName%></h6>
-							<img src="<%=eventImg%>" id="EVENT_IMG">
+							<h6><%=event_name%></h6>
+							<h6 class="m"><%=event_date%></h6>
+							<img src="<%=event_img%>" id="EVENT_IMG">
 						</div>
 						<div class="conInfo">
 							<div>
 								<!-- 지역 추가 -->
 								<h5>Going from 서울</h5>
-								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
-										<div class="progressBar"></div>
+										<div class="progressBar">
+											<span class="percentage"></span>
+										</div>
 									</div>
 									<div class="buttons">
+									<% if(progressBar.size() > index) { %>
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">예약</a>
+											<a href="booking.do?go=서울&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -171,14 +169,15 @@
 							<div>
 								<!-- 지역 추가 -->
 								<h5>Going from 광주</h5>
-								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
-										<div class="progressBar"></div>
+										<div class="progressBar">
+											<span class="percentage"></span>
+										</div>
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">예약</a>
+											<a href="booking.do?go=광주&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -187,14 +186,15 @@
 							<div>
 								<!-- 지역 추가 -->
 								<h5>Going from 부산</h5>
-								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
-										<div class="progressBar"></div>
+										<div class="progressBar">
+											<span class="percentage"></span>
+										</div>
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">예약</a>
+											<a href="booking.do?go=부산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -203,14 +203,15 @@
 							<div>
 								<!-- 지역 추가 -->
 								<h5>Going from 대구</h5>
-								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
-										<div class="progressBar"></div>
+										<div class="progressBar">
+											<span class="percentage"></span>
+										</div>
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">예약</a>
+											<a href="booking.do?go=대구&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -219,14 +220,15 @@
 							<div>
 								<!-- 지역 추가 -->
 								<h5>Going from 인천</h5>
-								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
-										<div class="progressBar"></div>
+										<div class="progressBar">
+											<span class="percentage"></span>
+										</div>
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">예약</a>
+											<a href="booking.do?go=인천&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -235,14 +237,15 @@
 							<div>
 								<!-- 지역 추가 -->
 								<h5>Going from 대전</h5>
-								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
-										<div class="progressBar"></div>
+										<div class="progressBar">
+											<span class="percentage"></span>
+										</div>
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">예약</a>
+											<a href="booking.do?go=대전&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -251,15 +254,17 @@
 							<div>
 								<!-- 지역 추가 -->
 								<h5>Going from 울산</h5>
-								<h6 class="m"><%=eventDate%></h6>
 								<div class="flex-container">
 									<div class="progressBarContainer">
-										<div class="progressBar"></div>
+										<div class="progressBar">
+											<span class="percentage"></span>
+										</div>
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="#">예약</a>
+											<a href="booking.do?go=울산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
+										            <% } %>
 									</div>
 								</div>
 							</div>
@@ -268,13 +273,7 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
-	</div>
-	</div>
-	</div>
-	</div>
 	</div>
 	<!-- Concert infomation End -->
 
@@ -309,24 +308,39 @@
 		<script src="lib/waypoints/waypoints.min.js"></script>
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-
 		<%
-    		List<SeatVO> seatsList = (List<SeatVO>) request.getAttribute("progressBar");
+		request.getSession().setAttribute("event_id", event_id);
+		request.getSession().setAttribute("event_loc", event_loc);
+		request.getSession().setAttribute("event_name", event_name);
+		request.getSession().setAttribute("event_date", event_date);
 		%>
+
+
+
+		
 		<script>
 		document.addEventListener('DOMContentLoaded', function() {
 		    var totalSeats = [28, 28, 28, 28, 28, 28, 28]; // 각 프로그레스바에 대한 전체 좌석 수 예시
 		    var bookedSeats = [
-		        <%for (SeatVO seat : seatsList) {%>
-		            <%=seat.getRESERVED_SEAT_COUNT()%><%if (seat != seatsList.get(seatsList.size() - 1)) {%>, <%}%>
+		        <%for (SeatVO pro : progressBar) {%>
+		            <%=pro.getRESERVED_SEAT_COUNT()%><%if (pro != progressBar.get(progressBar.size() - 1)) {%>, <%}%>
 		        <%}%>
 		    ]; // 각 프로그레스바에 대한 예약된 좌석 수
 		    var progressBars = document.getElementsByClassName("progressBar");
 
 		    for (var i = 0; i < progressBars.length; i++) {
-		        var bookedPercentage = (bookedSeats[i] / totalSeats[i]) * 100;
-		        progressBars[i].style.width = bookedPercentage + '%';
+		    	 if (totalSeats[i] === 0) {
+		             var bookedPercentage = 0;
+		         } else {
+		             var bookedPercentage = (bookedSeats[i] / totalSeats[i]) * 100;
+		         }
+		    	  if (isNaN(bookedPercentage)) {
+		              bookedPercentage = 0;
+		          }
+		          progressBars[i].style.width = bookedPercentage + '%';
+
+		        var percentageSpan = progressBars[i].getElementsByClassName("percentage")[0];
+		        percentageSpan.innerText = bookedPercentage.toFixed(0) + '%'
 		    }
 		});		</script>
 
