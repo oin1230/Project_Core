@@ -100,7 +100,7 @@
 						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
 						<c:if test="${member != null }">
-							<a href="myPage.jsp" class="my-auto"> <i
+							<a href="myPage.do" class="my-auto"> <i
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>

@@ -91,7 +91,8 @@
 	</select>
 
 	<delete id="boardDelete" parameterType="com.smhrd.model.BoardVO">
-		DELETE FROM BOARD_INFO WHERE email=#{email} AND b_id=#{b_id}
+		DELETE FROM BOARD_INFO
+		WHERE email=#{email} AND b_id=#{b_id}
 	</delete>
 
 	<select id="boardList" parameterType="com.smhrd.model.BoardVO"
@@ -187,86 +188,89 @@
 		where
 		b_id=#{b_id}
 	</update>
-	
+
 	<insert id="commentRegister"
 		parameterType="com.smhrd.model.CommentVO">
 		insert into COMMENT_INFO (b_id, cmt_content,
-		cmt_date, email)
+		cmt_date,
+		email)
 		values (#{b_id},#{cmt_content}, #{cmt_date},#{email})
 	</insert>
-	
-	<select id="commentList" parameterType="com.smhrd.model.CommentVO"
+
+	<select id="commentList"
+		parameterType="com.smhrd.model.CommentVO"
 		resultType="com.smhrd.model.CommentVO">
-			SELECT *
-			FROM COMMENT_INFO
-			WHERE b_id =#{b_id}
+		SELECT *
+		FROM COMMENT_INFO
+		WHERE b_id =#{b_id}
 	</select>
-	
-	<delete id="commentDelete" parameterType="com.smhrd.model.CommentVO">
+
+	<delete id="commentDelete"
+		parameterType="com.smhrd.model.CommentVO">
 		DELETE FROM COMMENT_INFO WHERE cmt_id=#{cmt_id}
 	</delete>
-	
+
 	<!-- myPage mapper -->
-   <select id="myPageApply"
-      parameterType="com.smhrd.model.myPageVO"
-      resultType="com.smhrd.model.myPageVO">
-      select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
-      BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
-      inner join SEAT_INFO
-      on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
-      inner join SHUTTLE_INFO
-      on
-      SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
-      inner join EVENT_INFO
-      on
-      SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
-      where
-      BOOK_INFO.PAY_STATE="Y" and BOOK_INFO.EMAIL = #{email}
-      order by
-      BOOK_INFO.BOOK_ID DESC
-   </select>
+	<select id="myPageApply"
+		parameterType="com.smhrd.model.myPageVO"
+		resultType="com.smhrd.model.myPageVO">
+		select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
+		BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
+		inner join SEAT_INFO
+		on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
+		inner join SHUTTLE_INFO
+		on
+		SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
+		inner join EVENT_INFO
+		on
+		SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
+		where
+		BOOK_INFO.PAY_STATE="Y" and BOOK_INFO.EMAIL = #{email}
+		order by
+		BOOK_INFO.BOOK_ID DESC
+	</select>
 
-   <select id="myPageRefund"
-      parameterType="com.smhrd.model.myPageVO"
-      resultType="com.smhrd.model.myPageVO">
-      select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
-      BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
-      inner join SEAT_INFO
-      on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
-      inner join SHUTTLE_INFO
-      on
-      SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
-      inner join EVENT_INFO
-      on
-      SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
-      where
-      BOOK_INFO.PAY_STATE="R" and BOOK_INFO.EMAIL = #{email}
-      order by
-      BOOK_INFO.BOOK_ID DESC
-   </select>
+	<select id="myPageRefund"
+		parameterType="com.smhrd.model.myPageVO"
+		resultType="com.smhrd.model.myPageVO">
+		select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
+		BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
+		inner join SEAT_INFO
+		on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
+		inner join SHUTTLE_INFO
+		on
+		SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
+		inner join EVENT_INFO
+		on
+		SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
+		where
+		BOOK_INFO.PAY_STATE="R" and BOOK_INFO.EMAIL = #{email}
+		order by
+		BOOK_INFO.BOOK_ID DESC
+	</select>
 
-   <select id="myPageEnd" parameterType="com.smhrd.model.myPageVO"
-      resultType="com.smhrd.model.myPageVO">
-      select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
-      BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
-      inner join SEAT_INFO
-      on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
-      inner join SHUTTLE_INFO
-      on
-      SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
-      inner join EVENT_INFO
-      on
-      SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
-      where
-      SHUTTLE_INFO.SHTL_STATE="N" and BOOK_INFO.EMAIL = #{email}
-      order by
-      BOOK_INFO.BOOK_ID DESC
-   </select>
-	
-	
-	
-	
-	
-	
+	<select id="myPageEnd" parameterType="com.smhrd.model.myPageVO"
+		resultType="com.smhrd.model.myPageVO">
+		select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
+		BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
+		inner join SEAT_INFO
+		on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
+		inner join SHUTTLE_INFO
+		on
+		SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
+		inner join EVENT_INFO
+		on
+		SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
+		where
+		SHUTTLE_INFO.SHTL_STATE="N" and BOOK_INFO.EMAIL = #{email}
+		order by
+		BOOK_INFO.BOOK_ID DESC
+	</select>
+
+
+
+
+
+
 </mapper>
 
