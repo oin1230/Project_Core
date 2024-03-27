@@ -18,11 +18,9 @@ public class commentRegister implements command {
 
 		HttpSession session = request.getSession();
 		response.setCharacterEncoding("UTF-8");
-		// System.out.println("11111111111111111111");
 		
 		String cmt_content = request.getParameter("comment");
 		int b_id = Integer.parseInt(request.getParameter("b_id"));
-		// System.out.println("??????????"+cmt_content+b_id);
 		
 		// 현재 시간 b_date변수에 저장(2024-03-26 11:27:42.979 형식)
 		Timestamp b_date = new Timestamp(System.currentTimeMillis());
@@ -45,7 +43,6 @@ public class commentRegister implements command {
 		Gson gson = new Gson();
 		
 		String json = gson.toJson(vo);
-		// System.out.println("?????????"+json);
 		
 		response.setContentType("text/html;charser=UTF-8");
 		

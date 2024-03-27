@@ -15,14 +15,14 @@ public class boardRegisterCheck implements command {
 		
 
 		
-		System.out.println("######################");
+		//System.out.println("######################");
 		// 로그인 안했다면 email값이 없어 오류발생 -> ajax함수에서 fail유도
 		HttpSession session = request.getSession();
 		UserVO sessionVo = (UserVO) session.getAttribute("member");
 		String email = sessionVo.getEmail();
-		System.out.println("사용자이메일값"+email);
+		//System.out.println("사용자이메일값"+email);
 		
-		System.out.println("&&&&&&&&&&&&&&&&&&&");
+		//System.out.println("&&&&&&&&&&&&&&&&&&&");
 		
 
 

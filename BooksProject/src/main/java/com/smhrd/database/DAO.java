@@ -33,9 +33,6 @@ public class DAO {
 	public UserVO Login(UserVO vo) {
 		SqlSession session = factory.openSession(true);
 
-		// select기능을 구행하고 난 결과 자료형은 제네릭 기법으로 결정된다
-		// 제네릭 기법이란?
-		// : 클래스 내부에서(SqlSession) 사용해야하는 자료형을 클래스 외부에서 결정하는 기법
 		UserVO resultVo = session.selectOne("Login", vo);
 
 		session.close();
@@ -46,25 +43,21 @@ public class DAO {
 
 	public List<ShuttleVO> Shuttle() {
 
-		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
-		// 2. 연결객체 사용하기
 		List<ShuttleVO> resultVo = session.selectList("Shuttle");
 
-		// 3. 연결객체 반납하기
 		session.close();
 
-		// 4. 결과값 반환하기
 		return resultVo;
 	}
 
 	public void userUpdate(UserVO vo) {
-		// 1. 세션 빌려오기
+		
 		SqlSession session = factory.openSession(true);
-		// 2. 세션 사용하기
+		
 		session.update("userUpdate", vo);
-		// 3. 세션 반납하기
+		
 		session.close();
 	}
 
@@ -149,61 +142,45 @@ public class DAO {
 
 	public List<EventVO> eventList() {
 
-		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
-		// 2. 연결객체 사용하기
 		List<EventVO> resultVo = session.selectList("eventList");
 
-		// 3. 연결객체 반납하기
 		session.close();
 
-		// 4. 결과값 반환하기
 		return resultVo;
 	}
 
 	public List<ShuttleVO> bookingList() {
 
-		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
-		// 2. 연결객체 사용하기
 		List<ShuttleVO> resultVo = session.selectList("bookingList");
 
-		// 3. 연결객체 반납하기
 		session.close();
 
-		// 4. 결과값 반환하기
 		return resultVo;
 	}
 
 	public List<EventVO> mainEventlist() {
 
-		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
-		// 2. 연결객체 사용하기
 		List<EventVO> resultVo = session.selectList("mainEventlist");
 
-		// 3. 연결객체 반납하기
 		session.close();
 
-		// 4. 결과값 반환하기
 		return resultVo;
 	}
 
 	public List<BoardVO> boardList(BoardVO vo) {
 
-		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
-		// 2. 연결객체 사용하기
 		List<BoardVO> resultVo = session.selectList("boardList", vo);
 
-		// 3. 연결객체 반납하기
 		session.close();
 
-		// 4. 결과값 반환하기
 		return resultVo;
 	}
 
@@ -218,11 +195,11 @@ public class DAO {
 	}
 
 	public void boardUpdate(BoardVO vo) {
-		// 1. 세션 빌려오기
+		
 		SqlSession session = factory.openSession(true);
-		// 2. 세션 사용하기
+		
 		session.update("boardUpdate", vo);
-		// 3. 세션 반납하기
+		
 		session.close();
 	}
 
@@ -321,16 +298,12 @@ public class DAO {
 	
 	public List<CommentVO> commentList(CommentVO vo) {
 
-		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
 
-		// 2. 연결객체 사용하기
 		List<CommentVO> resultVo = session.selectList("commentList", vo);
 
-		// 3. 연결객체 반납하기
 		session.close();
 
-		// 4. 결과값 반환하기
 		return resultVo;
 	}
 	

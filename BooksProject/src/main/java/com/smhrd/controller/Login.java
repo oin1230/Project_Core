@@ -8,15 +8,12 @@ import com.smhrd.database.DAO;
 import com.smhrd.model.UserVO;
 
 public class Login implements command {
-	
-public String execute(HttpServletRequest request, HttpServletResponse response) {
 
+	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		
-		
 		String email = request.getParameter("EMAIL");
 		String pw = request.getParameter("PW");
-		
+
 		System.out.println(email);
 		System.out.println(pw);
 
@@ -27,21 +24,21 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		DAO dao = new DAO();
 
 		UserVO resultVo = dao.Login(vo);
-		
+
 		if (resultVo != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("member", resultVo);
-			
+
 			// 테스트용
 			UserVO sessionVo = (UserVO) session.getAttribute("member");
 			String email2 = sessionVo.getEmail();
-			
-		}else {
+
+		} else {
 			System.out.println("실패");
 		}
-		
+
 		return "redirect:/gomain.do";
-		
+
 	}
-	
+
 }

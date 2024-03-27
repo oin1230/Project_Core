@@ -43,7 +43,7 @@ public class boardLikeUpdate implements command {
 			// board 테이블에, 좋아요수 1 올리기
 			dao.boardLikePlus(vo);
 		} else {
-			System.out.println("null이 아닐떄 :" + likeState.getB_like_state());
+			//System.out.println("null이 아닐떄 :" + likeState.getB_like_state());
 		}
 
 		// 좋아요수 가져오기

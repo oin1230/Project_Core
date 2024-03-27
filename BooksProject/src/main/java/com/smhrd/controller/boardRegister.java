@@ -35,8 +35,7 @@ public class boardRegister implements command {
 		String b_date2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(b_date);
 		
 		//테스트용
-		System.out.println("카테고리는?="+b_category);
-		System.out.println("현재시간은?="+b_date);
+		//System.out.println("현재시간은?="+b_date);
 
 		
 		BoardVO vo = new BoardVO();
