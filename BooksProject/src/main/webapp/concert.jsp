@@ -160,7 +160,7 @@
 									<div class="buttons">
 									<% if(progressBar.size() > index) { %>
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="booking.do?go=서울&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=서울&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -177,7 +177,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="booking.do?go=광주&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=광주&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -194,7 +194,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="booking.do?go=부산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=부산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -211,7 +211,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="booking.do?go=대구&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=대구&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -228,7 +228,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="booking.do?go=인천&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=인천&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -245,7 +245,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="booking.do?go=대전&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=대전&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -262,7 +262,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="booking.do?go=울산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=울산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
 										</button>
 										            <% } %>
 									</div>
@@ -317,7 +317,7 @@
 
 
 
-		
+		progressBar = (List<SeatVO>) request.getAttribute("progressBar");
 		<script>
 		document.addEventListener('DOMContentLoaded', function() {
 		    var totalSeats = [28, 28, 28, 28, 28, 28, 28]; // 각 프로그레스바에 대한 전체 좌석 수 예시

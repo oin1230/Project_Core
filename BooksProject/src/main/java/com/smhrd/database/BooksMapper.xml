@@ -189,7 +189,7 @@
 	</update>
 	
 	<select id="bookingList" parameterType="com.smhrd.model.ShuttleVO" resultType="com.smhrd.model.ShuttleVO">
-		SELECT * FROM SHUTTLE_INFO WHERE SHTL_ID = #{SHTL_ID};
+		SELECT * FROM SHUTTLE_INFO WHERE SHTL_ID = #{SHTL_ID}
 	</select>
 </mapper>
 
