@@ -206,22 +206,22 @@
 					<!-- 테이블 생성 -->
 					<div class="table-container">
 						<table class="tableBooking">
-							<tbody>
 							<thead class="tBth">
 								<tr>
 									<th colspan="2" class="tBth-th">행사명</th>
 									<th colspan="2" class="tBth-th">행사장소</th>
 									<th class="tBth-th">행사날짜</th>
 								</tr>
+							</thead>
+							<tbody>
 								<tr>
 									<td colspan="2" class="tBth-td"><%=event_name%></td>
 									<td colspan="2" class="tBth-td"><%=event_loc%></td>
 									<td class="tBth-td"><%=event_date%></td>
 								</tr>
-
-							</thead>
-							<c:forEach var="shuttle" items="${bookingList}">
-								<thead class="tBth">
+							</tbody>
+							<thead class="tBth">
+								<c:forEach var="shuttle" items="${bookingList}">
 									<tr>
 										<th class="tBth-th">셔틀 탑승 장소</th>
 										<th class="tBth-th">셔틀 탑승일</th>
@@ -229,17 +229,17 @@
 										<th class="tBth-th">셔틀 모집 시작일</th>
 										<th class="tBth-th">셔틀 마감일</th>
 									</tr>
-									<tr>
-										<td class="tBth-td">${go}</td>
-										<td class="tBth-td">${shuttle.riding_date}</td>
-										<td class="tBth-td"><span id="allTotAmtLocD">0원</span></td>
-										<td class="tBth-td">${shuttle.start_date}</td>
-										<td class="tBth-td">${shuttle.end_date}</td>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="tBth-td">${go}</td>
+									<td class="tBth-td">${shuttle.riding_date}</td>
+									<td class="tBth-td"><span id="allTotAmtLocD">0원</span></td>
+									<td class="tBth-td">${shuttle.start_date}</td>
+									<td class="tBth-td">${shuttle.end_date}</td>
 
-									</tr>
-								</thead>
-							</c:forEach>
-
+								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>

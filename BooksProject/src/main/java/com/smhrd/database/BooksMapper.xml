@@ -140,7 +140,7 @@
 		JOIN
 		EVENT_INFO EI ON SHI.EVENT_ID = EI.EVENT_ID
 		WHERE
-		EI.EVENT_ID = 1
+		EI.EVENT_ID = #{EVENT_ID}
 		AND SI.SEAT_STATUS = 'Y'
 		GROUP BY
 		SI.SHTL_ID,
@@ -267,7 +267,9 @@
 		BOOK_INFO.BOOK_ID DESC
 	</select>
 
-
+	<select id="bookingList" parameterType="com.smhrd.model.ShuttleVO" resultType="com.smhrd.model.ShuttleVO">
+		SELECT * FROM SHUTTLE_INFO WHERE SHTL_ID = #{SHTL_ID}
+	</select>
 
 
 

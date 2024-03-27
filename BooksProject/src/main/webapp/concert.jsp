@@ -160,7 +160,7 @@
 									<div class="buttons">
 									<% if(progressBar.size() > index) { %>
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=서울&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=서울&SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -177,7 +177,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=광주&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=광주&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -194,7 +194,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=부산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=부산&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -211,7 +211,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=대구&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=대구&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -228,7 +228,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=인천&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=인천&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -245,7 +245,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=대전&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=대전&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
 										</button>
 									</div>
 								</div>
@@ -262,7 +262,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=울산&seatId=<%=progressBar.get(index++).getSEAT_ID()%>">예약</a>
+											<a href="bookingList.do?go=울산&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
 										</button>
 										            <% } %>
 									</div>
