@@ -10,7 +10,7 @@ function AFindID() {
 		dataType: "json",
 		/*contentType: 'application/json; charset=utf-8',*/
 		success: function(res) {
-			alert("회원님의 이메일은"+ res.email + "입니다")
+			alert("회원님의 이메일은" + res.email + "입니다")
 
 
 		},
@@ -21,9 +21,9 @@ function AFindID() {
 
 }
 
-function AFindPW(){
+function AFindPW() {
 	let AInfoPW = {
-		"AInfoPW" : $("#findPW").val()
+		"AInfoPW": $("#findPW").val()
 	};
 	$.ajax({
 
@@ -33,8 +33,8 @@ function AFindPW(){
 		dataType: "json",
 		/*contentType: 'application/json; charset=utf-8',*/
 		success: function(res) {
-			alert("회원님의 비밀번호를 입력하신"+res.email+ "이메일로 발송해드렸습니다.")
-		// 데이터베이스 확인하고 입력된 이메일로 보내주기
+			alert("회원님의 비밀번호를 입력하신" + res.email + "이메일로 발송해드렸습니다.")
+			// 데이터베이스 확인하고 입력된 이메일로 보내주기
 
 		},
 		error: function() {
@@ -43,40 +43,34 @@ function AFindPW(){
 	})
 }
 
-function likePlus(id){
+function likePlus(id) {
 	let b_id = {
-		"b_id" : id
+		"b_id": id
 	};
-	
+
 	$.ajax({
-		
+
 		url: "boardLikeUpdate.do",
-		type : "post",
-		data : b_id,
-		dataType : "json",
-		success : function(res) {
+		type: "post",
+		data: b_id,
+		//dataType : "json",
+		success: function(res) {
 			// 확인용
 			console.log(res);
-			
+
 			console.log($("#likePlus").text());
-			if(res.b_likes == $("#likePlus").text()){
-				alert("이미 추천 했습니다.")
-			} else {				
-				$("#likePlus").text(res.b_likes);
+			if (res == $("#likePlus").text()) {
+				alert("이미 추천 했습니다.");
+			} else {
+				$("#likePlus").text(res);
 			}
-			
-			
-			
 		},
-		error : function(){
-			
+		error: function() {
+
 			alert("서버 점검 중이요");
 		}
-		 
-		
-		
 	})
-	
+
 }
 
 

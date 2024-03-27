@@ -92,9 +92,9 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="boardList.do?value=1" class="dropdown-item">자유게시판</a>
-								<a href="boardList.do?value=2" class="dropdown-item">질문게시판</a>
-								<a href="boardList.do?value=3" class="dropdown-item">후기게시판</a>
+								<a href="boardList.do?value=1" class="dropdown-item">자유게시판</a> <a
+									href="boardList.do?value=2" class="dropdown-item">질문게시판</a> <a
+									href="boardList.do?value=3" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -125,8 +125,8 @@
 							</a>
 						</c:if>
 					</div>
-					
-					
+
+
 				</div>
 			</nav>
 		</div>
@@ -176,24 +176,23 @@
 						<tr class="table-name">
 							<th>신청목록</th>
 							<th>콘서트명</th>
-							<th>상태</th>
 							<th>결제금액</th>
-							<th>결제시간</th>
+							<th>결제일</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><span>최상위 3개 신청코드</span></td>
-							<td><a class="navi-link" href="#order-details"
-								data-toggle="modal">공연명</a></td>
-							<td><span>예약완료</span></td>
-							<td><span>189,000</span></td>
-							<td><span>14:00</span></td>
-						</tr>
+						<c:forEach items="${myPageApply}" var="myApply" begin="0" end="2">
+							<tr>
+								<td><span>${myApply.book_id}</span></td>
+								<td><span>${myApply.event_name}</span></td>
+								<td><span>${myApply.pay}</span></td>
+								<td><span>${myApply.pay_date}</span></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
-				<br> <a href="reservation.jsp"><button
-						class="btn btn-primary btn-lg btn-block right-align">예약완료
+				<br> <a href="myPageAddList.do?value=myApply"><button
+						class="btn btn-primary btn-lg btn-block right-align">신청내역
 						더보기</button></a>
 				<!-- 탑승완료 -->
 
@@ -202,24 +201,23 @@
 						<tr class="table-name">
 							<th>신청목록</th>
 							<th>콘서트명</th>
-							<th>상태</th>
 							<th>결제금액</th>
-							<th>결제시간</th>
+							<th>결제일</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><span>최상위 3개 신청코드</span></td>
-							<td><a class="navi-link" href="#order-details"
-								data-toggle="modal">공연명</a></td>
-							<td><span>예약완료</span></td>
-							<td><span>189,000</span></td>
-							<td><span>14:00</span></td>
-						</tr>
+						<c:forEach items="${myPageEnd}" var="myEnd" begin="0" end="2">
+							<tr>
+								<td><span>${myEnd.book_id}</span></td>
+								<td><span>${myEnd.event_name}</span></td>
+								<td><span>${myEnd.pay}</span></td>
+								<td><span>${myEnd.pay_date}</span></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
-				<br> <a href="compeleted.jsp"><button
-						class="btn btn-primary btn-lg btn-block right-align">탑승완료
+				<br> <a href="myPageAddList.do?value=myEnd"><button
+						class="btn btn-primary btn-lg btn-block right-align">종료내역
 						더보기</button></a>
 				<!-- 환불내역 -->
 
@@ -228,51 +226,25 @@
 						<tr class="table-name">
 							<th>신청목록</th>
 							<th>콘서트명</th>
-							<th>상태</th>
 							<th>결제금액</th>
-							<th>결제시간</th>
+							<th>결제일</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><span>최상위 3개 신청코드</span></td>
-							<td><a class="navi-link" href="#order-details"
-								data-toggle="modal">공연명</a></td>
-							<td><span>예약완료</span></td>
-							<td><span>189,000</span></td>
-							<td><span>14:00</span></td>
-						</tr>
+						<c:forEach items="${myPageRefund}" var="myRefund" begin="0" end="2">
+							<tr>
+								<td><span>${myRefund.book_id}</span></td>
+								<td><span>${myRefund.event_name}</span></td>
+								<td><span>${myRefund.pay}</span></td>
+								<td><span>${myRefund.pay_date}</span></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
-				<br> <a href="refund.jsp"><button
+				<br> <a href="myPageAddList.do?value=myRefund"><button
 						class="btn btn-primary btn-lg btn-block right-align">환불내역
 						더보기</button></a>
-				<!-- 취소내역 -->
 
-				<table class="table table-hover mb-0">
-					<thead>
-						<tr class="table-name">
-							<th>신청목록</th>
-							<th>콘서트명</th>
-							<th>상태</th>
-							<th>결제금액</th>
-							<th>결제시간</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><span>최상위 3개 신청코드</span></td>
-							<td><a class="navi-link" href="#order-details"
-								data-toggle="modal">공연명</a></td>
-							<td><span>예약완료</span></td>
-							<td><span>189,000</span></td>
-							<td><span>14:00</span></td>
-						</tr>
-					</tbody>
-				</table>
-				<br> <a href="cancel.jsp"><button
-						class="btn btn-primary btn-lg btn-block right-align">취소내역
-						더보기</button></a>
 			</div>
 		</div>
 	</div>

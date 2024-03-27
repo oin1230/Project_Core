@@ -11,6 +11,7 @@ import com.smhrd.model.SeatVO;
 import com.smhrd.model.BoardLikeVO;
 import com.smhrd.model.ShuttleVO;
 import com.smhrd.model.UserVO;
+import com.smhrd.model.myPageVO;
 
 public class DAO {
 
@@ -159,17 +160,18 @@ public class DAO {
 		// 4. 결과값 반환하기
 		return resultVo;
 	}
+
 	public List<ShuttleVO> bookingList() {
-		
+
 		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
-		
+
 		// 2. 연결객체 사용하기
 		List<ShuttleVO> resultVo = session.selectList("bookingList");
-		
+
 		// 3. 연결객체 반납하기
 		session.close();
-		
+
 		// 4. 결과값 반환하기
 		return resultVo;
 	}
@@ -262,6 +264,43 @@ public class DAO {
 		SqlSession session = factory.openSession(true);
 
 		BoardLikeVO result = session.selectOne("boardLikeSelect", vo);
+
+		session.close();
+
+		return result;
+
+	}
+
+	/////////////////////// myPage///////////////////////////////////
+	public List<myPageVO> myPageApply(myPageVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		List<myPageVO> result = session.selectList("myPageApply", vo);
+
+		session.close();
+
+		return result;
+
+	}
+
+	public List<myPageVO> myPageRefund(myPageVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		List<myPageVO> result = session.selectList("myPageRefund", vo);
+
+		session.close();
+
+		return result;
+
+	}
+
+	public List<myPageVO> myPageEnd(myPageVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		List<myPageVO> result = session.selectList("myPageEnd", vo);
 
 		session.close();
 

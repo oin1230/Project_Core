@@ -176,7 +176,7 @@
 		where b_id =
 		#{b_id}
 	</update>
-	
+
 	<update id="boardUpdate" parameterType="com.smhrd.model.BoardVO">
 		update BOARD_INFO
 		set
@@ -187,9 +187,68 @@
 		where
 		b_id=#{b_id}
 	</update>
-	
-	<select id="bookingList" parameterType="com.smhrd.model.ShuttleVO" resultType="com.smhrd.model.ShuttleVO">
+
+	<select id="bookingList"
+		parameterType="com.smhrd.model.ShuttleVO"
+		resultType="com.smhrd.model.ShuttleVO">
 		SELECT * FROM SHUTTLE_INFO WHERE SHTL_ID = #{SHTL_ID}
+	</select>
+
+	<!-- myPage mapper -->
+	<select id="myPageApply"
+		parameterType="com.smhrd.model.myPageVO"
+		resultType="com.smhrd.model.myPageVO">
+		select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
+		BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
+		inner join SEAT_INFO
+		on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
+		inner join SHUTTLE_INFO
+		on
+		SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
+		inner join EVENT_INFO
+		on
+		SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
+		where
+		BOOK_INFO.PAY_STATE="Y" and BOOK_INFO.EMAIL = #{email}
+		order by
+		BOOK_INFO.BOOK_ID DESC
+	</select>
+
+	<select id="myPageRefund"
+		parameterType="com.smhrd.model.myPageVO"
+		resultType="com.smhrd.model.myPageVO">
+		select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
+		BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
+		inner join SEAT_INFO
+		on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
+		inner join SHUTTLE_INFO
+		on
+		SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
+		inner join EVENT_INFO
+		on
+		SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
+		where
+		BOOK_INFO.PAY_STATE="R" and BOOK_INFO.EMAIL = #{email}
+		order by
+		BOOK_INFO.BOOK_ID DESC
+	</select>
+
+	<select id="myPageEnd" parameterType="com.smhrd.model.myPageVO"
+		resultType="com.smhrd.model.myPageVO">
+		select BOOK_INFO.BOOK_ID, EVENT_INFO.EVENT_NAME,
+		BOOK_INFO.PAY, BOOK_INFO.PAY_DATE from BOOK_INFO
+		inner join SEAT_INFO
+		on BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
+		inner join SHUTTLE_INFO
+		on
+		SEAT_INFO.SHTL_ID = SHUTTLE_INFO.SHTL_ID
+		inner join EVENT_INFO
+		on
+		SHUTTLE_INFO.EVENT_ID = EVENT_INFO.EVENT_ID
+		where
+		SHUTTLE_INFO.SHTL_STATE="N" and BOOK_INFO.EMAIL = #{email}
+		order by
+		BOOK_INFO.BOOK_ID DESC
 	</select>
 </mapper>
 

@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>cancel</title>
+<title>reservation</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -129,7 +129,17 @@
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">취소 내역</h1>
+		<c:if test="${addReq eq 'myApply' }">
+			<h1 class="text-center text-white display-6">신청 내역</h1>
+		</c:if>
+
+		<c:if test="${addReq eq 'myEnd' }">
+			<h1 class="text-center text-white display-6">종료 내역</h1>
+		</c:if>
+		
+		<c:if test="${addReq eq 'myRefund' }">
+			<h1 class="text-center text-white display-6">환불 내역</h1>
+		</c:if>
 	</div>
 	<!-- Single Page Header End -->
 
@@ -168,29 +178,21 @@
 							<tr>
 								<th>예약번호</th>
 								<th>제목</th>
-								<th>상태</th>
+								<th>결제금액</th>
+								<th>결제일</th>
 
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>3</td>
-								<td><a href="#">2NE1콘서트</a></td>
-								<td><span>예매완료</span></td>
-							</tr>
+							<c:forEach items="${addList}" var="addList">
+								<tr>
+									<td><span>${addList.book_id}</span></td>
+									<td><span>${addList.event_name}</span></td>
+									<td><span>${addList.pay}</span></td>
+									<td><span>${addList.pay_date}</span></td>
+								</tr>
+							</c:forEach>
 
-							<tr>
-								<td>2</td>
-								<td><a href="#">투바투 팬미팅</a></td>
-								<td><span>예매완료</span></td>
-							</tr>
-
-
-							<tr>
-								<td>1</td>
-								<td><a href="#">San Diego padres vs LA dodgers</a></td>
-								<td><span>예매완료</span></td>
-							</tr>
 
 
 						</tbody>

@@ -1,9 +1,32 @@
 package com.smhrd.model;
 
 public class myPageVO {
-	
+
 	private int book_id;
-	
+
+	private String email;
+
+	private String event_name;
+
+	private String pay_state;
+
+	private int pay;
+
+	private String pay_date;
+
+	public myPageVO() {
+
+	}
+
+	public myPageVO(int book_id, String email, String event_name, String pay_state, int pay, String pay_date) {
+		this.book_id = book_id;
+		this.email = email;
+		this.event_name = event_name;
+		this.pay_state = pay_state;
+		this.pay = pay;
+		this.pay_date = pay_date;
+	}
+
 	public int getBook_id() {
 		return book_id;
 	}
@@ -11,32 +34,6 @@ public class myPageVO {
 	public void setBook_id(int book_id) {
 		this.book_id = book_id;
 	}
-
-	private String email;
-	
-	private String event_name;
-	
-	private String shtl_state;
-	
-	private int price;
-	
-	private String pay_time;
-	
-
-	public myPageVO(int book_id, String email, String event_name, String shtl_state, int price, String pay_time) {
-		
-		this.book_id = book_id;
-		this.email = email;
-		this.event_name = event_name;
-		this.shtl_state = shtl_state;
-		this.price = price;
-		this.pay_time = pay_time;
-	}
-
-	public myPageVO() {
-		 
-	}
-	
 
 	public String getEmail() {
 		return email;
@@ -54,29 +51,28 @@ public class myPageVO {
 		this.event_name = event_name;
 	}
 
-	public String getShtl_state() {
-		return shtl_state;
+	public String getPay_state() {
+		return pay_state;
 	}
 
-	public void setShtl_state(String shtl_state) {
-		this.shtl_state = shtl_state;
+	public void setPay_state(String pay_state) {
+		this.pay_state = pay_state;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getPay() {
+		return pay;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setPay(int pay) {
+		this.pay = pay;
 	}
 
-	public String getPay_time() {
-		return pay_time;
+	public String getPay_date() {
+		return pay_date;
 	}
 
-	public void setPay_time(String pay_time) {
-		this.pay_time = pay_time;
+	public void setPay_date(String pay_date) {
+		this.pay_date = pay_date;
 	}
-	
-	
+
 }
