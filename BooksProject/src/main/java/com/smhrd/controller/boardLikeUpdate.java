@@ -48,15 +48,17 @@ public class boardLikeUpdate implements command {
 
 		// 좋아요수 가져오기
 		BoardLikeVO select = dao.boardLikeSelect(vo);
+		
+		int result = select.getB_likes();
 
-		Gson gson = new Gson();
+		//Gson gson = new Gson();
 		// 좋아요수 보내기
-		String json = gson.toJson(select);
+		//String json = gson.toJson(select);
 		
 		response.setContentType("text/html;charser=UTF-8");
 
 		try {
-			response.getWriter().print(json);
+			response.getWriter().print(result);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

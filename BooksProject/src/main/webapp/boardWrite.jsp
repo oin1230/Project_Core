@@ -151,10 +151,7 @@
 					</dl>
 				</div>
 				<div class="cont">
-					<textarea placeholder="내용 입력" name="text">
-                            첨부파일 기능은 자바와 연결 후 진행 예정
-                            첨부파일 기능은 자바와 연결 후 진행 예정
-                        </textarea>
+					<textarea placeholder="내용 입력" name="text"></textarea>
 
 				</div>
 			</div>

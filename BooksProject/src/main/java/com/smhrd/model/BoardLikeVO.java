@@ -20,6 +20,14 @@ public class BoardLikeVO {
 		this.email = email;
 	}
 
+	public int getB_likes() {
+		return b_likes;
+	}
+
+	public void setB_likes(int b_likes) {
+		this.b_likes = b_likes;
+	}
+
 	public BoardLikeVO() {
 
 	}

@@ -1,4 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
@@ -158,7 +158,7 @@
 					href="#" class="bt last">>></a>
 			</div>
 			<div class="bt_wrap">
-				<a href="boardWrite.jsp?value=${boardList.get(0).getB_category()}" class="on">등록</a>
+				<a href="boardWrite.jsp?value=${boardList.get(0).getB_category()}" class="on" id="boardRegister">등록</a>
 				<!--<a href="#">수정</a>-->
 			</div>
 		</div>
@@ -188,9 +188,7 @@
 
 
 
-
-
-
+	
 
 	<script>
 		// JavaScript를 사용하여 각 num div에 1부터 1씩 증가하는 값을 출력

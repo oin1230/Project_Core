@@ -73,4 +73,84 @@ function likePlus(id) {
 
 }
 
+function Comment(id) {
+
+
+
+	let data = {
+		"b_id": id,
+		"comment": $("#contentComment").val()
+	};
+	console.log($("#contentComment").val());
+
+	$.ajax({
+
+		url: "commentRegister.do",
+		type: "post",
+		data: data,
+		dataType: "json",
+		success: function(res) {
+
+			$("#contentComment").val('');
+
+			var commentText = res.cmt_content;
+			var date = res.cmt_date;
+			var email = res.email;
+
+			var commentDiv = document.createElement("div");
+			commentDiv.className = "card my-3";
+			commentDiv.innerHTML = `
+        <div class="card-body">
+            <p class="card-text">${commentText}</p>
+            <p class="card-text"><small class="text-muted">${date}</small></p>
+            <p class="card-text"><small class="text-muted">${email}</p>
+        </div>
+    `;
+
+			var commentsDiv = document.querySelector(".comments");
+			commentsDiv.insertBefore(commentDiv, commentsDiv.firstChild);
+
+			commentInput.value = "";
+
+		},
+		error: function() {
+
+			alert("로그인 해주세요");
+		}
+
+
+
+	})
+
+}
+
+
+function boardRegister() {
+
+
+
+
+	console.log('zzzzzzzz')
+
+	$.ajax({
+
+		url: "boardRegisterCheck.do",
+		type: "post",
+		data: data,
+		dataType: "json",
+		success: function(res) {
+			window.location.href = "boardWrite.jsp?value=" + data;
+
+		},
+		error: function() {
+
+			alert("로그인 해주세요");
+		}
+
+
+
+	})
+
+}
+
 

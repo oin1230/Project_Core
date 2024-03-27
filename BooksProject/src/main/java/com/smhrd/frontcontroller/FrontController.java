@@ -18,6 +18,7 @@ import com.smhrd.controller.progressBar;
 import com.smhrd.controller.boardLikeUpdate;
 import com.smhrd.controller.boardList;
 import com.smhrd.controller.boardRegister;
+import com.smhrd.controller.boardRegisterCheck;
 import com.smhrd.controller.boardUpdate;
 import com.smhrd.controller.bookingList;
 import com.smhrd.controller.AFindInfo;
@@ -29,6 +30,8 @@ import com.smhrd.controller.boardDelete;
 import com.smhrd.controller.boardDetail;
 import com.smhrd.controller.userUpdate;
 import com.smhrd.controller.command;
+import com.smhrd.controller.commentDelete;
+import com.smhrd.controller.commentRegister;
 import com.smhrd.controller.pwUpdate;
 import com.smhrd.controller.userDelete;
 
@@ -62,6 +65,9 @@ public class FrontController extends HttpServlet {
 		map.put("progressBar.do", new progressBar());
 		map.put("bookingList.do", new bookingList());
 		map.put("myPageAddList.do", new myPageAddList());
+		map.put("commentRegister.do", new commentRegister());
+		map.put("boardRegisterCheck.do", new boardRegisterCheck());
+		map.put("commentDelete.do", new commentDelete());
 
 		// 새로운 기능을 만들때마다 map 자료구조 안에
 		// 경로 - 실행해야하는 클래스 한세틀 묶어서 추가해주기만 하면 됨

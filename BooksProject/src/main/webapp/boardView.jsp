@@ -161,15 +161,27 @@
 	</div>
 	<!-- 댓글 -->
 	<div class="card-footer">
-		<form onsubmit="addComment(event)">
+			
+			<!-- 해당 게시물의 댓글 리스트들 출력 -->
+			<c:forEach var="mvo" items="${commentList}">
+			<div class="card-body">
+            	<p class="card-text">${mvo.cmt_content}</p>
+            	<p class="card-text"><small class="text-muted">${mvo.cmt_date}</small></p>
+            	<p class="card-text"><small class="text-muted">${mvo.email}</p>
+            	<c:if test="${member.email == mvo.email}">
+            	<a href="commentDelete.do?cmt_id=${mvo.cmt_id}&value=${mvo.b_id}">삭제</a>
+            	</c:if>
+        	</div>
+        	</c:forEach>
+        	
+        	
+		<div class="comments mt-3"></div>
 			<div class="form-group">
-				<input type="text" class="form-control" placeholder="댓글을 입력하세요"
+				<input type="text" id="contentComment" class="form-control"
 					required> <br>
 			</div>
-			<button type="submit" class="btn btn-primary">작성</button>
-		</form>
+			<button onclick="Comment(${boardDetail.b_id})" type="button" class="btn btn-primary">작성</button>
 		<br>
-		<div class="comments mt-3"></div>
 	</div>
 	<!-- 댓글 -->
 

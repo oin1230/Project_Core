@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+
 import com.smhrd.database.DAO;
 import com.smhrd.model.BoardVO;
 import com.smhrd.model.UserVO;
@@ -30,7 +32,9 @@ public class boardDelete implements command {
 		vo.setB_id(b_id);
 		
 		DAO dao = new DAO();
-		int row = dao.boardDelete(vo);
+		
+		
+		dao.boardDelete(vo);
 		
 		
 		request.setAttribute("value", b_category);

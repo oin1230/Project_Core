@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.model.BoardVO;
+import com.smhrd.model.CommentVO;
 import com.smhrd.model.EventVO;
 import com.smhrd.model.SeatVO;
 import com.smhrd.model.BoardLikeVO;
@@ -307,4 +308,41 @@ public class DAO {
 		return result;
 
 	}
+	
+	public void commentRegister(CommentVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		session.insert("commentRegister", vo);
+
+		session.close();
+
+	}
+	
+	public List<CommentVO> commentList(CommentVO vo) {
+
+		// 1. 연결객체 생성하기
+		SqlSession session = factory.openSession(true);
+
+		// 2. 연결객체 사용하기
+		List<CommentVO> resultVo = session.selectList("commentList", vo);
+
+		// 3. 연결객체 반납하기
+		session.close();
+
+		// 4. 결과값 반환하기
+		return resultVo;
+	}
+	
+	public void commentDelete(CommentVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		session.delete("commentDelete", vo);
+
+		session.close();
+
+	}
+	
+	
 }

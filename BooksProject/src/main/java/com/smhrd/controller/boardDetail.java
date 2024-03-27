@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import com.smhrd.database.DAO;
 import com.smhrd.model.BoardVO;
+import com.smhrd.model.CommentVO;
 
 public class boardDetail implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -18,17 +19,30 @@ public class boardDetail implements command {
 		int b_id2 = Integer.parseInt(b_id);
 		
 		
+		HttpSession session = request.getSession();
+
+		// 해당 게시물의 정보 담아주기
 		BoardVO vo = new BoardVO();
 		vo.setB_id(b_id2);
-		
 		
 		DAO dao = new DAO();
 		BoardVO boardDetail = dao.boardDetail(vo);
 		
-		
-		HttpSession session = request.getSession();
 		session.setAttribute("boardDetail", boardDetail);
-		System.out.println("ㅋㅋ카테고리 값::"+boardDetail.getB_category());
+		
+		
+		// 해당 게시물의 댓글 리스트 담아주기
+		CommentVO vo2 = new CommentVO();
+		vo2.setB_id(b_id2);
+		
+
+		List<CommentVO> commentList = dao.commentList(vo2);
+
+		session.setAttribute("commentList", commentList);
+		
+		//System.out.println("bbbbbbbbb"+commentList.get(0).getCmt_content());
+		
+		
 		
 		request.setAttribute("b_id", b_id2);
 
