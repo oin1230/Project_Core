@@ -1,7 +1,10 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.smhrd.model.SeatVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +47,7 @@
 </head>
 
 <body>
-
+	
 	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -206,7 +209,7 @@
 										<div class="progressBar"></div>
 									</div>
 									<div class="buttons">
-											<button class="btn btn-one btn-lg btn-block">
+										<button class="btn btn-one btn-lg btn-block">
 											<a href="#">예약</a>
 										</button>
 									</div>
@@ -306,6 +309,27 @@
 		<script src="lib/waypoints/waypoints.min.js"></script>
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+		<%
+    		List<SeatVO> seatsList = (List<SeatVO>) request.getAttribute("progressBar");
+		%>
+		<script>
+		document.addEventListener('DOMContentLoaded', function() {
+		    var totalSeats = [28, 28, 28, 28, 28, 28, 28]; // 각 프로그레스바에 대한 전체 좌석 수 예시
+		    var bookedSeats = [
+		        <%for (SeatVO seat : seatsList) {%>
+		            <%=seat.getRESERVED_SEAT_COUNT()%><%if (seat != seatsList.get(seatsList.size() - 1)) {%>, <%}%>
+		        <%}%>
+		    ]; // 각 프로그레스바에 대한 예약된 좌석 수
+		    var progressBars = document.getElementsByClassName("progressBar");
+
+		    for (var i = 0; i < progressBars.length; i++) {
+		        var bookedPercentage = (bookedSeats[i] / totalSeats[i]) * 100;
+		        progressBars[i].style.width = bookedPercentage + '%';
+		    }
+		});		</script>
+
 
 
 		<!-- Template Javascript -->

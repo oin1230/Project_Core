@@ -7,6 +7,7 @@ public class SeatVO {
 	private int SEAT_NUM;
 	private String SEAT_STATUS;
 	private int EVENT_ID;
+	private int RESERVED_SEAT_COUNT;
 	
 	
 	
@@ -15,21 +16,33 @@ public class SeatVO {
 	
 	
 	
-	
-	
-	
-	public SeatVO(int SEAT_ID, int SHTL_ID, int SEAT_NUM, String SEAT_STATUS, int EVENT_ID) {
+	public SeatVO(int SEAT_ID, int SHTL_ID, int SEAT_NUM, String SEAT_STATUS, int EVENT_ID, int RESERVED_SEAT_COUNT) {
 		this.SEAT_ID = SEAT_ID;
 		this.SHTL_ID = SHTL_ID;
 		this.SEAT_NUM = SEAT_NUM;
 		this.SEAT_STATUS = SEAT_STATUS;
 		 this.EVENT_ID = EVENT_ID;
+		 this.RESERVED_SEAT_COUNT= RESERVED_SEAT_COUNT;
 	}
 	public SeatVO(int SEAT_ID, int SHTL_ID, int SEAT_NUM, String SEAT_STATUS) {
 		this.SEAT_ID = SEAT_ID;
 		this.SHTL_ID = SHTL_ID;
 		this.SEAT_NUM = SEAT_NUM;
 		this.SEAT_STATUS = SEAT_STATUS;
+	}
+	
+	
+	public int getEVENT_ID() {
+		return EVENT_ID;
+	}
+	public void setEVENT_ID(int eVENT_ID) {
+		EVENT_ID = eVENT_ID;
+	}
+	public int getRESERVED_SEAT_COUNT() {
+		return RESERVED_SEAT_COUNT;
+	}
+	public void setRESERVED_SEAT_COUNT(int rESERVED_SEAT_COUNT) {
+		RESERVED_SEAT_COUNT = rESERVED_SEAT_COUNT;
 	}
 	public int getSEAT_ID() {
 		return SEAT_ID;

@@ -1,7 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +60,7 @@
 	<!-- Spinner End -->
 
 
-<!-- Navbar start -->
+	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -161,15 +161,15 @@
 													<h6>
 														<h6>
 															<div class="button-container">
-																<form action="goconcert.do" method="get">
-																	<input type="hidden" name="event_id"
-																		value="${event.event_id}"> <input
-																		type="hidden" name="event_img"
+																<form class="eventForm" action="goconcert.do" method="post">
+																	<input type="hidden" name="event_img"
 																		value="${event.event_img}"> <input
 																		type="hidden" name="event_name"
 																		value="${event.event_name}"> <input
 																		type="hidden" name="event_date"
-																		value="${event.event_date}">
+																		value="${event.event_date}"> <input
+																		type="hidden" name="event_id"
+																		value="${event.event_id}">
 																	<button class="btn btn-one btn-lg btn-block"
 																		type="submit">상세보기</button>
 																</form>
@@ -208,7 +208,30 @@
 			<!-- Copyright End -->
 
 
-
+			<script>
+			document.querySelectorAll('.eventForm').forEach(form => {
+			    form.addEventListener('submit', function(event) {
+			        event.preventDefault();
+			        var eventId = this.event_id.value;
+			        $.ajax({
+			            url : "progressBar.do",
+			            type : "post",
+			            data : {
+			                event_id : eventId
+			            },
+			            success : function(response) {
+			                console.log("성공:", response);
+			            },
+			            error : function(xhr, status, error) {
+			                console.error("실패:", error);
+			            },
+			            complete : function() {
+			                form.submit(); // 이 부분에서는 this 대신 form을 사용
+			            }
+			        });
+			    });
+			});
+			</script>
 
 
 			<!-- JavaScript Libraries -->

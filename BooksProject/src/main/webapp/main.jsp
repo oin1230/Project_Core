@@ -268,7 +268,7 @@
 							event.preventDefault();
 							var eventId = this.event_id.value;
 							$.ajax({
-								url : "progressBar.do", 
+								url : "progressBar.do",
 								type : "post",
 								data : {
 									event_id : event_id

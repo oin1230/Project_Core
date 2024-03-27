@@ -15,7 +15,7 @@ public class progressBar implements command {
 		
 		int event_id =Integer.parseInt(request.getParameter("event_id"));
 		
-		SeatVO vo = new SeatVO(0, 0, 0, null, event_id);
+		SeatVO vo = new SeatVO(0, 0, 0, null, event_id, 0);
 
 		DAO dao = new DAO();
 		
