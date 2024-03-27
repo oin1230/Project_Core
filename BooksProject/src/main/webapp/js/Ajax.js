@@ -43,10 +43,9 @@ function AFindPW(){
 	})
 }
 
-function likePlus(num){
-	console.log("함수성공");
+function likePlus(id){
 	let b_id = {
-		"b_id" : num
+		"b_id" : id
 	};
 	
 	$.ajax({
@@ -56,14 +55,22 @@ function likePlus(num){
 		data : b_id,
 		dataType : "json",
 		success : function(res) {
-			
+			// 확인용
 			console.log(res);
-
-			 
+			
+			console.log($("#likePlus").text());
+			if(res.b_likes == $("#likePlus").text()){
+				alert("이미 추천 했습니다.")
+			} else {				
+				$("#likePlus").text(res.b_likes);
+			}
+			
+			
 			
 		},
 		error : function(){
-			alert("추천X")
+			
+			alert("서버 점검 중이요");
 		}
 		 
 		

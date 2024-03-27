@@ -35,7 +35,6 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 			// 테스트용
 			UserVO sessionVo = (UserVO) session.getAttribute("member");
 			String email2 = sessionVo.getEmail();
-			System.out.println(email2);
 			
 		}else {
 			System.out.println("실패");

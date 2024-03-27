@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.controller.eventList;
 import com.smhrd.controller.mainEventlist;
+import com.smhrd.controller.myPage;
 import com.smhrd.controller.boardLikeUpdate;
 import com.smhrd.controller.boardList;
 import com.smhrd.controller.boardRegister;
@@ -37,6 +38,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		// map 자료구조에 경로-실행시켜야되는 클래스 파일들을 하나씩 추가
+		// git
 		map.put("Join.do", new Join());
 		map.put("eventList.do", new eventList());
 		map.put("mainEventlist.do", new mainEventlist());
@@ -53,6 +55,7 @@ public class FrontController extends HttpServlet {
 		map.put("AFindInfo.do", new AFindInfo());
 		map.put("boardRegister.do", new boardRegister());
 		map.put("boardUpdate.do", new boardUpdate());
+		map.put("myPage.do", new myPage());
 
 		// 새로운 기능을 만들때마다 map 자료구조 안에
 		// 경로 - 실행해야하는 클래스 한세틀 묶어서 추가해주기만 하면 됨

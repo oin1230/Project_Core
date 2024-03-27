@@ -14,8 +14,7 @@ import com.smhrd.model.UserVO;
 
 public class DAO {
 
-	// 1. 필드
-	// DBCP 꺼내오기
+	// git
 	private SqlSessionFactory factory = MySqlSessionManager.getSqlSessionFactory();
 
 	public int Join(UserVO vo) {
@@ -28,7 +27,6 @@ public class DAO {
 
 		return row;
 	}
-
 
 	public UserVO Login(UserVO vo) {
 		SqlSession session = factory.openSession(true);
@@ -92,44 +90,8 @@ public class DAO {
 	}
 
 	public int pwUpdate(UserVO vo) {
-		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
-		// 2. 세션 사용하기
 		int row = session.update("pwUpdate", vo);
-		// 3. 세션 반납하기
-		session.close();
-
-		return row;
-	}
-
-	public BoardLikeVO boardLike(BoardLikeVO vo) {
-		SqlSession session = factory.openSession(true);
-
-		BoardLikeVO resultVo = session.selectOne("boardLike", vo);
-
-		session.close();
-
-		return resultVo;
-
-	}
-
-	public int boardLikeInsert(BoardLikeVO vo) {
-		// 1. 세션 빌려오기
-		SqlSession session = factory.openSession(true);
-		// 2. 세션 사용하기
-		int row = session.update("boardLikeInsert", vo);
-		// 3. 세션 반납하기
-		session.close();
-
-		return row;
-	}
-
-	public int boardLikePlus(BoardLikeVO vo) {
-		// 1. 세션 빌려오기
-		SqlSession session = factory.openSession(true);
-		// 2. 세션 사용하기
-		int row = session.update("likePlus", vo);
-		// 3. 세션 반납하기
 		session.close();
 
 		return row;
@@ -162,7 +124,6 @@ public class DAO {
 
 	}
 
-
 	public UserVO AFindInfo(UserVO vo) {
 		SqlSession session = factory.openSession(true);
 
@@ -173,8 +134,8 @@ public class DAO {
 		return resultId;
 
 	}
-	
-	public void boardRegister (BoardVO vo) {
+
+	public void boardRegister(BoardVO vo) {
 
 		SqlSession session = factory.openSession(true);
 
@@ -183,62 +144,62 @@ public class DAO {
 		session.close();
 
 	}
+
 	public List<EventVO> eventList() {
-		
+
 		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
-		
+
 		// 2. 연결객체 사용하기
 		List<EventVO> resultVo = session.selectList("eventList");
-		
+
 		// 3. 연결객체 반납하기
 		session.close();
-		
+
 		// 4. 결과값 반환하기
 		return resultVo;
 	}
-	
+
 	public List<EventVO> mainEventlist() {
-		
+
 		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
-		
+
 		// 2. 연결객체 사용하기
 		List<EventVO> resultVo = session.selectList("mainEventlist");
-		
+
 		// 3. 연결객체 반납하기
 		session.close();
-		
+
 		// 4. 결과값 반환하기
 		return resultVo;
 	}
+
 	public List<BoardVO> boardList(BoardVO vo) {
-		
+
 		// 1. 연결객체 생성하기
 		SqlSession session = factory.openSession(true);
-		
+
 		// 2. 연결객체 사용하기
 		List<BoardVO> resultVo = session.selectList("boardList", vo);
-		
+
 		// 3. 연결객체 반납하기
 		session.close();
-		
+
 		// 4. 결과값 반환하기
 		return resultVo;
 	}
-	
-	public List<SeatVO> progressBar (SeatVO vo){
+
+	public List<SeatVO> progressBar(SeatVO vo) {
 		SqlSession session = factory.openSession(true);
-		
+
 		List<SeatVO> resultVo = session.selectList("progressBar", vo);
-		
+
 		session.close();
-		
+
 		return resultVo;
 	}
-	
 
-	
 	public void boardUpdate(BoardVO vo) {
 		// 1. 세션 빌려오기
 		SqlSession session = factory.openSession(true);
@@ -248,7 +209,49 @@ public class DAO {
 		session.close();
 	}
 
+	public BoardLikeVO boardLikeUpdate(BoardLikeVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		BoardLikeVO boardLikeUpdate = session.selectOne("boardLikeUpdate", vo);
+
+		session.close();
+
+		return boardLikeUpdate;
+
+	}
+
+	public int boardLikeInsert(BoardLikeVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		int row = session.insert("boardLikeInsert", vo);
+
+		session.close();
+
+		return row;
+	}
+
+	public int boardLikePlus(BoardLikeVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		int row = session.update("boardLikePlus", vo);
+
+		session.close();
+
+		return row;
+	}
+
+	public BoardLikeVO boardLikeSelect(BoardLikeVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		BoardLikeVO result = session.selectOne("boardLikeSelect", vo);
+
+		session.close();
+
+		return result;
+
+	}
 }
-
-
-

@@ -32,7 +32,6 @@ public class boardDelete implements command {
 		DAO dao = new DAO();
 		int row = dao.boardDelete(vo);
 		
-		session.setAttribute("row", row);
 		
 		request.setAttribute("value", b_category);
 		

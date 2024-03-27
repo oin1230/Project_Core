@@ -17,52 +17,49 @@ public class boardLikeUpdate implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
-		response.setCharacterEncoding("UTF-8");
 
 		// 로그인 한 사용자 이메일, b_id 받아오기
-		UserVO sessionVo = (UserVO) session.getAttribute("member");
+		UserVO member = (UserVO) session.getAttribute("member");
+
 		int b_id = Integer.parseInt(request.getParameter("b_id"));
-		System.out.println("sessionVO :" + sessionVo);
-		System.out.println("b_id값" + b_id);
-		String email = sessionVo.getEmail();
+
+		String email = member.getEmail();
 
 		// vo에 email, b_id 넣어주기
 		BoardLikeVO vo = new BoardLikeVO();
 		vo.setEmail(email);
 		vo.setB_id(b_id);
-		BoardVO vo2 = new BoardVO();
-		vo2.setB_id(b_id);
-		
-		BoardVO like = null;
-		
 
-		// 로그인 한 사용자가 좋아요 누르면 row가 1
+		// 데이터베이스 연결을 위한 DAO 생성
 		DAO dao = new DAO();
-		BoardLikeVO resultVo = dao.boardLike(vo);
-		System.out.println("성공했나?" + resultVo);
 
+		// b_Like 테이블에서 해당 회원의 값이 null 인지 확인
+		BoardLikeVO likeState = dao.boardLikeUpdate(vo);
+
+		// null 이라면
+		if (likeState == null) {
+			// null 이라면, 정보추가
+			dao.boardLikeInsert(vo);
+			// board 테이블에, 좋아요수 1 올리기
+			dao.boardLikePlus(vo);
+		} else {
+			System.out.println("null이 아닐떄 :" + likeState.getB_like_state());
+		}
+
+		// 좋아요수 가져오기
+		BoardLikeVO select = dao.boardLikeSelect(vo);
+
+		Gson gson = new Gson();
+		// 좋아요수 보내기
+		String json = gson.toJson(select);
+		
 		response.setContentType("text/html;charser=UTF-8");
 
-		if (resultVo == null) {
-			// vo에 담겨있는 사용자 이메일 값 DAO의 boardLikeInsert로 보내주기
-			dao.boardLikeInsert(vo);
-			System.out.println(dao.boardLikeInsert(vo));
-
-			// b_like 값 +1
-			dao.boardLikePlus(vo);
-			
-			like = dao.boardDetail(vo2);
-			System.out.println(vo);
-
-		}
-		
-		
 		try {
-			response.getWriter().print(resultVo.toString());
+			response.getWriter().print(json);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return null;
 
 	}

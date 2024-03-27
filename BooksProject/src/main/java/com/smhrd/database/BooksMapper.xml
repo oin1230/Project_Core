@@ -4,8 +4,10 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<!-- mapper 태그 : 해당하는 영역 안쪽에 SQL구문 작성 -->
+<!-- mapper 태그 : 해당하는 영역 안쪽에 SQL구문 작성 git -->
 <mapper namespace="com.smhrd.database.DAO">
+
+
 
 	<insert id="Join" parameterType="com.smhrd.model.UserVO">
 		insert into USER_INFO (email,
@@ -78,29 +80,6 @@
 		where email = #{email} and pw =#{pw}
 	</update>
 
-	<select id="boardLike"
-		parameterType="com.smhrd.model.BoardLikeVO"
-		resultType="com.smhrd.model.BoardLikeVO">
-		select b_like_state from
-		BOARD_LIKE_INFO
-		where email=#{email}
-		and b_id=#{b_id}
-	</select>
-
-	<update id="boardLikeInsert"
-		parameterType="com.smhrd.model.BoardLikeVO">
-		insert into BOARD_LIKE_INFO (b_like_state,
-		b_id, email)
-		values('Y',#{b_id},#{email})
-	</update>
-
-	<update id="boardLikePlus"
-		parameterType="com.smhrd.model.BoardLikeVO">
-		update BOARD_INFO
-		set b_like = b_like+1
-		where b_id =
-		#{b_id}
-	</update>
 
 	<select id="boardDetail" parameterType="com.smhrd.model.BoardVO"
 		resultType="com.smhrd.model.BoardVO">
@@ -150,18 +129,52 @@
 		SELECT
 		SI.SHTL_ID,
 		EI.EVENT_ID,
-		COUNT(SI.SEAT_STATUS) AS RESERVED_SEAT_COUNT
+		COUNT(SI.SEAT_STATUS) AS
+		RESERVED_SEAT_COUNT
 		FROM
 		SEAT_INFO SI
 		JOIN
-		SHUTTLE_INFO SHI ON SI.SHTL_ID = SHI.SHTL_ID
+		SHUTTLE_INFO SHI ON SI.SHTL_ID
+		= SHI.SHTL_ID
 		JOIN
 		EVENT_INFO EI ON SHI.EVENT_ID = EI.EVENT_ID
 		WHERE
 		EI.EVENT_ID = 1
 		AND SI.SEAT_STATUS = 'Y'
 		GROUP BY
-		SI.SHTL_ID, EI.EVENT_ID;
+		SI.SHTL_ID,
+		EI.EVENT_ID;
 	</select>
+
+	<select id="boardLikeUpdate"
+		parameterType="com.smhrd.model.BoardLikeVO"
+		resultType="com.smhrd.model.BoardLikeVO">
+		select B_LIKE_STATE
+		FROM BOARD_LIKE_INFO
+		WHERE B_ID = #{b_id}
+		and EMAIL = #{email}
+	</select>
+
+	<insert id="boardLikeInsert"
+		parameterType="com.smhrd.model.BoardLikeVO">
+		insert into BOARD_LIKE_INFO (b_like_state,
+		b_id, email)
+		values('Y',#{b_id},#{email})
+	</insert>
+
+	<select id="boardLikeSelect"
+		parameterType="com.smhrd.model.BoardLikeVO"
+		resultType="com.smhrd.model.BoardLikeVO">
+		select B_LIKES from BOARD_INFO
+		where b_id = #{b_id}
+	</select>
+
+	<update id="boardLikePlus"
+		parameterType="com.smhrd.model.BoardLikeVO">
+		update BOARD_INFO
+		set B_LIKES = B_LIKES + 1
+		where b_id =
+		#{b_id}
+	</update>
 </mapper>
 

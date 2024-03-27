@@ -139,18 +139,22 @@
 					</dl>
 					<dl>
 						<dt>좋아요</dt>
-						<dd id = "likePlus">${boardDetail.b_likes} <button onclick="likePlus(${boardDetail.b_id})">추천</button></dd>
+						<dd id="likePlus">${boardDetail.b_likes}</dd>
+					</dl>
+					<dl>
+						<dt>
+							<button onclick="likePlus(${boardDetail.b_id})">추천</button>
+						</dt>
 					</dl>
 				</div>
-				<div class="cont">
-					${boardDetail.b_content}
-				</div>
+				<div class="cont">${boardDetail.b_content}</div>
 			</div>
 			<div class="bt_wrap">
-				<a href="boardList.do?value=${boardDetail.b_category}" class="on">목록</a> 
+				<a href="boardList.do?value=${boardDetail.b_category}" class="on">목록</a>
 				<c:if test="${member.email == boardDetail.email}">
-				<a href="boardEdit.jsp?value=${boardDetail.b_category}">수정</a>
-				<a href="boardDelete.do?value=${boardDetail.b_category&ValueCategory=${boardDetail.b_id}">삭제</a>
+					<a href="boardEdit.jsp?value=${boardDetail.b_category}">수정</a>
+					<a
+						href="boardDelete.do?value=${boardDetail.b_category}&ValueCategory=${boardDetail.b_id}">삭제</a>
 				</c:if>
 			</div>
 		</div>

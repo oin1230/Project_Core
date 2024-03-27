@@ -1,7 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,8 +71,16 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BUSTIVAL</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="goenroll.do" class="dropdown-item">신청게시판</a> <a
-									href="#" class="dropdown-item">요청게시판</a>
+								<a href="#" class="dropdown-item">신청게시판</a> <a href="#"
+									class="dropdown-item">요청게시판</a>
+							</div>
+						</div>
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-item nav-link dropdown-toggle"
+								data-bs-toggle="dropdown">CONCERT</a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="#" class="dropdown-item">발라드</a> <a href="#"
+									class="dropdown-item">아이돌</a> <a href="#" class="dropdown-item">트로트</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -85,7 +93,7 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="qna.jsp" class="nav-link dropdown-toggle"
+							<a href="#" class="nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
@@ -95,8 +103,8 @@
 						</div>
 					</div>
 					<div class="d-flex m-3 me-0">
+						<!-- 로그인X 시 나타날 회원가입 버튼 -->
 						<c:if test="${member == null }">
-							<!-- 로그인X 시 나타날 회원가입 버튼 -->
 							<a href="signin.jsp" class="my-auto"> <i
 								class="fa-solid fa-pen-nib fa-2xl"></i>
 							</a>
@@ -111,7 +119,6 @@
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>
-
 					</div>
 				</div>
 			</nav>
