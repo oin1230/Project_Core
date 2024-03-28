@@ -53,11 +53,11 @@ public class DAO {
 	}
 
 	public void userUpdate(UserVO vo) {
-		
+
 		SqlSession session = factory.openSession(true);
-		
+
 		session.update("userUpdate", vo);
-		
+
 		session.close();
 	}
 
@@ -155,10 +155,10 @@ public class DAO {
 
 		SqlSession session = factory.openSession(true);
 
-		List<ShuttleVO> resultVo = session.selectList("bookingList",vo);
-		
+		List<ShuttleVO> resultVo = session.selectList("bookingList", vo);
+
 		session.close();
-	
+
 		return resultVo;
 	}
 
@@ -195,11 +195,11 @@ public class DAO {
 	}
 
 	public void boardUpdate(BoardVO vo) {
-		
+
 		SqlSession session = factory.openSession(true);
-		
+
 		session.update("boardUpdate", vo);
-		
+
 		session.close();
 	}
 
@@ -285,7 +285,7 @@ public class DAO {
 		return result;
 
 	}
-	
+
 	public void commentRegister(CommentVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -295,7 +295,7 @@ public class DAO {
 		session.close();
 
 	}
-	
+
 	public List<CommentVO> commentList(CommentVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -306,7 +306,7 @@ public class DAO {
 
 		return resultVo;
 	}
-	
+
 	public void commentDelete(CommentVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -316,7 +316,7 @@ public class DAO {
 		session.close();
 
 	}
-	
+
 	public UserVO userInfo(UserVO vo) {
 		SqlSession session = factory.openSession(true);
 
@@ -337,6 +337,18 @@ public class DAO {
 		session.close();
 
 	}
-	
-	
+
+	// 24.03.28 bookingCancle 추가 - 인영
+	public int bookingCancle(myPageVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		int row = session.update("bookingCancle", vo);
+
+		session.close();
+
+		return row;
+
+	}
+
 }

@@ -23,6 +23,7 @@ import com.smhrd.controller.boardLoginCheck;
 import com.smhrd.controller.boardRegister;
 import com.smhrd.controller.boardRegisterCheck;
 import com.smhrd.controller.boardUpdate;
+import com.smhrd.controller.bookingCancle;
 import com.smhrd.controller.bookingList;
 import com.smhrd.controller.AFindInfo;
 import com.smhrd.controller.Join;
@@ -79,39 +80,38 @@ public class FrontController extends HttpServlet {
 		map.put("userUpdateUserInfo.do", new userUpdateUserInfo());
 		map.put("userDeletePwCheck.do", new userDeletePwCheck());
 		map.put("pwUpdateCheck.do", new pwUpdateCheck());
-		
+		map.put("bookingCancle.do", new bookingCancle());
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String uri = request.getRequestURI();
-		//System.out.println("요청 uri = " + uri);
+		// System.out.println("요청 uri = " + uri);
 		String cp = request.getContextPath();
-		//System.out.println("요청 cp = " + cp);
+		// System.out.println("요청 cp = " + cp);
 		String path = uri.substring(cp.length() + 1);
-		//System.out.println("자른path = " + path);
+		// System.out.println("자른path = " + path);
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charser=UTF-8");
-		
 
 		String finalPath = null;
 		command com = map.get(path);
 
-		if("gomain.do".equals(path)) {
+		if ("gomain.do".equals(path)) {
 			command eventListCommand = map.get("mainEventlist.do");
-			if(eventListCommand != null) {
+			if (eventListCommand != null) {
 				eventListCommand.execute(request, response);
 			}
 		}
-		if("goenroll.do".equals(path)) {
+		if ("goenroll.do".equals(path)) {
 			command eventListCommand = map.get("eventList.do");
-			if(eventListCommand != null) {
+			if (eventListCommand != null) {
 				eventListCommand.execute(request, response);
 			}
 		}
-		
 
 		if (path.startsWith("go")) {
 
@@ -121,11 +121,11 @@ public class FrontController extends HttpServlet {
 		}
 
 		if (finalPath == null) {
-			
+
 		} else if (finalPath.contains("redirect:/")) {
 
 			response.sendRedirect(finalPath.split("/")[1]);
-			
+
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher(finalPath + ".jsp");
 			rd.forward(request, response);

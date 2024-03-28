@@ -129,15 +129,15 @@
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<c:if test="${addReq eq 'myApply' }">
+		<c:if test="${addReq eq 'myApply'}">
 			<h1 class="text-center text-white display-6">신청 내역</h1>
 		</c:if>
 
-		<c:if test="${addReq eq 'myEnd' }">
+		<c:if test="${addReq eq 'myEnd'}">
 			<h1 class="text-center text-white display-6">종료 내역</h1>
 		</c:if>
-		
-		<c:if test="${addReq eq 'myRefund' }">
+
+		<c:if test="${addReq eq 'myRefund'}">
 			<h1 class="text-center text-white display-6">환불 내역</h1>
 		</c:if>
 	</div>
@@ -184,14 +184,37 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${addList}" var="addList">
-								<tr>
-									<td><span>${addList.book_id}</span></td>
-									<td><span>${addList.event_name}</span></td>
-									<td><span>${addList.pay}</span></td>
-									<td><span>${addList.pay_date}</span></td>
-								</tr>
-							</c:forEach>
+							<c:if test="${addReq eq 'myApply'}">
+								<c:forEach items="${addList}" var="addList">
+									<tr>
+										<td><span>${addList.book_id}</span></td>
+										<td><span>${addList.event_name}</span></td>
+										<td><span>${addList.pay}</span></td>
+										<td><span>${addList.pay_date}</span></td>
+										<td><a class="modalOpen"
+											style="text-decoration: underline;">신청취소</a>
+										<td>
+										<div class="modalBg hidden">
+											<div class="modal">
+												<p class="modalText">취소하시겠습니까?</p>
+												<button onclick="cancleCheck(${addList.book_id})">취소하기</button>
+												<button class="modalClose">닫기</button>
+											</div>
+										</div>
+									</tr>
+								</c:forEach>
+							</c:if>
+
+							<c:if test="${addReq ne 'myApply'}">
+								<c:forEach items="${addList}" var="addList">
+									<tr>
+										<td><span>${addList.book_id}</span></td>
+										<td><span>${addList.event_name}</span></td>
+										<td><span>${addList.pay}</span></td>
+										<td><span>${addList.pay_date}</span></td>
+									</tr>
+								</c:forEach>
+							</c:if>
 
 
 
@@ -237,6 +260,7 @@
 
 		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
+		<script src="js/modal.js"></script>
 </body>
 
 </html>

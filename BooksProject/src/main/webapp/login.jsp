@@ -134,7 +134,7 @@
 					<!--<input type="button" value="Login" onclick="Login()">-->
 					<!-- 아이디, 비번 찾기 -->
 					<div class="loginEtc">
-						<a href="findIDPW.jsp" class="lnk_etc">아이디/비밀번호 찾기</a>
+						<a href="findUserInfo.jsp" class="lnk_etc">아이디/비밀번호 찾기</a>
 					</div>
 
 				</form>

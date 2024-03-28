@@ -267,23 +267,34 @@
 		BOOK_INFO.BOOK_ID DESC
 	</select>
 
-	<select id="bookingList" parameterType="com.smhrd.model.ShuttleVO" resultType="com.smhrd.model.ShuttleVO">
+	<select id="bookingList"
+		parameterType="com.smhrd.model.ShuttleVO"
+		resultType="com.smhrd.model.ShuttleVO">
 		SELECT * FROM SHUTTLE_INFO WHERE SHTL_ID = #{SHTL_ID}
 	</select>
-	
+
 	<select id="userInfo" parameterType="com.smhrd.model.UserVO"
 		resultType="com.smhrd.model.UserVO">
-		select nick, address, phone 
+		select nick, address, phone
 		from USER_INFO
 		where email=#{email}
 	</select>
-	
-	<update id="boardView"
-		parameterType="com.smhrd.model.BoardVO">
+
+	<update id="boardView" parameterType="com.smhrd.model.BoardVO">
 		update BOARD_INFO
-		set B_VIEWS = B_VIEWS + 1
+		set
+		B_VIEWS = B_VIEWS + 1
 		where b_id =
 		#{b_id}
+	</update>
+
+	<!-- 24.03.28 bookingCancle 추가 - 인영 -->
+	<update id="bookingCancle"
+		parameterType="com.smhrd.model.myPageVO">
+		UPDATE BOOK_INFO
+		SET PAY_STATE = "R"
+		WHERE BOOK_ID =
+		#{book_id} and EMAIL = #{email}
 	</update>
 
 
