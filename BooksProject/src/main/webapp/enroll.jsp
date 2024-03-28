@@ -162,7 +162,7 @@
 														<h6>
 															<div class="button-container">
 																<form class="eventForm" action="progressBar.do"
-																	method="post">
+																	method="get">
 																	<input type="hidden" name="event_img"
 																		value="${event.event_img}"> <input
 																		type="hidden" name="event_name"
@@ -172,7 +172,7 @@
 																		type="hidden" name="event_id"
 																		value="${event.event_id}"> <input
 																		type="hidden" name="event_loc"
-																		value="${event2.event_loc}">
+																		value="${event.event_loc}">
 																	<button class="btn btn-one btn-lg btn-block"
 																		type="submit">상세보기</button>
 																</form>

@@ -67,7 +67,6 @@ public class FrontController extends HttpServlet {
 		map.put("commentRegister.do", new commentRegister());
 		map.put("boardRegisterCheck.do", new boardRegisterCheck());
 		map.put("commentDelete.do", new commentDelete());
-		//추가
 		map.put("boardLoginCheck.do", new boardLoginCheck());
 		
 	}
@@ -90,15 +89,13 @@ public class FrontController extends HttpServlet {
 		command com = map.get(path);
 
 		if("gomain.do".equals(path)) {
-			command eventListCommand = null;
-			eventListCommand = map.get("mainEventlist.do");
+			command eventListCommand = map.get("mainEventlist.do");
 			if(eventListCommand != null) {
 				eventListCommand.execute(request, response);
 			}
 		}
 		if("goenroll.do".equals(path)) {
-			command eventListCommand = null;
-			eventListCommand = map.get("eventList.do");
+			command eventListCommand = map.get("eventList.do");
 			if(eventListCommand != null) {
 				eventListCommand.execute(request, response);
 			}

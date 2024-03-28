@@ -1,3 +1,5 @@
+<%@page import="java.awt.print.Printable"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ShuttleVO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -57,7 +59,6 @@
 	String event_loc = (String) request.getSession().getAttribute("event_loc");
 	String event_name = (String) request.getSession().getAttribute("event_name");
 	String event_date = (String) request.getSession().getAttribute("event_date");
-	String go = request.getParameter("go");
 	List<ShuttleVO> bookingList = (List<ShuttleVO>) request.getAttribute("bookingList");
 	%>
 	<!-- Spinner Start -->
@@ -232,9 +233,9 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td class="tBth-td">${go}</td>
+									<td class="tBth-td">${shuttle.start_rg}</td>
 									<td class="tBth-td">${shuttle.riding_date}</td>
-									<td class="tBth-td"><span id="allTotAmtLocD">0원</span></td>
+									<td class="tBth-td allTotAmtLocD">${shuttle.RG_PRICE}</td>
 									<td class="tBth-td">${shuttle.start_date}</td>
 									<td class="tBth-td">${shuttle.end_date}</td>
 
@@ -253,7 +254,7 @@
 						</div>
 						<div class="price">
 							<span class="txt_tit">결제 금액</span><br> <span
-								id="allTotAmtLocD">0원</span>
+								class="allTotAmtLocD">원</span>
 
 						</div>
 					</div>

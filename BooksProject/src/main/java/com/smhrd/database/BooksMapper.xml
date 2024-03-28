@@ -17,15 +17,11 @@
 	</insert>
 
 	<select id="eventList" resultType="com.smhrd.model.EventVO">
-		select event_id, event_name,
-		event_date, event_loc, event_img
-		from EVENT_INFO
+		select * from EVENT_INFO
 	</select>
 
 	<select id="mainEventlist" resultType="com.smhrd.model.EventVO">
-		select event_id,
-		event_name,
-		event_date, event_loc, event_img
+		select *
 		FROM EVENT_INFO
 		ORDER BY
 		ABS(DATEDIFF(event_date, NOW()))
@@ -128,22 +124,19 @@
 	<select id="progressBar" parameterType="com.smhrd.model.SeatVO"
 		resultType="com.smhrd.model.SeatVO">
 		SELECT
-		SI.SHTL_ID,
+		SHI.SHTL_ID,
 		EI.EVENT_ID,
-		COUNT(SI.SEAT_STATUS) AS
-		RESERVED_SEAT_COUNT
+		COUNT(CASE WHEN SI.SEAT_STATUS = 'Y' THEN 1 END) AS RESERVED_SEAT_COUNT
 		FROM
-		SEAT_INFO SI
-		JOIN
-		SHUTTLE_INFO SHI ON SI.SHTL_ID
-		= SHI.SHTL_ID
-		JOIN
-		EVENT_INFO EI ON SHI.EVENT_ID = EI.EVENT_ID
+		EVENT_INFO EI
+		LEFT JOIN
+		SHUTTLE_INFO SHI ON EI.EVENT_ID = SHI.EVENT_ID
+		LEFT JOIN
+		SEAT_INFO SI ON SHI.SHTL_ID = SI.SHTL_ID AND SI.SEAT_STATUS = 'Y'
 		WHERE
 		EI.EVENT_ID = #{EVENT_ID}
-		AND SI.SEAT_STATUS = 'Y'
 		GROUP BY
-		SI.SHTL_ID,
+		SHI.SHTL_ID,
 		EI.EVENT_ID;
 	</select>
 
@@ -268,7 +261,35 @@
 	</select>
 
 	<select id="bookingList" parameterType="com.smhrd.model.ShuttleVO" resultType="com.smhrd.model.ShuttleVO">
-		SELECT * FROM SHUTTLE_INFO WHERE SHTL_ID = #{SHTL_ID}
+		 SELECT 
+    SI.*,
+    (SELECT 
+         RI.RG_PRICE
+     FROM 
+         REGION_INFO RI
+     WHERE 
+         RI.RG_START = #{start_rg}
+         AND RI.RG_ARRIVAL = (
+             SELECT 
+                 CASE 
+                     WHEN EVENT_LOC LIKE '%부산%' OR EVENT_LOC LIKE '%경상남도%' THEN '경상남도'
+                     WHEN EVENT_LOC LIKE '%대구%' OR EVENT_LOC LIKE '%경상북도%' THEN '경상북도'
+                     WHEN EVENT_LOC LIKE '%인천%' OR EVENT_LOC LIKE '%경기%' THEN '경기도'
+                     WHEN EVENT_LOC LIKE '%광주%' OR EVENT_LOC LIKE '%전라남도%' THEN '전라남도'
+                     WHEN EVENT_LOC LIKE '%대전%' OR EVENT_LOC LIKE '%충청남도%' THEN '충청남도'
+                     WHEN EVENT_LOC LIKE '%울산%' OR EVENT_LOC LIKE '%경상남도%' THEN '경상남도'
+                     WHEN EVENT_LOC LIKE '%서울%' OR EVENT_LOC LIKE '%서울특별시%' THEN '서울'
+                     ELSE NULL
+                 END
+             FROM 
+                 EVENT_INFO
+             WHERE 
+                 EVENT_ID = #{event_id}
+     )) AS RG_PRICE
+FROM 
+    SHUTTLE_INFO SI
+WHERE 
+    SHTL_ID = #{shtl_id}
 	</select>
 
 

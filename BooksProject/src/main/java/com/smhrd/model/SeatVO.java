@@ -8,16 +8,19 @@ public class SeatVO {
 	private String SEAT_STATUS;
 	private int EVENT_ID;
 	private int RESERVED_SEAT_COUNT;
+	private String EVENT_LOC;
 
 	public SeatVO() {}
 
-	public SeatVO(int SEAT_ID, int SHTL_ID, int SEAT_NUM, String SEAT_STATUS, int EVENT_ID, int RESERVED_SEAT_COUNT) {
+
+	public SeatVO(int SEAT_ID, int SHTL_ID, int SEAT_NUM, String SEAT_STATUS, int EVENT_ID, int RESERVED_SEAT_COUNT, String EVENT_LOC) {
 		this.SEAT_ID = SEAT_ID;
 		this.SHTL_ID = SHTL_ID;
 		this.SEAT_NUM = SEAT_NUM;
 		this.SEAT_STATUS = SEAT_STATUS;
 		this.EVENT_ID = EVENT_ID;
 		this.RESERVED_SEAT_COUNT = RESERVED_SEAT_COUNT;
+		this.EVENT_LOC = EVENT_LOC;
 	}
 
 	public SeatVO(int SEAT_ID, int SHTL_ID, int SEAT_NUM, String SEAT_STATUS) {
@@ -75,4 +78,11 @@ public class SeatVO {
 		SEAT_STATUS = sEAT_STATUS;
 	}
 
+	public String getEVENT_LOC() {
+		return EVENT_LOC;
+	}
+	
+	public void setEVENT_LOC(String eVENT_LOC) {
+		EVENT_LOC = eVENT_LOC;
+	}
 }

@@ -160,7 +160,7 @@
 									<div class="buttons">
 									<% if(progressBar.size() > index) { %>
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=서울&SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
+											<a href="bookingList.do?SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>&event_id=<%=event_id%>&go=서울">예약</a>
 										</button>
 									</div>
 								</div>
@@ -177,7 +177,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=광주&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
+											<a href="bookingList.do?SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>&event_id=<%=event_id%>&go=광주">예약</a>
 										</button>
 									</div>
 								</div>
@@ -194,7 +194,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=부산&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
+											<a href="bookingList.do?SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>&event_id=<%=event_id%>&go=부산">예약</a>
 										</button>
 									</div>
 								</div>
@@ -211,7 +211,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=대구&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
+											<a href="bookingList.do?SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>&event_id=<%=event_id%>&go=대구">예약</a>
 										</button>
 									</div>
 								</div>
@@ -228,7 +228,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=인천&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
+											<a href="bookingList.do?SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>&event_id=<%=event_id%>&go=인천">예약</a>
 										</button>
 									</div>
 								</div>
@@ -245,7 +245,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=대전&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
+											<a href="bookingList.do?SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>&event_id=<%=event_id%>&go=대전">예약</a>
 										</button>
 									</div>
 								</div>
@@ -262,7 +262,7 @@
 									</div>
 									<div class="buttons">
 										<button class="btn btn-one btn-lg btn-block">
-											<a href="bookingList.do?go=울산&seatId=<%=progressBar.get(index++).getSHTL_ID()%>">예약</a>
+											<a href="bookingList.do?SHTL_ID=<%=progressBar.get(index++).getSHTL_ID()%>&event_id=<%=event_id%>&go=울산">예약</a>
 										</button>
 										            <% } %>
 									</div>
@@ -326,23 +326,26 @@
 		            <%=pro.getRESERVED_SEAT_COUNT()%><%if (pro != progressBar.get(progressBar.size() - 1)) {%>, <%}%>
 		        <%}%>
 		    ]; // 각 프로그레스바에 대한 예약된 좌석 수
+
+
 		    var progressBars = document.getElementsByClassName("progressBar");
 
 		    for (var i = 0; i < progressBars.length; i++) {
-		    	 if (totalSeats[i] === 0) {
-		             var bookedPercentage = 0;
-		         } else {
-		             var bookedPercentage = (bookedSeats[i] / totalSeats[i]) * 100;
-		         }
-		    	  if (isNaN(bookedPercentage)) {
-		              bookedPercentage = 0;
-		          }
-		          progressBars[i].style.width = bookedPercentage + '%';
+		        var bookedPercentage;
+		        if (totalSeats[i] === 0) {
+		            bookedPercentage = 0;
+		        } else {
+		            bookedPercentage = (bookedSeats[i] / totalSeats[i]) * 100;
+		        }
+		        if (isNaN(bookedPercentage)) {
+		            bookedPercentage = 0;
+		        }
+		        progressBars[i].style.width = bookedPercentage + '%';
 
 		        var percentageSpan = progressBars[i].getElementsByClassName("percentage")[0];
-		        percentageSpan.innerText = bookedPercentage.toFixed(0) + '%'
+		        percentageSpan.innerText = bookedPercentage.toFixed(0) + '%';
 		    }
-		});		</script>
+		});</script>
 
 
 

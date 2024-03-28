@@ -26,11 +26,13 @@ public class ShuttleVO {
 	private String event_name;
 	// 행사 지역
 	private String event_loc;
+	// 가격
+	private int RG_PRICE;
 	
 	
 	public ShuttleVO(int shtl_id, String start_rg, int shtl_num, String start_date, String end_date, int price,
 			String riding_date, String shtl_state, int event_id, String event_img, String event_name,
-			String event_loc) {
+			String event_loc, int RG_PRICE) {
 		this.shtl_id = shtl_id;
 		this.start_rg = start_rg;
 		this.shtl_num = shtl_num;
@@ -43,6 +45,17 @@ public class ShuttleVO {
 		this.event_img = event_img;
 		this.event_name = event_name;
 		this.event_loc = event_loc;
+		this.RG_PRICE = RG_PRICE;
+	}
+
+
+	public int getRG_PRICE() {
+		return RG_PRICE;
+	}
+
+
+	public void setRG_PRICE(int rG_PRICE) {
+		RG_PRICE = rG_PRICE;
 	}
 
 

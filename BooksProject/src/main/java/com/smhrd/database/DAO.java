@@ -151,14 +151,14 @@ public class DAO {
 		return resultVo;
 	}
 
-	public List<ShuttleVO> bookingList() {
+	public List<ShuttleVO> bookingList(ShuttleVO vo) {
 
 		SqlSession session = factory.openSession(true);
 
-		List<ShuttleVO> resultVo = session.selectList("bookingList");
-
+		List<ShuttleVO> resultVo = session.selectList("bookingList",vo);
+		
 		session.close();
-
+	
 		return resultVo;
 	}
 
