@@ -317,5 +317,26 @@ public class DAO {
 
 	}
 	
+	public UserVO userInfo(UserVO vo) {
+		SqlSession session = factory.openSession(true);
+
+		UserVO resultVo = session.selectOne("userInfo", vo);
+
+		session.close();
+
+		return resultVo;
+
+	}
+
+	public void boardView(BoardVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		session.update("boardView", vo);
+
+		session.close();
+
+	}
+	
 	
 }

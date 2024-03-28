@@ -138,11 +138,11 @@
 					<nav class="list-group list-group-flush">
 						<a class="list-group-item" href="myPage.jsp" tagert="__blank"><i
 							class="fa fa-tag mr-1 text-muted"></i>마이페이지</a> <a
-							class="list-group-item" href="userInfoEdit.jsp" target="__blank"><i
+							class="list-group-item" href="userUpdateUserInfo.do" target="__blank"><i
 							class="fa fa-user text-muted"></i> 회원정보 수정</a> <a
 							class="list-group-item" href="userPwEdit.jsp" tagert="__blank"><i
 							class="fa fa-heart mr-1 text-muted"></i>비밀번호 변경</a> <a
-							class="list-group-item" href="#" target="__blank"><i
+							class="list-group-item" href="userDelete.jsp" target="__blank"><i
 							class="fa fa-user text-muted"></i> 회원탈퇴</a>
 					</nav>
 				</div>
@@ -152,18 +152,42 @@
 			<!-- user profile 개인정보 수정란 -->
 			<div class="col-lg-8 pb-5">
 				<div class="d-flex justify-content-end pb-3">
-					<form action="pwUpdate.do" id="edit-form">
-
+				
+				<c:if test="${pwUpdateChecking != 'Y'}">
+					<form action="pwUpdateCheck.do" id="edit-form">
 						<label for="nowPw">기존 비밀번호</label> <input type="password"
 							class="form-control" value="" id="nPw" name="nPw"
 							placeholder="기존의 비밀번호를 입력해주세요"> <label for="nickname">새로운
 							비밀번호</label> <input type="password" class="form-control" value=""
 							id="ePw" placeholder="새로운 비밀번호를 입력해주세요" name="ePw"> <label
 							for="nickname">비밀번호 확인</label> <input type="password"
-							class="form-control" value="" id="ePwC"
+							class="form-control" name="ePwC" id="ePwC"
 							placeholder="비밀번호를 한번 더 입력해주세요"> <input type="submit"
 							value="변경하기">
 					</form>
+				</c:if>
+				
+				<c:if test="${pwUpdateChecking == 'Y'}">
+					<script type="text/javascript">
+						alert("비밀번호를 확인해주세요")					
+					</script>
+					<%
+					session.setAttribute("pwUpdateChecking", "N");
+					%>
+					<form action="pwUpdateCheck.do" id="edit-form">
+						<label for="nowPw">기존 비밀번호</label> <input type="password"
+							class="form-control" value="${nPw}" id="nPw" name="nPw"
+							placeholder="기존의 비밀번호를 입력해주세요"> <label for="nickname">새로운
+							비밀번호</label> <input type="password" class="form-control" value="${ePw}"
+							id="ePw" placeholder="새로운 비밀번호를 입력해주세요" name="ePw"> <label
+							for="nickname">비밀번호 확인</label> <input type="password"
+							class="form-control" name="ePwC" value="${ePwC}" id="ePwC"
+							placeholder="비밀번호를 한번 더 입력해주세요"> <input type="submit"
+							value="변경하기">
+					</form>
+				</c:if>
+				
+				
 				</div>
 			</div>
 		</div>

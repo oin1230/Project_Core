@@ -47,6 +47,14 @@
 
 <body>
 
+	<!-- Spinner Start -->
+	<div id="spinner"
+		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+		<div class="spinner-grow text-primary" role="status"></div>
+	</div>
+	<!-- Spinner End -->
+
+
 	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
@@ -64,8 +72,16 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BUSTIVAL</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="goenroll.do" class="dropdown-item">신청게시판</a> <a
-									href="#" class="dropdown-item">요청게시판</a>
+								<a href="#" class="dropdown-item">신청게시판</a> <a href="#"
+									class="dropdown-item">요청게시판</a>
+							</div>
+						</div>
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-item nav-link dropdown-toggle"
+								data-bs-toggle="dropdown">CONCERT</a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="#" class="dropdown-item">발라드</a> <a href="#"
+									class="dropdown-item">아이돌</a> <a href="#" class="dropdown-item">트로트</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -88,8 +104,8 @@
 						</div>
 					</div>
 					<div class="d-flex m-3 me-0">
+						<!-- 로그인X 시 나타날 회원가입 버튼 -->
 						<c:if test="${member == null }">
-							<!-- 로그인X 시 나타날 회원가입 버튼 -->
 							<a href="signin.jsp" class="my-auto"> <i
 								class="fa-solid fa-pen-nib fa-2xl"></i>
 							</a>
@@ -104,8 +120,9 @@
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>
-
 					</div>
+
+
 				</div>
 			</nav>
 		</div>
@@ -117,7 +134,10 @@
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">개인정보 변경</h1>
+		<h1 class="text-center text-white display-6">회원탈퇴</h1>
+		<ol class="breadcrumb justify-content-center mb-0">
+			<h2>본인확인을 위해 정확한 비밀번호를 입력해주세요.</h2>
+		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
@@ -149,37 +169,45 @@
 			</div>
 
 
-			<!-- user profile 개인정보 수정란 -->
+			<!-- user  -->
 			<div class="col-lg-8 pb-5">
 				<div class="d-flex justify-content-end pb-3">
-					<form action="userUpdate.do" id="edit-form">
+				
+					<c:if test="${userDeletePwChecking != 'Y'}">
+						<form action="userDeletePwCheck.do" id="edit-form">
+							<label for="nickname">비밀번호 입력</label> <input type="password"
+								name="PW" class="form-control" value="" id="ePwC"
+								placeholder="비밀번호를 입력해주세요">
 
-						<label for="nickname">닉네임</label> <input type="text"
-							class="form-control" value="${userUpdateUserInfo.nick}" id="nickname" name="nickname"
-							placeholder="수정하실 닉네임"> <label for="address">주소</label> <input
-							list="Address_option" class="inputset-input form-control"
-							id="address" name="address" value="${userUpdateUserInfo.address}"placeholder="지역을 선택해주세요" >
-						<datalist id="Address_option">
-							<option value="서울특별시"></option>
-							<option value="인천광역시"></option>
-							<option value="부산광역시"></option>
-							<option value="대전광역시"></option>
-							<option value="대구광역시"></option>
-							<option value="광주광역시"></option>
-							<option value="울산광역시"></option>
-						</datalist>
+							<button class="btn btn-primary btn-lg btn-block find-button"
+								onclick="WithDraw()" type="submit">회원탈퇴</button>
+						</form>
+					</c:if>
+					
+					<c:if test="${userDeletePwChecking == 'Y'}">
+						<script type="text/javascript">
+							alert("비밀번호가 일치하지 않습니다");
+						</script>
+						<%
+						session.setAttribute("userDeletePwChecking", "N");
+						%>
+						<form action="userDeletePwCheck.do" id="edit-form">
+							<label for="nickname">비밀번호 입력</label> <input type="password"
+								name="PW" class="form-control" value="${PW}" id="ePwC"
+								placeholder="비밀번호를 입력해주세요">
 
-						<label class="phonenumber">핸드폰번호</label> <input type="text"
-							class="form-control" placeholder="숫자만 입력해주세요" value="${userUpdateUserInfo.phone}"
-							name="phone"> <input type="submit" value="수정하기">
-					</form>
+							<button class="btn btn-primary btn-lg btn-block find-button"
+								onclick="WithDraw()" type="submit">회원탈퇴</button>
+						</form>
+					</c:if>
+					
+					
 				</div>
 			</div>
 		</div>
 	</div>
 
 
-	<!-- Footer Start -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
 		<div class="pb-4 mb-4 logo"
 			style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
@@ -189,18 +217,19 @@
 
 		<!-- Copyright Start -->
 		<div class="container">
-			<span class="text-light"><a href="#"><i
-					class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a></span> <br> <span><a
-				href="#">깃허브 주소</a></span> <br> <a href="https://smhrd.or.kr/">스마트인재개발원</a>
-			<!--깃허브 주소 넣기.-->
+			<div class="row">
+				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+					<span class="text-light"><a href="#"><i
+							class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a> Books Team</span>
+					<br> <span><a href="#">깃허브 주소</a></span>
+					<!--깃허브 주소 넣기.-->
+				</div>
+				<div class="col-md-6 my-auto text-center text-md-end text-white">
+					<a href="https://smhrd.or.kr/">스마트인재개발원</a>
+				</div>
+			</div>
 		</div>
 		<!-- Copyright End -->
-
-
-
-
-
-		<!-- JavaScript Libraries -->
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<script
@@ -209,9 +238,6 @@
 		<script src="lib/waypoints/waypoints.min.js"></script>
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-
-		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
 </body>
 

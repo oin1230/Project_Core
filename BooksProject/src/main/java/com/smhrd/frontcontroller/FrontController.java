@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.controller.eventList;
+import com.smhrd.controller.joinPwCheck;
 import com.smhrd.controller.mainEventlist;
 import com.smhrd.controller.myPage;
 import com.smhrd.controller.myPageAddList;
+import com.smhrd.controller.noticeList;
 import com.smhrd.controller.progressBar;
 import com.smhrd.controller.boardLikeUpdate;
 import com.smhrd.controller.boardList;
@@ -30,11 +32,14 @@ import com.smhrd.controller.Shuttle;
 import com.smhrd.controller.boardDelete;
 import com.smhrd.controller.boardDetail;
 import com.smhrd.controller.userUpdate;
+import com.smhrd.controller.userUpdateUserInfo;
 import com.smhrd.controller.command;
 import com.smhrd.controller.commentDelete;
 import com.smhrd.controller.commentRegister;
 import com.smhrd.controller.pwUpdate;
+import com.smhrd.controller.pwUpdateCheck;
 import com.smhrd.controller.userDelete;
+import com.smhrd.controller.userDeletePwCheck;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -68,6 +73,12 @@ public class FrontController extends HttpServlet {
 		map.put("boardRegisterCheck.do", new boardRegisterCheck());
 		map.put("commentDelete.do", new commentDelete());
 		map.put("boardLoginCheck.do", new boardLoginCheck());
+		map.put("boardLoginCheck.do", new boardLoginCheck());
+		map.put("noticeList.do", new noticeList());
+		map.put("joinPwCheck.do", new joinPwCheck());
+		map.put("userUpdateUserInfo.do", new userUpdateUserInfo());
+		map.put("userDeletePwCheck.do", new userDeletePwCheck());
+		map.put("pwUpdateCheck.do", new pwUpdateCheck());
 		
 	}
 

@@ -37,6 +37,9 @@ public class Login implements command {
 		} else {
 			System.out.println("실패");
 			session.setAttribute("loginChecking", "Y");
+			session.setAttribute("loginCheckingInfo", vo);
+			//UserVO v = (UserVO) session.getAttribute("loginCheckingInfo");
+			//System.out.println(">>>>>>>>>>"+v.getEmail());
 			return "login";
 		}
 

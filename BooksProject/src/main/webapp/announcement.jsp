@@ -150,51 +150,17 @@
 					<div class="date">작성일</div>
 					<div class="count">조회</div>
 				</div>
-				<div>
-					<div class="num">5</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
+				<c:forEach var="mvo" items="${boardList}">
+					<div>
+						<div class="num">${mvo.b_id}</div>
+						<div class="title">
+							<a href="boardDetail.do?value=${mvo.b_id}">${mvo.b_title}</a>
+						</div>
+						<div class="writer">${mvo.nick}</div>
+						<div class="date">${mvo.b_date}</div>
+						<div class="count">${mvo.b_views}</div>
 					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">0</div>
-				</div>
-				<div>
-					<div class="num">4</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">1111</div>
-				</div>
-				<div>
-					<div class="num">3</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">111</div>
-				</div>
-				<div>
-					<div class="num">2</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">11</div>
-				</div>
-				<div>
-					<div class="num">1</div>
-					<div class="title">
-						<a href="boardView.jsp">글 제목이 들어갑니다.</a>
-					</div>
-					<div class="writer">살려줘</div>
-					<div class="date">2024.3.21</div>
-					<div class="count">1</div>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="board_page">
 				<a href="#" class="bt first"> <<</a> <a href="#" class="bt prev">
@@ -203,11 +169,12 @@
 					href="#" class="num">5</a> <a href="#" class="bt next">></a> <a
 					href="#" class="bt last">>></a>
 			</div>
-			<!-- 해당 구역은 관리자 계정만 등록 할 수 있게 변경 -->
-			<!-- <div class="bt_wrap">
-                        <a href="boardWrite.jsp" class="on">등록</a>
-                        <a href="#">수정</a>
-                    </div> -->
+			
+			<c:if test="${member.email == 'admin' && member.pw == '12345' }">
+			<div class="bt_wrap">
+                        <a href="boardWrite.jsp?value=${boardList.get(0).getB_category()}" class="on">등록</a>
+                    </div>
+            </c:if>
 		</div>
 	</div>
 

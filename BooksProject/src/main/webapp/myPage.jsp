@@ -1,7 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -158,11 +158,11 @@
 					<nav class="list-group list-group-flush">
 						<a class="list-group-item" href="myPage.jsp" tagert="__blank"><i
 							class="fa fa-tag mr-1 text-muted"></i>마이페이지</a> <a
-							class="list-group-item" href="userInfoEdit.jsp" target="__blank"><i
+							class="list-group-item" href="userUpdateUserInfo.do" target="__blank"><i
 							class="fa fa-user text-muted"></i> 회원정보 수정</a> <a
 							class="list-group-item" href="userPwEdit.jsp" tagert="__blank"><i
 							class="fa fa-heart mr-1 text-muted"></i>비밀번호 변경</a> <a
-							class="list-group-item" href="#" target="__blank"><i
+							class="list-group-item" href="userDelete.jsp" target="__blank"><i
 							class="fa fa-user text-muted"></i> 회원탈퇴</a>
 					</nav>
 				</div>

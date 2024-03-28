@@ -67,7 +67,7 @@ function likePlus(id) {
 		},
 		error: function() {
 
-			alert("서버 점검 중이요");
+			alert("로그인 확인해주세요");
 		}
 	})
 

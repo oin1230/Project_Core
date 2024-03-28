@@ -123,30 +123,46 @@
 
 
 			<!-- EMAIL, PW 입력 -->
-			<c:if test="${member == null && loginChecking == 'Y'}">
+			<c:if test="${loginChecking != 'Y'}">
+				<form action="Login.do" id="login-form">
+					<input type="text" name="EMAIL" placeholder="Email"> <input
+						type="password" name="PW" placeholder="Password"> <label
+						for="remember-check"> <input type="checkbox"
+						id="remember-check">로그인 정보 저장하기
+					</label><input type="submit" value="Login">
+
+					<!--<input type="button" value="Login" onclick="Login()">-->
+					<!-- 아이디, 비번 찾기 -->
+					<div class="loginEtc">
+						<a href="findIDPW.jsp" class="lnk_etc">아이디/비밀번호 찾기</a>
+					</div>
+
+				</form>
+			</c:if>
+			<c:if test="${loginChecking == 'Y'}">
 				<script type="text/javascript">
 					alert("로그인정보가 일치하지 않습니다\n아이디 또는 비밀번호를 확인해주세요");
 				</script>
 				<%
 				session.setAttribute("loginChecking", "N");
 				%>
+
+				<form action="Login.do" id="login-form">
+					<input type="text" name="EMAIL" placeholder="Email"
+						value="${loginCheckingInfo.email}"> <input type="password"
+						name="PW" placeholder="Password" value="${loginCheckingInfo.pw}">
+					<label for="remember-check"> <input type="checkbox"
+						id="remember-check">로그인 정보 저장하기
+					</label><input type="submit" value="Login">
+
+					<!--<input type="button" value="Login" onclick="Login()">-->
+					<!-- 아이디, 비번 찾기 -->
+					<div class="loginEtc">
+						<a href="findIDPW.jsp" class="lnk_etc">아이디/비밀번호 찾기</a>
+					</div>
+				</form>
 			</c:if>
-
-
-			<form action="Login.do" id="login-form">
-				<input type="text" name="EMAIL" placeholder="Email"> <input
-					type="password" name="PW" placeholder="Password"> <label
-					for="remember-check"> <input type="checkbox"
-					id="remember-check">로그인 정보 저장하기
-				</label><input type="submit" value="Login">
-
-				<!--<input type="button" value="Login" onclick="Login()">-->
-				<!-- 아이디, 비번 찾기 -->
-				<div class="loginEtc">
-					<a href="findIDPW.jsp" class="lnk_etc">아이디/비밀번호 찾기</a>
-				</div>
-
-			</form>
+			
 
 		</div>
 	</div>

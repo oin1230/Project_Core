@@ -123,14 +123,14 @@
 		</div>
 	</div>
 	<!-- Navbar End -->
-	
-	
 <body class="signIn">
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">회원가입</h4>
-				<form action="Join.do" class="validation-form" novalidate>
+				
+				<c:if test="${loginPwChecking != 'Y'}">
+				<form action="joinPwCheck.do" class="validation-form" novalidate>
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="name">이메일</label> <input type="text"
@@ -175,8 +175,61 @@
 							<option value="울산광역시"></option>
 						</datalist>
 					</div>
+					</c:if>
+
+					<c:if test="${loginPwChecking == 'Y'}">
+						<script type="text/javascript">
+							alert("비밀번호를 확인해주세요");
+						</script>
+						<%
+						session.setAttribute("loginPwChecking", "N");
+						%>
+						<form action="joinPwCheck.do" class="validation-form" novalidate>
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<label for="name">이메일</label> <input type="text"
+										class="form-control" id="name" name="email" placeholder=""
+										required value="${loginPwCheckingUserInfo.email}">
+								</div>
+								<div class="col-md-6 mb-3">
+									<label for="nickname">닉네임</label> <input type="text"
+										class="form-control" id="nickname" name="nickname"
+										placeholder="" required value="${loginPwCheckingUserInfo.nick}">
+								</div>
+							</div>
+
+							<div class="mb-3">
+								<label for="password">비밀번호</label> <input type="password"
+									class="form-control" id="pw" name="pw" placeholder="" required value="${loginPwCheckingUserInfo.pw}">
+							</div>
+
+							<div class="mb-3">
+								<label for="password">비밀번호 확인</label> <input type="password"
+									class="form-control" id="pw_check" name="pw_check"
+									placeholder="" required value="${loginPwCheckingUserInfo.newPw}">
+							</div>
+
+							<div class="mb-3">
+								<label for="phone">핸드폰번호</label> <input type="text"
+									class="form-control" id="phonenumber" name="phonenumber"
+									placeholder="010-1234-5678" required value="${loginPwCheckingUserInfo.phone}">
+							</div>
 
 
+							<div class="mb-3">
+								<label for="address">주소</label> <input list="Address_option"
+									class="inputset-input form-control" id="address" name="address" value="${loginPwCheckingUserInfo.address}">
+								<datalist id="Address_option">
+									<option value="서울특별시"></option>
+									<option value="인천광역시"></option>
+									<option value="부산광역시"></option>
+									<option value="대전광역시"></option>
+									<option value="대구광역시"></option>
+									<option value="광주광역시"></option>
+									<option value="울산광역시"></option>
+								</datalist>
+							</div>
+					</c:if>
 
 					<hr class="mb-4">
 					<div class="custom-control custom-checkbox">
