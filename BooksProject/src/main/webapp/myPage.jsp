@@ -102,7 +102,7 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="announcement.jsp" class="dropdown-item">공지사항</a> <a
+									href="noticeList.do?value=4" class="dropdown-item">공지사항</a> <a
 									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
@@ -120,7 +120,7 @@
 						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
 						<c:if test="${member != null }">
-							<a href="myPage.jsp" class="my-auto"> <i
+							<a href="myPage.do" class="my-auto"> <i
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>

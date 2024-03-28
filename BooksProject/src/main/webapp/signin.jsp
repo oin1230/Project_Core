@@ -94,7 +94,7 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="announcement.jsp" class="dropdown-item">공지사항</a> <a
+									href="noticeList.do?value=4" class="dropdown-item">공지사항</a> <a
 									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>

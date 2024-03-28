@@ -24,6 +24,8 @@ public class boardList implements command {
 		List<BoardVO> boardList = dao.boardList(vo);
 
 		request.setAttribute("boardList", boardList);
+		
+		request.setAttribute("value", b_category);
 
 		return "board";
 	}

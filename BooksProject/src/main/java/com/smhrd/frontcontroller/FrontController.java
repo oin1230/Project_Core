@@ -17,6 +17,7 @@ import com.smhrd.controller.myPageAddList;
 import com.smhrd.controller.progressBar;
 import com.smhrd.controller.boardLikeUpdate;
 import com.smhrd.controller.boardList;
+import com.smhrd.controller.boardLoginCheck;
 import com.smhrd.controller.boardRegister;
 import com.smhrd.controller.boardRegisterCheck;
 import com.smhrd.controller.boardUpdate;
@@ -66,6 +67,8 @@ public class FrontController extends HttpServlet {
 		map.put("commentRegister.do", new commentRegister());
 		map.put("boardRegisterCheck.do", new boardRegisterCheck());
 		map.put("commentDelete.do", new commentDelete());
+		//추가
+		map.put("boardLoginCheck.do", new boardLoginCheck());
 		
 	}
 

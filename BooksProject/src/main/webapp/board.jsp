@@ -87,7 +87,7 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="announcement.jsp" class="dropdown-item">공지사항</a> <a
+									href="noticeList.do?value=4" class="dropdown-item">공지사항</a> <a
 									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
@@ -105,7 +105,7 @@
 						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
 						<c:if test="${member != null }">
-							<a href="myPage.jsp" class="my-auto"> <i
+							<a href="myPage.do" class="my-auto"> <i
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>
@@ -122,8 +122,15 @@
 <body class="board">
 	<div class="board_wrap">
 		<div class="board_title">
-			<strong>자유게시판</strong>
-			<p>자유로운 이야기 나눕시다.</p>
+			<c:if test="${boardList.get(0).getB_category() == '1'}">
+				<strong>자유게시판</strong>
+			</c:if>
+			<c:if test="${boardList.get(0).getB_category() == '2'}">
+				<strong>질문게시판</strong>
+			</c:if>
+			<c:if test="${boardList.get(0).getB_category() == '3'}">
+				<strong>후기게시판</strong>
+			</c:if>
 		</div>
 		<div class="board_list_wrap">
 			<div class="board_list">
@@ -136,9 +143,9 @@
 					<div class="like">좋아요</div>
 				</div>
 
-				<c:forEach var="mvo" items="${boardList}" varStatus="loop">
+				<c:forEach var="mvo" items="${boardList}">
 					<div>
-						<div class="num" id="num_${loop.index}"></div>
+						<div class="num">${mvo.b_id}</div>
 						<div class="title">
 							<a href="boardDetail.do?value=${mvo.b_id}">${mvo.b_title}</a>
 						</div>
@@ -158,7 +165,18 @@
 					href="#" class="bt last">>></a>
 			</div>
 			<div class="bt_wrap">
-				<a href="boardWrite.jsp?value=${boardList.get(0).getB_category()}" class="on" id="boardRegister">등록</a>
+				<c:if test="${boardLoginChecking == 'Y'}">
+					<script type="text/javascript">
+						alert("로그인이 필요합니다");
+					</script>
+					<%
+					session.setAttribute("boardLoginChecking", "N");
+					%>
+
+				</c:if>
+				<a
+					href="boardLoginCheck.do?value=${boardList.get(0).getB_category()}"
+					class="on" id="boardRegister">등록</a>
 				<!--<a href="#">수정</a>-->
 			</div>
 		</div>
@@ -188,16 +206,9 @@
 
 
 
-	
 
-	<script>
-		// JavaScript를 사용하여 각 num div에 1부터 1씩 증가하는 값을 출력
-		window.onload = function() {
-			var numDivs = document.querySelectorAll('.num');
-			numDivs.forEach(function(numDiv, index) {
-				numDiv.textContent = index + 1;
-			});
-		};
+
+
 	</script>
 	<!-- JavaScript Libraries -->
 	<script

@@ -153,4 +153,62 @@ function boardRegister() {
 
 }
 
+function Login() {
+	consolo.log('dddddd')
+	$.ajax({
+
+		url: "boardLikeUpdate.do",
+		type: "post",
+		data: b_id,
+		//dataType : "json",
+		success: function(res) {
+			// 확인용
+			console.log(res);
+
+			console.log($("#likePlus").text());
+			if (res == $("#likePlus").text()) {
+				alert("이미 추천 했습니다.");
+			} else {
+				$("#likePlus").text(res);
+			}
+		},
+		error: function() {
+
+			alert("서버 점검 중이요");
+		}
+	})
+
+}
+
+
+
+
+
+
+$(function() {
+	$('#loginSubmit').on("click", function() {
+		console.log('zzzzz')
+		
+		var form = $("#login-form").serialize();
+
+		console.log(form1);
+		$.ajax({
+			type: "post",
+			url: "/login/check",
+			data: form,
+			dataType: 'json',
+			success: function(data) {
+				alert("success");
+				console.log(data);
+			},
+			error: function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+
+			}
+		});
+	});
+});
+
+
+
 

@@ -18,7 +18,6 @@ public class boardRegister implements command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();
-		response.setCharacterEncoding("UTF-8");
 		
 		
 		UserVO sessionVo = (UserVO) session.getAttribute("member");

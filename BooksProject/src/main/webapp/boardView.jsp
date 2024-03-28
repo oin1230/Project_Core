@@ -86,7 +86,7 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="announcement.jsp" class="dropdown-item">공지사항</a> <a
+									href="noticeList.do?value=4" class="dropdown-item">공지사항</a> <a
 									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
@@ -104,7 +104,7 @@
 						</c:if>
 						<!--로그인 시 나타날 마이페이지 버튼-->
 						<c:if test="${member != null }">
-							<a href="myPage.jsp" class="my-auto"> <i
+							<a href="myPage.do" class="my-auto"> <i
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>
@@ -118,8 +118,15 @@
 <body class="board">
 	<div class="board_wrap">
 		<div class="board_title">
-			<strong>공지사항</strong>
-			<p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
+			<c:if test="${boardDetail.b_category == '1'}">
+			<strong>자유게시판</strong>
+			</c:if>
+			<c:if test="${boardDetail.b_category == '2'}">
+			<strong>질문게시판</strong>
+			</c:if>
+			<c:if test="${boardDetail.b_category == '3'}">
+			<strong>후기게시판</strong>
+			</c:if>
 		</div>
 		<div class="board_view_wrap">
 			<div class="board_view">

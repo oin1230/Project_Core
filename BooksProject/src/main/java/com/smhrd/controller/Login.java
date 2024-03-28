@@ -25,19 +25,20 @@ public class Login implements command {
 
 		UserVO resultVo = dao.Login(vo);
 
+		HttpSession session = request.getSession();
 		if (resultVo != null) {
-			HttpSession session = request.getSession();
 			session.setAttribute("member", resultVo);
-
+			return "redirect:/gomain.do";
+			
 			// 테스트용
-			UserVO sessionVo = (UserVO) session.getAttribute("member");
-			String email2 = sessionVo.getEmail();
+			//UserVO sessionVo = (UserVO) session.getAttribute("member");
+			//String email2 = sessionVo.getEmail();
 
 		} else {
 			System.out.println("실패");
+			session.setAttribute("loginChecking", "Y");
+			return "login";
 		}
-
-		return "redirect:/gomain.do";
 
 	}
 
