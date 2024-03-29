@@ -248,13 +248,13 @@
 					<div class="cbp">
 						<div class="countBox">
 							<p>
-								총 인원 수 <br> <span id="adltCnt"></span>
+								총 인원 수 <br> <span id="adltCnt">0명</span>
 							</p>
 
 						</div>
 						<div class="price">
-							<span class="txt_tit">결제 금액</span><br> <span
-								class="allTotAmtLocD">원</span>
+							<span class="txt_tit">결제 금액</span><br> 
+							<span id="allTotAmtLocD">0원</span>
 
 						</div>
 					</div>

@@ -1548,3 +1548,158 @@ a.on{
 	background-color: white;
 	visibility: hidden;
 }
+
+/*//////// 버스 예약 등록 : CSS for booking ////////*/
+.py-booking {
+    margin: 5%;
+    margin: 0 auto;
+    margin-top: 3%;
+}
+
+.res {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+/* css for bus-container */
+.bus-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.busseat {
+    border: none;
+    width: 50%;
+}
+
+/* CSS for busseat */
+.showcase {
+    margin-top: 2%;
+    text-align: center;
+}
+
+.seat {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #ccc;
+    margin: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    text-align: left;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.seatContainer {
+    width: 100%;
+    margin: 2px 1em 0 auto;
+}
+
+.selectedSeats {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #81c408;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px
+}
+
+.selected {
+    background-color: #81c408;
+}
+
+
+.seatOccupied {
+    background-color: #fff;
+}
+
+
+
+.showcase li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.showcase small {
+    margin-left: 5px;
+}
+
+
+/* table-container */
+/* 테이블 지정 */
+.tableBooking {
+    border-collapse: separate;
+    border-spacing: 0 20px;
+    margin: 10px auto;
+    font-size: 14px;
+    width: 75%;
+}
+
+
+.tBth {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* 테이블 행 */
+.tBth-td {
+    width: 20%;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.tBth-th {
+    width: 20%;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 2px solid #000;
+    color: #000;
+}
+
+
+
+
+/* 총 인원 수  */
+.countBox {
+    float: left;
+    text-align: left;
+}
+
+/* 결제 금액 */
+.price {
+    position: relative;
+}
+
+/*  총 인원수와 결제금액 */
+.cbp {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+
+.countBox {
+    display: block;
+}
+
+.price {
+    display: block;
+}
+
+/* 버튼 */
+.btn-price {
+    /* align-items: right;
+    width: 20%;
+    margin: 0 auto;
+    font-size: 15px; */
+    justify-content: flex-start;
+}
+
