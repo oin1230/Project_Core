@@ -255,14 +255,14 @@
 						</div>
 						<div class="price">
 							<span class="txt_tit">결제 금액</span><br> <span
-								id="allTotAmtLocD">0원</span>
+								id="allTotAmtLocD">0</span> <span>원</span>
 
 						</div>
 					</div>
 					<div class="btnPay">
 						<button class="btn btn-one btn-lg btn-block btn-price"
 							type="button">
-							<a href="#">결제하기</a>
+							<a id="bookingUpdate" href="#">결제하기</a>
 						</button>
 					</div>
 				</div>

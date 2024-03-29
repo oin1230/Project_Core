@@ -14,17 +14,42 @@ public class myPageVO {
 
 	private String pay_date;
 
-	public myPageVO() {
+	private int shtl_id;
 
-	}
+	private int seat_num;
+	
+	
 
-	public myPageVO(int book_id, String email, String event_name, String pay_state, int pay, String pay_date) {
+	public myPageVO(int book_id, String email, String event_name, String pay_state, int pay, String pay_date,
+			int shtl_id, int seat_num) {
 		this.book_id = book_id;
 		this.email = email;
 		this.event_name = event_name;
 		this.pay_state = pay_state;
 		this.pay = pay;
 		this.pay_date = pay_date;
+		this.shtl_id = shtl_id;
+		this.seat_num = seat_num;
+	}
+
+	public myPageVO() {
+
+	}
+
+	public int getShtl_id() {
+		return shtl_id;
+	}
+
+	public void setShtl_id(int shtl_id) {
+		this.shtl_id = shtl_id;
+	}
+
+	public int getSeat_num() {
+		return seat_num;
+	}
+
+	public void setSeat_num(int seat_num) {
+		this.seat_num = seat_num;
 	}
 
 	public int getBook_id() {

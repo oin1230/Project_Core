@@ -280,13 +280,20 @@
 		AND RI.RG_ARRIVAL = (
 		SELECT
 		CASE
-		WHEN EVENT_LOC LIKE '%부산%' OR EVENT_LOC LIKE '%경상남도%' THEN '경상남도'
-		WHEN EVENT_LOC LIKE '%대구%' OR EVENT_LOC LIKE '%경상북도%' THEN '경상북도'
-		WHEN EVENT_LOC LIKE '%인천%' OR EVENT_LOC LIKE '%경기%' THEN '경기도'
-		WHEN EVENT_LOC LIKE '%광주%' OR EVENT_LOC LIKE '%전라남도%' THEN '전라남도'
-		WHEN EVENT_LOC LIKE '%대전%' OR EVENT_LOC LIKE '%충청남도%' THEN '충청남도'
-		WHEN EVENT_LOC LIKE '%울산%' OR EVENT_LOC LIKE '%경상남도%' THEN '경상남도'
-		WHEN EVENT_LOC LIKE '%서울%' OR EVENT_LOC LIKE '%서울특별시%' THEN '서울'
+		WHEN EVENT_LOC
+		LIKE '%부산%' OR EVENT_LOC LIKE '%경상남도%' THEN '경상남도'
+		WHEN EVENT_LOC LIKE
+		'%대구%' OR EVENT_LOC LIKE '%경상북도%' THEN '경상북도'
+		WHEN EVENT_LOC LIKE
+		'%인천%' OR EVENT_LOC LIKE '%경기%' THEN '경기도'
+		WHEN EVENT_LOC LIKE '%광주%'
+		OR EVENT_LOC LIKE '%전라남도%' THEN '전라남도'
+		WHEN EVENT_LOC LIKE '%대전%' OR
+		EVENT_LOC LIKE '%충청남도%' THEN '충청남도'
+		WHEN EVENT_LOC LIKE '%울산%' OR
+		EVENT_LOC LIKE '%경상남도%' THEN '경상남도'
+		WHEN EVENT_LOC LIKE '%서울%' OR
+		EVENT_LOC LIKE '%서울특별시%' THEN '서울'
 		ELSE NULL
 		END
 		FROM
@@ -297,7 +304,8 @@
 		FROM
 		SHUTTLE_INFO SI
 		WHERE
-		SHTL_ID = #{shtl_id}
+		SHTL_ID =
+		#{shtl_id}
 	</select>
 
 	<select id="userInfo" parameterType="com.smhrd.model.UserVO"
@@ -328,8 +336,26 @@
 	<!-- 24.03.29 bookingSeat 추가 - 준범 -->
 	<select id="bookingSeat" parameterType="com.smhrd.model.SeatVO"
 		resultType="com.smhrd.model.SeatVO">
-		SELECT * FROM SEAT_INFO WHERE SHTL_ID = #{SHTL_ID} AND SEAT_STATUS = 'Y';
+		SELECT * FROM SEAT_INFO WHERE SHTL_ID = #{SHTL_ID} AND
+		SEAT_STATUS = 'Y';
 	</select>
+
+	<!-- 24.03.29 seatUpdate 추가 - 인영 -->
+	<update id="seatUpdate" parameterType="com.smhrd.model.SeatVO">
+		UPDATE SEAT_INFO
+		SET
+		SEAT_STATUS = "Y"
+		WHERE SHTL_ID = #{SHTL_ID} and SEAT_NUM = #{SEAT_NUM}
+		and SEAT_STATUS = "N"
+	</update>
+
+	<insert id="bookInsert" parameterType="com.smhrd.model.myPageVO">
+		INSERT INTO BOOK_INFO
+		(EMAIL, SEAT_ID, PAY, PAY_DATE, PAY_STATE)
+		VALUES (#{email}, (SELECT
+		SEAT_ID FROM SEAT_INFO WHERE SHTL_ID = #{shtl_id} AND SEAT_NUM =
+		#{seat_num}), #{pay}, #{pay_date}, "Y")
+	</insert>
 
 </mapper>
 

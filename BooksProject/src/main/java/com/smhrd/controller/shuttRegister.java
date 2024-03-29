@@ -24,7 +24,6 @@ public class shuttRegister implements command {
 		vo.setStart_rg(start_rg);
 		vo.setRiding_date(riding_data);
 		vo.setEvent_name(event_name);
-		vo.setPrice(price);
 		vo.setStart_date(start_date);
 		vo.setEnd_date(end_date);
 		

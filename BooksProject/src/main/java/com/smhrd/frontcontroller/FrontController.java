@@ -25,6 +25,7 @@ import com.smhrd.controller.boardRegisterCheck;
 import com.smhrd.controller.boardUpdate;
 import com.smhrd.controller.bookingCancle;
 import com.smhrd.controller.bookingList;
+import com.smhrd.controller.bookingUpdate;
 import com.smhrd.controller.AFindInfo;
 import com.smhrd.controller.Join;
 import com.smhrd.controller.Login;
@@ -81,6 +82,7 @@ public class FrontController extends HttpServlet {
 		map.put("userDeletePwCheck.do", new userDeletePwCheck());
 		map.put("pwUpdateCheck.do", new pwUpdateCheck());
 		map.put("bookingCancle.do", new bookingCancle());
+		map.put("bookingUpdate.do", new bookingUpdate());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

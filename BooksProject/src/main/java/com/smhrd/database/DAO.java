@@ -350,18 +350,41 @@ public class DAO {
 		return row;
 
 	}
-	
+
 	// 24.03.29 bookingSeat 추가 - 준범
 	public List<SeatVO> bookingSeat(SeatVO vo) {
 
 		SqlSession session = factory.openSession(true);
 
-		List<SeatVO> resultVo = session.selectList("bookingSeat",vo);
+		List<SeatVO> resultVo = session.selectList("bookingSeat", vo);
 
 		session.close();
 
 		return resultVo;
 	}
-	
+
+	// 24.03.29 bookingUpdate-seatUpdate 추가 - 인영
+	public int seatUpdate(SeatVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		int row = session.update("seatUpdate", vo);
+
+		session.close();
+
+		return row;
+	}
+
+	// bookingUpdate-bookInsert 추가 - 인영
+	public int bookInsert(myPageVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		int row = session.insert("bookInsert", vo);
+
+		session.clearCache();
+
+		return row;
+	}
 
 }
