@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.controller.Shuttle"%>
 <%@page import="java.awt.print.Printable"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="java.util.List"%>
@@ -146,8 +147,7 @@
 					<div class="bus-container">
 						<div class="busseat">
 							<div class="choice-container">
-								<select id="choice">
-								</select>
+								<p id="choice"></p>
 							</div>
 
 							<ul class="showcase">
@@ -163,41 +163,41 @@
 							</ul>
 
 							<div class="seatContainer">
-								<div class="row">
-									<div class="seat">25</div>
-									<div class="seat">22</div>
-									<div class="seat">19</div>
-									<div class="seat">16</div>
-									<div class="seat">13</div>
-									<div class="seat">10</div>
-									<div class="seat">7</div>
-									<div class="seat">4</div>
-									<div class="seat">1</div>
+								<div class="row2">
+									<div class="seat" id="25">25</div>
+									<div class="seat" id="22">22</div>
+									<div class="seat" id="19">19</div>
+									<div class="seat" id="16">16</div>
+									<div class="seat" id="13">13</div>
+									<div class="seat" id="10">10</div>
+									<div class="seat" id="7">7</div>
+									<div class="seat" id="4">4</div>
+									<div class="seat" id="1">1</div>
 								</div>
-								<div class="row">
-									<div class="seat">26</div>
-									<div class="seat">23</div>
-									<div class="seat">20</div>
-									<div class="seat">17</div>
-									<div class="seat">14</div>
-									<div class="seat">11</div>
-									<div class="seat">8</div>
-									<div class="seat">5</div>
-									<div class="seat">2</div>
+								<div class="row2">
+									<div class="seat" id="26">26</div>
+									<div class="seat" id="23">23</div>
+									<div class="seat" id="20">20</div>
+									<div class="seat" id="17">17</div>
+									<div class="seat" id="14">14</div>
+									<div class="seat" id="11">11</div>
+									<div class="seat" id="8">8</div>
+									<div class="seat" id="5">5</div>
+									<div class="seat" id="2">2</div>
 								</div>
-								<div class="row">
-									<div class="seat">27</div>
+								<div class="row2">
+									<div class="seat" id="27">27</div>
 								</div>
-								<div class="row">
-									<div class="seat">28</div>
-									<div class="seat">24</div>
-									<div class="seat">21</div>
-									<div class="seat">18</div>
-									<div class="seat">15</div>
-									<div class="seat">12</div>
-									<div class="seat">9</div>
-									<div class="seat">6</div>
-									<div class="seat">3</div>
+								<div class="row2">
+									<div class="seat" id="28">28</div>
+									<div class="seat" id="24">24</div>
+									<div class="seat" id="21">21</div>
+									<div class="seat" id="18">18</div>
+									<div class="seat" id="15">15</div>
+									<div class="seat" id="12">12</div>
+									<div class="seat" id="9">9</div>
+									<div class="seat" id="6">6</div>
+									<div class="seat" id="3">3</div>
 								</div>
 							</div>
 
@@ -239,6 +239,7 @@
 									<td class="tBth-td">${shuttle.start_date}</td>
 									<td class="tBth-td">${shuttle.end_date}</td>
 
+
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -253,8 +254,8 @@
 
 						</div>
 						<div class="price">
-							<span class="txt_tit">결제 금액</span><br> 
-							<span id="allTotAmtLocD">0원</span>
+							<span class="txt_tit">결제 금액</span><br> <span
+								id="allTotAmtLocD">0원</span>
 
 						</div>
 					</div>
@@ -268,8 +269,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!-- Footer Start -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
 		<div class="pb-4 mb-4 logo"
@@ -305,7 +304,39 @@
 
 
 
-		<script type="text/javascript">
+		<script>
+			// 페이지가 로드되면 바로 bookingSeat.java에 데이터 요청
+
+			$(document)
+					.ready(
+							function() {
+								var shtl_id = "<c:out value='${bookingList[0].shtl_id}'/>";
+
+								$.ajax({
+									url : "bookingSeat",
+									type : "POST",
+									data : {
+										"SHTL_ID" : shtl_id
+									},
+									dataType : "json",
+									success : function(bookingSeat) {
+										// 서버로부터 받은 seatList는 SEAT_NUM을 포함하는 객체의 배열입니다.
+										bookingSeat.forEach(function(seat) {
+											// SEAT_STATUS가 'occupied'인 경우에만 클래스를 변경합니다.
+											if (seat.SEAT_STATUS === 'Y') {
+												var seatNum = seat.SEAT_NUM; // SEAT_NUM 사용
+												$("#" + seatNum).removeClass(
+														"seat").addClass(
+														"seatOccupied");
+											}
+										});
+									},
+									error : function(request, status, error) {
+										alert("실패");
+									}
+								});
+							});
+
 			function category1() {
 				sessionStorage.setItem("b_category", "1");
 			}

@@ -81,7 +81,6 @@ public class FrontController extends HttpServlet {
 		map.put("userDeletePwCheck.do", new userDeletePwCheck());
 		map.put("pwUpdateCheck.do", new pwUpdateCheck());
 		map.put("bookingCancle.do", new bookingCancle());
-
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

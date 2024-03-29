@@ -325,7 +325,11 @@
 		#{book_id} and EMAIL = #{email}
 	</update>
 
-
+	<!-- 24.03.29 bookingSeat 추가 - 준범 -->
+	<select id="bookingSeat" parameterType="com.smhrd.model.SeatVO"
+		resultType="com.smhrd.model.SeatVO">
+		SELECT * FROM SEAT_INFO WHERE SHTL_ID = #{SHTL_ID} AND SEAT_STATUS = 'Y';
+	</select>
 
 </mapper>
 

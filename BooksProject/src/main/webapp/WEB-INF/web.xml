@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>bookingSeat</servlet-name>
+  	<display-name>bookingSeat</display-name>
+  	<description></description>
+  	<servlet-class>com.smhrd.frontcontroller.bookingSeat</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>bookingSeat</servlet-name>
+  	<url-pattern>/bookingSeat</url-pattern>
+  </servlet-mapping>
 </web-app>

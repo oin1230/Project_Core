@@ -350,5 +350,18 @@ public class DAO {
 		return row;
 
 	}
+	
+	// 24.03.29 bookingSeat 추가 - 준범
+	public List<SeatVO> bookingSeat(SeatVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		List<SeatVO> resultVo = session.selectList("bookingSeat",vo);
+
+		session.close();
+
+		return resultVo;
+	}
+	
 
 }
