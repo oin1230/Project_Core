@@ -7,27 +7,68 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.database.DAO;
 import com.smhrd.model.BoardVO;
+import com.smhrd.model.pageVO;
 
 public class noticeList implements command {
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 	
 		String b_category = request.getParameter("value");
-
-		BoardVO vo = new BoardVO();
+		int page = Integer.parseInt(request.getParameter("page"));
+		int pageView = 5;
+		int Jul = page/5+1;
+		if(page%5==0) {
+			Jul = page/5;
+		}
+		int startPageNum = 25*(Jul-1);
+		System.out.println("111  "+b_category);
+		System.out.println("222  "+page);
+		System.out.println("333  "+pageView);
+		System.out.println("444  "+Jul);
+		System.out.println("555  "+startPageNum);
+	
+		pageVO vo = new pageVO();
 		vo.setB_category(b_category);
-
+		vo.setStartPageNum(startPageNum);
+		
 		DAO dao = new DAO();
-
-		List<BoardVO> boardList = dao.boardList(vo);
-
+		pageVO boardNum2 = dao.boardNum(vo);
+		int boardNum = boardNum2.getBoardNum();
+		System.out.println("666  "+boardNum);
+		
+		if(boardNum<=20) {
+			if(boardNum%5 != 0) {
+				pageView = boardNum/5+1;
+			}else {
+				pageView = boardNum/5;
+			}
+		}else {
+			pageView = 5;
+		}
+		
+		int startNum = page/5*5+1;
+		if(page%5==0) {
+			startNum = page/5;
+		}
+		//System.out.println("stn8888  "+startNum);
+		int endNum = pageView;
+		//System.out.println("en8888   "+endNum);
+		
+		int startPageNum2 = (page-1)*5;
+		pageVO vo2 = new pageVO();
+		vo2.setB_category(b_category);
+		vo2.setStartPageNum(startPageNum2);
+		List<BoardVO> boardList = dao.boardList2(vo2);
+		
 		request.setAttribute("boardList", boardList);
+		request.setAttribute("startNum", startNum);
+		request.setAttribute("endNum", endNum);
+		request.setAttribute("page", page);
+		request.setAttribute("b_category", b_category);
 		
-		request.setAttribute("value", b_category);
+		return "board";
+		
 
-		return "announcement";
-		
-		
 	}
 
 }

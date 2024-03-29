@@ -95,9 +95,9 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="boardList.do?value=1" class="dropdown-item">자유게시판</a> <a
-									href="boardList.do?value=2" class="dropdown-item">질문게시판</a> <a
-									href="boardList.do?value=3" class="dropdown-item">후기게시판</a>
+								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a> <a
+									href="boardList.do?value=2&page=1" class="dropdown-item">질문게시판</a> <a
+									href="boardList.do?value=3&page=1" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -105,7 +105,7 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="noticeList.do?value=4" class="dropdown-item">공지사항</a> <a
+									href="noticeList.do?value=4&page=1" class="dropdown-item">공지사항</a> <a
 									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>

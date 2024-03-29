@@ -16,6 +16,8 @@ import com.smhrd.controller.mainEventlist;
 import com.smhrd.controller.myPage;
 import com.smhrd.controller.myPageAddList;
 import com.smhrd.controller.noticeList;
+import com.smhrd.controller.pageNextCheck;
+import com.smhrd.controller.pagePrevCheck;
 import com.smhrd.controller.progressBar;
 import com.smhrd.controller.boardLikeUpdate;
 import com.smhrd.controller.boardList;
@@ -83,6 +85,8 @@ public class FrontController extends HttpServlet {
 		map.put("pwUpdateCheck.do", new pwUpdateCheck());
 		map.put("bookingCancle.do", new bookingCancle());
 		map.put("bookingUpdate.do", new bookingUpdate());
+		map.put("pagePrevCheck.do", new pagePrevCheck());
+		map.put("pageNextCheck.do", new pageNextCheck());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

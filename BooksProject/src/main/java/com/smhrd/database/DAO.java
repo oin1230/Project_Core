@@ -13,6 +13,7 @@ import com.smhrd.model.BoardLikeVO;
 import com.smhrd.model.ShuttleVO;
 import com.smhrd.model.UserVO;
 import com.smhrd.model.myPageVO;
+import com.smhrd.model.pageVO;
 
 public class DAO {
 
@@ -385,6 +386,28 @@ public class DAO {
 		session.clearCache();
 
 		return row;
+	}
+	
+	public pageVO boardNum(pageVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		pageVO resultVo = session.selectOne("boardNum", vo);
+
+		session.close();
+
+		return resultVo;
+	}
+	
+	public List<BoardVO> boardList2(pageVO vo) {
+
+		SqlSession session = factory.openSession(true);
+
+		List<BoardVO> resultVo = session.selectList("boardList", vo);
+
+		session.close();
+
+		return resultVo;
 	}
 
 }

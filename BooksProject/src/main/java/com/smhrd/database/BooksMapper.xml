@@ -95,7 +95,7 @@
 		WHERE email=#{email} AND b_id=#{b_id}
 	</delete>
 
-	<select id="boardList" parameterType="com.smhrd.model.BoardVO"
+	<select id="boardList" parameterType="com.smhrd.model.pageVO"
 		resultType="com.smhrd.model.BoardVO">
 		SELECT b_title, b_date, b_views, b_likes, b_id, b_category,
 		(SELECT nick FROM
@@ -104,6 +104,7 @@
 		WHERE
 		b_category = #{b_category}
 		ORDER BY B_ID DESC
+		LIMIT #{startPageNum}, 5
 	</select>
 
 	<select id="AFindInfo" parameterType="com.smhrd.model.UserVO"
@@ -356,6 +357,18 @@
 		SEAT_ID FROM SEAT_INFO WHERE SHTL_ID = #{shtl_id} AND SEAT_NUM =
 		#{seat_num}), #{pay}, #{pay_date}, "Y")
 	</insert>
+	
+	<select id="boardNum" parameterType="com.smhrd.model.pageVO"
+		resultType="com.smhrd.model.pageVO">
+		SELECT COUNT(*) AS boardNum
+		FROM (
+		SELECT *
+		FROM BOARD_INFO
+		WHERE
+		b_category = #{b_category}
+		LIMIT #{startPageNum},24 
+		) AS subquery;
+	</select>
 
 </mapper>
 
