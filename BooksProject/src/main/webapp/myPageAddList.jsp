@@ -191,17 +191,19 @@
 										<td><span>${addList.pay}</span></td>
 										<td><span>${addList.pay_date}</span></td>
 										<td><a class="modalOpen"
+											data-book-id="${addList.book_id}"
 											style="text-decoration: underline;">신청취소</a>
 										<td>
-										<div class="modalBg hidden">
-											<div class="modal">
-												<p class="modalText">취소하시겠습니까?</p>
-												<button onclick="cancleCheck(${addList.book_id})">취소하기</button>
-												<button class="modalClose">닫기</button>
-											</div>
-										</div>
 									</tr>
 								</c:forEach>
+								<div class="modalBg hidden">
+									<div class="modal">
+										<p class="modalText">취소하시겠습니까?</p>
+										<button id="cancleCheck" value="0"
+											onclick="cancleCheck(this.value)">취소하기</button>
+										<button class="modalClose">닫기</button>
+									</div>
+								</div>
 							</c:if>
 
 							<c:if test="${addReq ne 'myApply'}">
