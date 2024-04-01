@@ -237,10 +237,10 @@
 							<tbody>
 								<tr>
 									<td class="tBth-td">${shuttle.start_rg}</td>
-									<td class="tBth-td">${shuttle.riding_date}</td>
+									<td class="tBth-td"><%=event_date%></td>
 									<td class="tBth-td allTotAmtLocD">${shuttle.RG_PRICE}</td>
 									<td class="tBth-td">${shuttle.start_date}</td>
-									<td class="tBth-td">${shuttle.end_date}</td>
+									<td class="tBth-td" id="adjustedDate"></td>
 
 
 								</tr>
@@ -347,6 +347,17 @@
 			function category3() {
 				sessionStorage.setItem("b_category", "3");
 			}
+			
+			var eventDateStr = '<%=event_date%>';
+			  var eventDate = new Date(eventDateStr);
+			  eventDate.setDate(eventDate.getDate() - 3);
+			  
+			  var year = eventDate.getFullYear();
+			  var month = ('0' + (eventDate.getMonth() + 1)).slice(-2); // getMonth()는 0부터 시작하므로 1을 더해줍니다.
+			  var day = ('0' + eventDate.getDate()).slice(-2);
+			  var formattedDate = year + '.' + month + '.' + day;
+
+			  document.getElementById('adjustedDate').innerText = formattedDate;
 		</script>
 
 

@@ -860,7 +860,6 @@ h1Title {
 	margin-top: 2%;
 	width: 8%;
 	height: 40px;
-	
 }
 
 .board_view {
@@ -1153,12 +1152,17 @@ h1Title {
 .progressBarContainer {
 	width: 80%;
 	background-color: #ddd;
+	border-radius: 15px;
 }
 
 .progressBar {
 	width: 0%;
-	height: 20px;
+	height: 30px;
 	background-color: #81c408;
+	padding: 1%;
+	text-align: right;
+	font-size: 15px;
+	border-radius: 15px;
 }
 
 .flex-container {
@@ -1549,7 +1553,7 @@ a.on {
 	width: 50%;
 }
 
-.row2{
+.row2 {
 	margin-left: 5%;
 	justify-content: flex-start;
 	float: left;

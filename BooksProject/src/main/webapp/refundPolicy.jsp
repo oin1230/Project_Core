@@ -78,7 +78,8 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1"
+								class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
@@ -138,7 +139,6 @@
 		</div>
 
 
-		<!-- 표 내용 -->
 		<div id="board-list">
 			<div class="container">
 				<table class="board-table">
@@ -152,22 +152,64 @@
 					<tbody>
 						<tr>
 							<td>1</td>
-							<th><a href="#!">환불 규정 - 고객님의 단순변심에 의한 환불의 경우</a></th>
-							<td>2024.03.27</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<th><a href="#!">환불 규정 - 모집 인원미달로 인한 환불의 경우</a></th>
-							<td>2024.03.27</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<th><a href="#!">환불 시 환불액 반환 안내</a></th>
-							<td>2024.03.27</td>
+							<th>
+								<div class="faq-content">
+									<button class="question" id="que-1">
+										<span id="que-1-toggle">+</span><span>환불을 받고싶어요, 어떻게
+											해야하나요?</span>
+									</button>
+									<div class="answer" id="ans-1">
+
+										환불에 대한 규정은 환불규정 페이지에서 자세히 확인하실 수 있습니다.<br> 고객님의 단순변심에 의한
+										환불은 1:1문의글을 작성해주시면 최소 1일 ~ 최장 3일까지의 소요시간에 거쳐서 환불이 진행됩니다.<br>
+										모집인원이 모이지 않아 조기 마감되었을 경우에는 고객님이 원하시는 방법으로 자동으로 환불이 진행됩니다.<br>
+
+									</div>
+								</div>
+							</th>
+							<td>2024.03.21</td>
 						</tr>
 
+						<tr>
+							<td>2</td>
+							<th>
+								<div class="faq-content">
+									<button class="question" id="que-2">
+										<span id="que-2-toggle">+</span><span>제가 원하는 곳으로 가는 버스가
+											없어요 따로 신청하는 방법은 없나요?</span>
+									</button>
+									<div class="answer" id="ans-2">
+										상단의 메뉴바에 있는 BUSTIVAL에 있는 요청하기 게시판을 통하여 신청해주시면 확인 후 도와드릴 수
+										있습니다.<br> 신청에 의한 모집은 확정까지 다소 시간이 걸릴 수 있으니 최소 3일의 여유를 가지고
+										신청을 해주시면 감사하겠습니다.
+									</div>
+								</div>
+							</th>
+							<td>2024.03.21</td>
+						</tr>
+
+						<tr>
+							<td>3</td>
+							<th>
+								<div class="faq-content">
+									<button class="question" id="que-3">
+										<span id="que-3-toggle">+</span><span>버스 운전자인데 서비스 제공 할
+											수 있을까요?</span>
+									</button>
+									<div class="answer" id="ans-3">
+										네 물론입니다.<br> 회원가입을 진행해주실때 우측 하단에 보시면 운전자용 회원가입 탭이 준비되어
+										있습니다.<br> 그 곳을 통해 회원가입 후 당사에서 심사 후 저희 서비스를 이용하실 수 있도록
+										준비되어있습니다.<br>
+									</div>
+								</div>
+							</th>
+							<td>2024.03.21</td>
+						</tr>
 					</tbody>
 				</table>
+				<!-- 해당 부분 관리자 계정만 글 쓰기 버튼 보이게 설정 -->
+				<button type="button" class="addinfo"
+					onclick="addInfo('${boardId}')">글 쓰기</button>
 			</div>
 		</div>
 
