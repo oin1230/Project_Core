@@ -1,5 +1,7 @@
 package com.smhrd.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ public class boardDelete implements command {
 		int b_id = Integer.parseInt(request.getParameter("ValueCategory"));
 		
 		String b_category = request.getParameter("value");
+		String page = request.getParameter("page");
 		
 		HttpSession session = request.getSession();
 		response.setCharacterEncoding("UTF-8");
@@ -40,8 +43,14 @@ public class boardDelete implements command {
 		request.setAttribute("value", b_category);
 		
 		
-		boardList boardListCommand = new boardList();
-        return boardListCommand.execute(request, response);
+		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; // 새로운 페이지 URL 생성
+		try {
+			response.sendRedirect(nextPageURL);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 		
 		
 		

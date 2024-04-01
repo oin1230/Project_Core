@@ -124,9 +124,10 @@
 				<div class="title">
 					<%
 					String value = request.getParameter("value");
+					String page1 = request.getParameter("page");
 					%>
 					<dl>
-						<form action="boardRegister.do?value=<%=value%>" method="post">
+						<form action="boardRegister.do?value=<%=value%>&page=<%=page1%>" method="post">
 							<dt>제목</dt>
 							<dd>
 								<input type="text" placeholder="제목 입력" name="title">
@@ -160,7 +161,7 @@
 				<button type="submit">
 					<a class="on">등록</a>
 				</button>
-				<a href="boardList.do?value=<%=value%>">취소</a>
+				<a href="boardList.do?value=<%=value%>&page=<%=page1%>">취소</a>
 				</form>
 			</div>
 		</div>

@@ -1,5 +1,6 @@
 package com.smhrd.controller;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -21,6 +22,7 @@ public class boardUpdate implements command {
 		// member 세션에 저장된 사용자 이메일 받아오기
 		UserVO sessionVo = (UserVO) session.getAttribute("member");
 		String email = sessionVo.getEmail();
+		String page = request.getParameter("page");
 
 		// 목록의 해당 태그의 value값(b_id) 받아오기
 		int b_id = Integer.parseInt(request.getParameter("valueId"));
@@ -52,8 +54,14 @@ public class boardUpdate implements command {
 		request.setAttribute("b_category", b_category);
 		
 		
-		boardList boardListCommand = new boardList();
-        return boardListCommand.execute(request, response);
+		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; // 새로운 페이지 URL 생성
+		try {
+			response.sendRedirect(nextPageURL);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 
 	}
 

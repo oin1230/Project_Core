@@ -161,9 +161,9 @@
 			<div class="bt_wrap">
 				<a href="boardList.do?value=${boardDetail.b_category}&page=${page}" class="on">목록</a>
 				<c:if test="${member.email == boardDetail.email}">
-					<a href="boardEdit.jsp?value=${boardDetail.b_category}&valueId=${boardDetail.b_id}&valueLike=${boardDetail.b_likes}">수정</a>
+					<a href="boardEdit.jsp?value=${boardDetail.b_category}&valueId=${boardDetail.b_id}&valueLike=${boardDetail.b_likes}&page=${page}">수정</a>
 					<a
-						href="boardDelete.do?value=${boardDetail.b_category}&ValueCategory=${boardDetail.b_id}">삭제</a>
+						href="boardDelete.do?value=${boardDetail.b_category}&ValueCategory=${boardDetail.b_id}&page=${page}">삭제</a>
 				</c:if>
 			</div>
 		</div>

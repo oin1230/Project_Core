@@ -27,6 +27,7 @@ public class boardRegister implements command {
 		String b_title = request.getParameter("title");
 		String b_content = request.getParameter("text");
 		String b_category = request.getParameter("value");
+		String page = request.getParameter("page");
 		
 		//현재 시간 b_date변수에 저장(2024-03-26 11:27:42.979 형식)
 		Timestamp b_date=new Timestamp(System.currentTimeMillis());
@@ -50,8 +51,14 @@ public class boardRegister implements command {
 		request.setAttribute("b_category", b_category);
 		
 
-		boardList boardListCommand = new boardList();
-        return boardListCommand.execute(request, response);
+		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; // 새로운 페이지 URL 생성
+		try {
+			response.sendRedirect(nextPageURL);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 				
 	}
 	

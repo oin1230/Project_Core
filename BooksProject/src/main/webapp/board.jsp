@@ -198,7 +198,7 @@
 			
 			<c:if test="${member != null}">
 			<div class="bt_wrap">
-				<a href="boardWrite.jsp?value=${b_category}" class="on" id="boardRegister">등록</a>
+				<a href="boardWrite.jsp?value=${b_category}&page=${page}" class="on" id="boardRegister">등록</a>
 				<!--<a href="#">수정</a>-->
 			</div>
 			</c:if>

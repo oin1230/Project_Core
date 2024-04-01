@@ -140,9 +140,10 @@
 				String value = request.getParameter("value");
 				String valueId = request.getParameter("valueId");
 				String valueLike = request.getParameter("valueLike");
+				String page1 = request.getParameter("page");
 				
 				%>
-				<form action="boardUpdate.do?value=<%=value%>&valueId=<%=valueId%>&valueLike=<%=valueLike%>" method="post">
+				<form action="boardUpdate.do?value=<%=value%>&valueId=<%=valueId%>&valueLike=<%=valueLike%>&page=<%=page1%>" method="post">
 			<div class="title">
 
 				<dl>
@@ -174,7 +175,7 @@
 			<button type="submit">
 				<a class="on">등록</a>
 			</button>
-			<a href="boardList.do?value=<%=value%>">취소</a>
+			<a href="boardList.do?value=<%=value%>&page=<%=page1%>">취소</a>
 		</div>
 		</form>
 	</div>
