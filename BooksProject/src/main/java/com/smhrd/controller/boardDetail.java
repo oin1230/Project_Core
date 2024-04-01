@@ -17,6 +17,8 @@ public class boardDetail implements command {
 		String b_id = request.getParameter("value");
 		// value값 int형태로 바꿔주기
 		int b_id2 = Integer.parseInt(b_id);
+		String page = request.getParameter("page");
+		
 		
 		
 		// 조회수 업데이트--------------------------
@@ -52,6 +54,8 @@ public class boardDetail implements command {
 		
 		
 		request.setAttribute("b_id", b_id2);
+		request.setAttribute("page", page);
+		
 
 		return "boardView";
 	

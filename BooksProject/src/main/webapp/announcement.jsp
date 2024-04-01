@@ -150,7 +150,7 @@
 					<div>
 						<div class="num">${mvo.b_id}</div>
 						<div class="title">
-							<a href="boardDetail.do?value=${mvo.b_id}">${mvo.b_title}</a>
+							<a href="boardDetail.do?value=${mvo.b_id}&page=${page}">${mvo.b_title}</a>
 						</div>
 						<div class="writer">${mvo.nick}</div>
 						<div class="date">${mvo.b_date}</div>

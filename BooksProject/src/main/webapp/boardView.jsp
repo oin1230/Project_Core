@@ -159,7 +159,7 @@
 				<div class="cont">${boardDetail.b_content}</div>
 			</div>
 			<div class="bt_wrap">
-				<a href="boardList.do?value=${boardDetail.b_category}" class="on">목록</a>
+				<a href="boardList.do?value=${boardDetail.b_category}&page=${page}" class="on">목록</a>
 				<c:if test="${member.email == boardDetail.email}">
 					<a href="boardEdit.jsp?value=${boardDetail.b_category}&valueId=${boardDetail.b_id}&valueLike=${boardDetail.b_likes}">수정</a>
 					<a
