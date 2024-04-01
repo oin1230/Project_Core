@@ -143,11 +143,6 @@
 						</dd>
 					</dl>
 					<dl>
-						<!-- 비밀번호는 글을 수정,삭제하기 위한 비밀번호, 4자리정도로  -->
-						<dt>비밀번호</dt>
-						<dd>
-							<input type="password" placeholder="비밀번호 입력">
-						</dd>
 					</dl>
 				</div>
 				<div class="cont">
