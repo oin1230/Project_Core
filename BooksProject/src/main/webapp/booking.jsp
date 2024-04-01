@@ -73,6 +73,16 @@
 
 
 	<!-- Navbar start -->
+
+	<!-- Spinner Start -->
+	<div id="spinner"
+		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+		<div class="spinner-grow text-primary" role="status"></div>
+	</div>
+	<!-- Spinner End -->
+
+
+	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -93,7 +103,8 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1"
+								class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
@@ -217,7 +228,7 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td colspan="2" class="tBth-td"><%=event_name%></td>
+									<td colspan="2" class="tBth-td" id="eventName"><%=event_name%></td>
 									<td colspan="2" class="tBth-td"><%=event_loc%></td>
 									<td class="tBth-td"><%=event_date%></td>
 								</tr>
