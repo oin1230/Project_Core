@@ -94,7 +94,7 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="noticeList.do?value=4" class="dropdown-item">공지사항</a> <a
+									href="noticeList.do?value=4&page=1" class="dropdown-item">공지사항</a> <a
 									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
@@ -159,16 +159,51 @@
 						<div class="writer">${mvo.nick}</div>
 						<div class="date">${mvo.b_date}</div>
 						<div class="count">${mvo.b_views}</div>
+						<div class="like">${mvo.b_likes}</div>
 					</div>
 				</c:forEach>
+
 			</div>
 			<div class="board_page">
-				<a href="#" class="bt first"> <<</a> <a href="#" class="bt prev">
-					<</a> <a href="#" class="num on">1</a> <a href="#" class="num">2</a> <a
-					href="#" class="num">3</a> <a href="#" class="num">4</a> <a
-					href="#" class="num">5</a> <a href="#" class="bt next">></a> <a
-					href="#" class="bt last">>></a>
+			<% 
+			int startNum = (int)request.getAttribute("startNum"); 
+			int endNum = (int)request.getAttribute("endNum"); 
+			int prevPage = (int)request.getAttribute("page") - 1;
+			int nextPage = (int)request.getAttribute("page") + 1;
+			int LargeNextPage = ((int)request.getAttribute("page")/5+1)*5+1;
+			int LargePrevPage = (int)request.getAttribute("page")/5*5;
+			%>
+				<c:if test="${pagePrevChecking == 'Y'}">
+					<script type="text/javascript">
+						alert("이전 페이지가 없습니다");
+					</script>
+					<%
+					session.setAttribute("pagePrevChecking", "N");
+					%>
+
+				</c:if>
+				<c:if test="${pageNextChecking == 'Y'}">
+					<script type="text/javascript">
+						alert("다음 페이지가 없습니다");
+					</script>
+					<%
+					session.setAttribute("pageNextChecking", "N");
+					%>
+
+				</c:if>
+				
+				<!-- 아래 ${page} 써놓은게 현재 페이지입니다 -->
+				<a class="bt first">${page}page </a>
+				<a href="pagePrevCheck.do?value=${b_category}&page=<%=prevPage%>" class="bt prev"><</a>
+				
+			<% for(int i=startNum; i<startNum+endNum; i++){ %>
+				<a href="boardList.do?value=${b_category}&page=<%=i%>" class="num on"><%=i%></a>
+			<%}%>
+				<a href="pageNextCheck.do?value=${b_category}&page=<%=nextPage%>" class="bt next">></a>
+				
+			
 			</div>
+			
 			
 			<c:if test="${member.email == 'admin' && member.pw == '12345' }">
 			<div class="bt_wrap">

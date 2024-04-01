@@ -25,11 +25,6 @@ public class boardList implements command {
 			Jul = page/5;
 		}
 		int startPageNum = 25*(Jul-1);
-		System.out.println("111  "+b_category);
-		System.out.println("222  "+page);
-		System.out.println("333  "+pageView);
-		System.out.println("444  "+Jul);
-		System.out.println("555  "+startPageNum);
 	
 		pageVO vo = new pageVO();
 		vo.setB_category(b_category);
@@ -38,7 +33,6 @@ public class boardList implements command {
 		DAO dao = new DAO();
 		pageVO boardNum2 = dao.boardNum(vo);
 		int boardNum = boardNum2.getBoardNum();
-		System.out.println("666  "+boardNum);
 		
 		if(boardNum<=20) {
 			if(boardNum%5 != 0) {
@@ -54,9 +48,7 @@ public class boardList implements command {
 		if(page%5==0) {
 			startNum = page/5;
 		}
-		//System.out.println("stn8888  "+startNum);
 		int endNum = pageView;
-		//System.out.println("en8888   "+endNum);
 		
 		int startPageNum2 = (page-1)*5;
 		pageVO vo2 = new pageVO();

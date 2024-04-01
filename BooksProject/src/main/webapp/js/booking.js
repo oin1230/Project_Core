@@ -111,6 +111,7 @@ $("#bookingUpdate").click(function() {
 	var url = "bookingUpdate.do?pay=" + pay + "&seatList=" + seatList + "&shuttleID=" + shuttleID;
 
 	window.location.href = url;
+	
 
 });
 
