@@ -85,23 +85,22 @@ seats.forEach(function(seat) {
 });
 
 
-
+/*
 // 결제하기 버튼을 클릭 시 실행하는 함수
-$("#bookingUpdate").click(function() {
+ $("#bookingUpdate").click(function() {
 
-	console.log("결제하기 버튼이 클릭되었습니다.");
-	console.log("결제할 금액: " + allTotAmtLocD);
-	
+	PayMent();
+
 	// url로부터 주소 가져오기
 	var queryString = window.location.search;
-	
+
 	// 자바스크립트의 내장객체인 URLSearchParams 객체 생성하여 쿼리 문자열 파싱
 	var params = new URLSearchParams(queryString);
-	
+
 	// 파라미터로부터 SHTML_ID 가져와서 uri로 인코딩하기
 	var shuttleID = encodeURIComponent(params.get('SHTL_ID'));
-	
-	console.log(shuttleID);	
+
+	console.log(shuttleID);
 	// 전체 결제 금액 가져오기
 	// uri이 올바르게 작동하지않을경우를 대비해 안정성을 높이기 위한 인코딩 구문 추가
 	var pay = encodeURIComponent($("#allTotAmtLocD").text());
@@ -111,11 +110,12 @@ $("#bookingUpdate").click(function() {
 	var url = "bookingUpdate.do?pay=" + pay + "&seatList=" + seatList + "&shuttleID=" + shuttleID;
 
 	window.location.href = url;
-	
 
 });
+*/
 
 // ///////////////////인영 끝//////////////////
+
 
 // 페이지 로드 시 초기화 함수 실행
 window.onload = function() {

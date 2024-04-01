@@ -51,6 +51,8 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://kit.fontawesome.com/fdb678099a.js"
 	crossorigin="anonymous"></script>
+<script type="text/JavaScript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 
 
 </head>
@@ -95,9 +97,9 @@
 							<a href="#" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a> <a
-									href="boardList.do?value=2&page=1" class="dropdown-item">질문게시판</a> <a
-									href="boardList.do?value=3&page=1" class="dropdown-item">후기게시판</a>
+								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
+								<a href="boardList.do?value=2&page=1" class="dropdown-item">질문게시판</a>
+								<a href="boardList.do?value=3&page=1" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -105,8 +107,8 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="noticeList.do?value=4&page=1" class="dropdown-item">공지사항</a> <a
-									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
+									href="noticeList.do?value=4&page=1" class="dropdown-item">공지사항</a>
+								<a href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
 					</div>
@@ -261,9 +263,7 @@
 					</div>
 					<div class="btnPay">
 						<button class="btn btn-one btn-lg btn-block btn-price"
-							type="button">
-							<a id="bookingUpdate" href="#">결제하기</a>
-						</button>
+							type="button" onclick="PayMent()">결제하기</button>
 					</div>
 				</div>
 			</div>
@@ -352,6 +352,7 @@
 		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
 		<script src="js/booking.js"></script>
+		<script src="js/payment.js"></script>
 </body>
 
 </html>
