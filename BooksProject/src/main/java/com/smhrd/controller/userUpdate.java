@@ -43,8 +43,6 @@ public class userUpdate implements command {
 		// dao.userUpdate 기능 사용
 		dao.userUpdate(vo);
 
-		request.getSession().setAttribute("member", vo);
-
 		return "redirect:/gomyPage.do";
 	}
 
