@@ -32,9 +32,17 @@ public class pwUpdate implements command {
 		}
 
 		DAO dao = new DAO();
-		int row = dao.pwUpdate(vo);
-
-		session.setAttribute("row", row);
+		dao.pwUpdate(vo);
+		
+		UserVO vo2 = new UserVO();
+		vo2.setEmail(email);
+		vo2.setPw(newPw);
+		
+		UserVO resultVo = dao.Login(vo2);
+		
+		session.setAttribute("member", resultVo);
+		
+		
 
 		return "redirect:/gomyPage.do";
 
