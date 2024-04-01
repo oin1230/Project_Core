@@ -80,7 +80,8 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1"
+								class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
@@ -197,7 +198,7 @@
 									</tr>
 								</c:forEach>
 								<div class="modalBg hidden">
-									<div class="modal">
+									<div class="modal" align ="center">
 										<p class="modalText">취소하시겠습니까?</p>
 										<button id="cancleCheck" value="0"
 											onclick="cancleCheck(this.value)">취소하기</button>
