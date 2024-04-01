@@ -860,6 +860,7 @@ h1Title {
 	margin-top: 2%;
 	width: 8%;
 	height: 40px;
+	
 }
 
 .board_view {
@@ -1490,6 +1491,8 @@ p.boardTalk {
 .bt_wrap {
 	width: 15%;
 	height: 40px;
+	float: right;
+	text-align: right;
 }
 
 a.on {

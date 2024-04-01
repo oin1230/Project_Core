@@ -74,20 +74,19 @@
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
 						<div class="nav-item dropdown">
-							<a href="#" class="nav-item nav-link dropdown-toggle"
+							<a href="goenroll.do" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BUSTIVAL</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="goenroll.do" class="dropdown-item">신청게시판</a> <a
-									href="#" class="dropdown-item">요청게시판</a>
+								<a href="goenroll.do" class="dropdown-item">신청게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="#" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a> <a
-									href="boardList.do?value=2&page=1" class="dropdown-item">질문게시판</a> <a
-									href="boardList.do?value=3&page=1" class="dropdown-item">후기게시판</a>
+								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
+								<a href="boardList.do?value=2&page=1" class="dropdown-item">질문게시판</a>
+								<a href="boardList.do?value=3&page=1" class="dropdown-item">후기게시판</a>
 							</div>
 						</div>
 						<div class="nav-item dropdown">
@@ -95,19 +94,19 @@
 								data-bs-toggle="dropdown">INFO CENTER</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="qna.jsp" class="dropdown-item">Q&A</a> <a
-									href="noticeList.do?value=4&page=1" class="dropdown-item">공지사항</a> <a
-									href="refund_Policy.jsp" class="dropdown-item">환불규정</a>
+									href="noticeList.do?value=4&page=1" class="dropdown-item">공지사항</a>
+								<a href="gorefundPolicy.do" class="dropdown-item">환불규정</a>
 							</div>
 						</div>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<c:if test="${member == null }">
 							<!-- 로그인X 시 나타날 회원가입 버튼 -->
-							<a href="signin.jsp" class="my-auto"> <i
+							<a href="gosignin.do" class="my-auto"> <i
 								class="fa-solid fa-pen-nib fa-2xl"></i>
 							</a>
 							<!-- 로그인X 시 나타날 로그인 버튼 -->
-							<a href="login.jsp" class="my-auto"> <i
+							<a href="gologin.do" class="my-auto"> <i
 								class="fas fa-user fa-2x"></i>
 							</a>
 						</c:if>
@@ -171,7 +170,7 @@
 																value="${event2.event_loc}">
 															<button class="btn btn-one btn-lg btn-block"
 																type="submit">상세보기</button>
-																</form>
+														</form>
 													</div>
 												</div>
 											</div>
@@ -190,27 +189,19 @@
 
 		<div class="swiper mySwiper">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<img src="./img/5.gif" alt="">
-				</div>
-				<div class="swiper-slide">
-					<img src="./img/6.gif" alt="">
-				</div>
-				<div class="swiper-slide">
-					<img src="./img/7.gif" alt="">
-				</div>
-				<div class="swiper-slide">
-					<img src="./img/4.gif" alt="">
-				</div>
-				<div class="swiper-slide">
-					<img src="./img/1.gif" alt="">
-				</div>
-				<div class="swiper-slide">
-					<img src="./img/2.gif" alt="">
-				</div>
-				<div class="swiper-slide">
-					<img src="./img/3.gif" alt="">
-				</div>
+				<c:forEach var="event2" items="${mainEventlist}">
+					<div class="swiper-slide">
+						<form id="event2Form" action="progressBar.do" method="post">
+							<input type="hidden" name="event_id" value="${event2.event_id}">
+							<input type="hidden" name="event_img" value="${event2.event_img}">
+							<input type="hidden" name="event_name"
+								value="${event2.event_name}"> <input type="hidden"
+								name="event_date" value="${event2.event_date}"> <input
+								type="hidden" name="event_loc" value="${event2.event_loc}">
+							<img src="${event2.event_img}" alt="" onclick="submitForm(this)">
+						</form>
+					</div>
+				</c:forEach>
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -262,6 +253,17 @@
 				}
 				function category3() {
 					sessionStorage.setItem("b_category", "3");
+				}
+			</script>
+
+			<script>
+				function submitForm(imgElement) {
+					// form 요소를 찾기 위해 클릭된 이미지의 부모 요소(여기서는 form)를 찾습니다.
+					var form = imgElement.closest('form');
+					// form이 존재하면 제출합니다.
+					if (form) {
+						form.submit();
+					}
 				}
 			</script>
 
