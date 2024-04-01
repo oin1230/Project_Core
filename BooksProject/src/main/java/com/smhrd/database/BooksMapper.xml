@@ -104,7 +104,8 @@
 		WHERE
 		b_category = #{b_category}
 		ORDER BY B_ID DESC
-		LIMIT #{startPageNum}, 5
+		LIMIT
+		#{startPageNum}, 5
 	</select>
 
 	<select id="AFindInfo" parameterType="com.smhrd.model.UserVO"
@@ -329,9 +330,10 @@
 	<update id="bookingCancle"
 		parameterType="com.smhrd.model.myPageVO">
 		UPDATE BOOK_INFO
-		SET PAY_STATE = "R"
-		WHERE BOOK_ID =
-		#{book_id} and EMAIL = #{email}
+		INNER JOIN SEAT_INFO
+		ON BOOK_INFO.SEAT_ID = SEAT_INFO.SEAT_ID
+		SET BOOK_INFO.PAY_STATE = "R", SEAT_INFO.SEAT_STATUS = "N"
+		WHERE BOOK_INFO.BOOK_ID = #{book_id}
 	</update>
 
 	<!-- 24.03.29 bookingSeat 추가 - 준범 -->
@@ -357,7 +359,7 @@
 		SEAT_ID FROM SEAT_INFO WHERE SHTL_ID = #{shtl_id} AND SEAT_NUM =
 		#{seat_num}), #{pay}, #{pay_date}, "Y")
 	</insert>
-	
+
 	<select id="boardNum" parameterType="com.smhrd.model.pageVO"
 		resultType="com.smhrd.model.pageVO">
 		SELECT COUNT(*) AS boardNum
@@ -366,7 +368,7 @@
 		FROM BOARD_INFO
 		WHERE
 		b_category = #{b_category}
-		LIMIT #{startPageNum},24 
+		LIMIT #{startPageNum},24
 		) AS subquery;
 	</select>
 
