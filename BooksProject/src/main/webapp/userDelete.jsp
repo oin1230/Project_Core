@@ -125,9 +125,6 @@
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">회원탈퇴</h1>
-		<ol class="breadcrumb justify-content-center mb-0">
-			<h2>본인확인을 위해 정확한 비밀번호를 입력해주세요.</h2>
-		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
@@ -198,28 +195,22 @@
 	</div>
 
 
-	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-		<div class="pb-4 mb-4 logo"
-			style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
-			<img id="footerLogo" src="./img/ft_logo.png" alt="">
-		</div>
-		<!-- Footer End -->
-
-		<!-- Copyright Start -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-					<span class="text-light"><a href="#"><i
-							class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a> Books Team</span>
-					<br> <span><a href="#">깃허브 주소</a></span>
-					<!--깃허브 주소 넣기.-->
-				</div>
-				<div class="col-md-6 my-auto text-center text-md-end text-white">
-					<a href="https://smhrd.or.kr/">스마트인재개발원</a>
-				</div>
+	<!-- Footer Start -->
+		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+			<div class="pb-4 mb-4 logo"
+				style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
+				<img id="footerLogo" src="./img/ft_logo.png" alt="">
 			</div>
-		</div>
-		<!-- Copyright End -->
+			<!-- Footer End -->
+
+			<!-- Copyright Start -->
+			<div class="container">
+				<span class="text-light"><a href="#"><i
+						class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a></span> <br> <span><a
+					href="#">깃허브 주소</a></span> <br> <a href="https://smhrd.or.kr/">스마트인재개발원</a>
+				<!--깃허브 주소 넣기.-->
+			</div>
+			<!-- Copyright End -->
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<script

@@ -155,15 +155,12 @@
 							<th>
 								<div class="faq-content">
 									<button class="question" id="que-1">
-										<span id="que-1-toggle">+</span><span>환불을 받고싶어요, 어떻게
-											해야하나요?</span>
+										<span id="que-1-toggle">+</span><span>예약 취소 및 환불 요청</span>
 									</button>
 									<div class="answer" id="ans-1">
-
-										환불에 대한 규정은 환불규정 페이지에서 자세히 확인하실 수 있습니다.<br> 고객님의 단순변심에 의한
-										환불은 1:1문의글을 작성해주시면 최소 1일 ~ 최장 3일까지의 소요시간에 거쳐서 환불이 진행됩니다.<br>
-										모집인원이 모이지 않아 조기 마감되었을 경우에는 고객님이 원하시는 방법으로 자동으로 환불이 진행됩니다.<br>
-
+										1. 고객은 예약한 버스 대절 서비스를 시작하기 전에 언제든지 예약을 취소할 수 있습니다.<br> 2.
+										환불 요청은 전화, 이메일 또는 홈페이지를 통해 접수될 수 있습니다.<br> 3. 환불 금액은 예약
+										취소 시점에 따라 달라집니다.<br>
 									</div>
 								</div>
 							</th>
@@ -175,13 +172,11 @@
 							<th>
 								<div class="faq-content">
 									<button class="question" id="que-2">
-										<span id="que-2-toggle">+</span><span>제가 원하는 곳으로 가는 버스가
-											없어요 따로 신청하는 방법은 없나요?</span>
+										<span id="que-2-toggle">+</span><span>환불 가능 금액</span>
 									</button>
 									<div class="answer" id="ans-2">
-										상단의 메뉴바에 있는 BUSTIVAL에 있는 요청하기 게시판을 통하여 신청해주시면 확인 후 도와드릴 수
-										있습니다.<br> 신청에 의한 모집은 확정까지 다소 시간이 걸릴 수 있으니 최소 3일의 여유를 가지고
-										신청을 해주시면 감사하겠습니다.
+										1. 모집 시작일로부터 5일 이내: 전액 환불<br> 2. 셔틀 마감일 이전의 취소: 예약금의 90%
+										환불<br> 3. 셔틀 마감일 이후의 취소: 예약금의 50% 환불<br>
 									</div>
 								</div>
 							</th>
@@ -193,13 +188,13 @@
 							<th>
 								<div class="faq-content">
 									<button class="question" id="que-3">
-										<span id="que-3-toggle">+</span><span>버스 운전자인데 서비스 제공 할
-											수 있을까요?</span>
+										<span id="que-3-toggle">+</span><span>환불 처리 기간</span>
 									</button>
 									<div class="answer" id="ans-3">
-										네 물론입니다.<br> 회원가입을 진행해주실때 우측 하단에 보시면 운전자용 회원가입 탭이 준비되어
-										있습니다.<br> 그 곳을 통해 회원가입 후 당사에서 심사 후 저희 서비스를 이용하실 수 있도록
-										준비되어있습니다.<br>
+										1. 환불 요청이 접수된 후, 환불 처리에는 최대 7일(영업일 기준)이 소요될 수 있습니다.<br>
+										2. 환불은 원래 결제 방식을 통해 이루어집니다.<br> 3. 단, 모집인원 미달로 인한 취소 및
+										자연재해, 정부의 강제 조치 등 불가항력적인 사유로 인한 예약 취소의 경우, 전액 환불이 가능하며 최대
+										1일(영업일 기준)이내에 환불 진행됩니다.<br>
 									</div>
 								</div>
 							</th>
@@ -233,7 +228,29 @@
 		</div>
 		<!-- Copyright End -->
 
+		<script>
 
+
+		const items = document.querySelectorAll('.question');
+
+		function openCloseAnswer() {
+		  const answerId = this.id.replace('que', 'ans');
+		  const answerElement = document.getElementById(answerId);
+
+		  if (answerElement.style.display === 'block' || answerElement.style.display === '') {
+		    answerElement.style.display = 'none';
+		    document.getElementById(this.id + '-toggle').textContent = '+';
+		  } else {
+		    answerElement.style.display = 'block';
+		    document.getElementById(this.id + '-toggle').textContent = '-';
+		  }
+		}
+
+		items.forEach(item => item.addEventListener('click', openCloseAnswer));
+
+
+
+		</script>
 
 
 

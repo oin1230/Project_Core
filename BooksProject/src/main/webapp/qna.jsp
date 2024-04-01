@@ -163,7 +163,7 @@
 									<div class="answer" id="ans-1">
 									
 										환불에 대한 규정은 환불규정 페이지에서 자세히 확인하실 수 있습니다.<br> 고객님의 단순변심에 의한
-										환불은 1:1문의글을 작성해주시면 최소 1일 ~ 최장 3일까지의 소요시간에 거쳐서 환불이 진행됩니다.<br>
+										환불은 질문게시판에 글을 작성해주시면 최소 1일 ~ 최장 7일까지의 소요시간에 거쳐서 환불이 진행됩니다.<br>
 										모집인원이 모이지 않아 조기 마감되었을 경우에는 고객님이 원하시는 방법으로 자동으로 환불이 진행됩니다.<br>
 
 									</div>
@@ -181,7 +181,7 @@
 											없어요 따로 신청하는 방법은 없나요?</span>
 									</button>
 									<div class="answer" id="ans-2">
-										상단의 메뉴바에 있는 BUSTIVAL에 있는 요청하기 게시판을 통하여 신청해주시면 확인 후 도와드릴 수
+										상단의 메뉴바에 있는 BOARD에 있는 질문 게시판을 통하여 신청해주시면 확인 후 도와드릴 수
 										있습니다.<br> 신청에 의한 모집은 확정까지 다소 시간이 걸릴 수 있으니 최소 3일의 여유를 가지고
 										신청을 해주시면 감사하겠습니다.
 									</div>
@@ -234,7 +234,29 @@
 		<!-- Copyright End -->
 
 
+		<script>
 
+
+		const items = document.querySelectorAll('.question');
+
+		function openCloseAnswer() {
+		  const answerId = this.id.replace('que', 'ans');
+		  const answerElement = document.getElementById(answerId);
+
+		  if (answerElement.style.display === 'block' || answerElement.style.display === '') {
+		    answerElement.style.display = 'none';
+		    document.getElementById(this.id + '-toggle').textContent = '+';
+		  } else {
+		    answerElement.style.display = 'block';
+		    document.getElementById(this.id + '-toggle').textContent = '-';
+		  }
+		}
+
+		items.forEach(item => item.addEventListener('click', openCloseAnswer));
+
+
+
+		</script>
 
 
 		<!-- JavaScript Libraries -->
