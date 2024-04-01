@@ -306,7 +306,6 @@
 
 
 		<script>
-			// 페이지가 로드되면 바로 bookingSeat.java에 데이터 요청
 
 			$(document)
 					.ready(
@@ -321,11 +320,9 @@
 									},
 									dataType : "json",
 									success : function(bookingSeat) {
-										// 서버로부터 받은 seatList는 SEAT_NUM을 포함하는 객체의 배열입니다.
 										bookingSeat.forEach(function(seat) {
-											// SEAT_STATUS가 'occupied'인 경우에만 클래스를 변경합니다.
 											if (seat.SEAT_STATUS === 'Y') {
-												var seatNum = seat.SEAT_NUM; // SEAT_NUM 사용
+												var seatNum = seat.SEAT_NUM; 
 												$("#" + seatNum).removeClass(
 														"seat").addClass(
 														"seatOccupied");
