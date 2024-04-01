@@ -49,15 +49,6 @@
 
 
 <body>
-	<!-- Spinner Start -->
-	<div id="spinner"
-		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-		<div class="spinner-grow text-primary" role="status"></div>
-	</div>
-	<!-- Spinner End -->
-
-
-	<!-- Navbar start -->
 	
 <!-- Spinner Start -->
 	<div id="spinner"
@@ -141,7 +132,6 @@
 
 
 
-	<!-- 표표표표표표표표 -->
 	<section class="notice">
 		<div class="page-title">
 			<div class="container">
@@ -151,7 +141,6 @@
 
 
 
-		<!-- 표 내용 -->
 		<div id="board-list">
 			<div class="container">
 				<table class="board-table">
@@ -172,6 +161,7 @@
 											해야하나요?</span>
 									</button>
 									<div class="answer" id="ans-1">
+									
 										환불에 대한 규정은 환불규정 페이지에서 자세히 확인하실 수 있습니다.<br> 고객님의 단순변심에 의한
 										환불은 1:1문의글을 작성해주시면 최소 1일 ~ 최장 3일까지의 소요시간에 거쳐서 환불이 진행됩니다.<br>
 										모집인원이 모이지 않아 조기 마감되었을 경우에는 고객님이 원하시는 방법으로 자동으로 환불이 진행됩니다.<br>
