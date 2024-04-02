@@ -11,21 +11,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BUSTIVAL</title>
-</head>
-
-<body>
-	<div class="board_wrap">
-		<div class="board_title">
-			<strong>공지사항</strong>
-			<p>공지사항을 빠르고 정확하게 안내해드립니다.</p>
-		</div>
-		<!DOCTYPE html>
-		<html lang="ko">
-
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -60,8 +45,8 @@
 </head>
 
 <body>
-	
-<!-- Spinner Start -->
+
+	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
 		<div class="spinner-grow text-primary" role="status"></div>
@@ -90,7 +75,8 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1"
+								class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
@@ -132,50 +118,69 @@
 		</div>
 	</div>
 	<!-- Navbar End -->
-
 <body class="board">
-	<div class="board_write_wrap">
-		<div class="board_write">
-				<%
-				String value = request.getParameter("value");
-				String valueId = request.getParameter("valueId");
-				String valueLike = request.getParameter("valueLike");
-				String page1 = request.getParameter("page");
-				
-				%>
-				<form action="boardUpdate.do?value=<%=value%>&valueId=<%=valueId%>&valueLike=<%=valueLike%>&page=<%=page1%>" method="post">
-			<div class="title">
+	<%
+	String value = request.getParameter("value");
+	String valueId = request.getParameter("valueId");
+	String valueLike = request.getParameter("valueLike");
+	String page1 = request.getParameter("page");
+	%>
+	<div class="board_wrap">
+		<div class="board_title">
+			<%
+			if (value.equals("1")) {
+			%>
+			<strong>자유게시판</strong>
+			<%
+			} else if (value.equals("2")) {
+			%>
+			<strong>질문게시판</strong>
+			<%
+			} else if (value.equals("3")) {
+			%>
+			<strong>후기게시판</strong>
+			<%
+			}
+			%>
+		</div>
+		<div class="board_write_wrap">
+			<div class="board_write">
+				<form
+					action="boardUpdate.do?value=<%=value%>&valueId=<%=valueId%>&valueLike=<%=valueLike%>&page=<%=page1%>"
+					method="post">
+					<div class="title">
 
-				<dl>
-						<dt>제목</dt>
-						<dd>
-							<input type="text" name="title" placeholder="제목 입력" value=${boardDetail.b_title} >
-						</dd>
-				</dl>
+						<dl>
+							<dt>제목</dt>
+							<dd>
+								<input type="text" name="title" placeholder="제목 입력"
+									value=${boardDetail.b_title} >
+							</dd>
+						</dl>
+					</div>
+					<div class="info">
+						<dl>
+							<dt>글쓴이</dt>
+							<dd>
+								<input type="text" placeholder="글쓴이 입력" value=${member.nick}>
+							</dd>
+						</dl>
+						<dl>
+
+						</dl>
+					</div>
+					<div class="cont">
+						<textarea placeholder="내용 입력" name="text">${boardDetail.b_content}</textarea>
+					</div>
 			</div>
-			<div class="info">
-				<dl>
-					<dt>글쓴이</dt>
-					<dd>
-						<input type="text" placeholder="글쓴이 입력" value=${member.nick}>
-					</dd>
-				</dl>
-				<dl>
-					
-				</dl>
+			<div class="bt_wrap">
+				<button type="submit">
+					<a class="on">등록</a>
+				</button>
+				<a href="boardList.do?value=<%=value%>&page=<%=page1%>">취소</a>
 			</div>
-			<div class="cont">
-				<textarea placeholder="내용 입력" name="text" >${boardDetail.b_content}</textarea>
-			</div>
+			</form>
 		</div>
-		<div class="bt_wrap">
-			<button type="submit">
-				<a class="on">등록</a>
-			</button>
-			<a href="boardList.do?value=<%=value%>&page=<%=page1%>">취소</a>
-		</div>
-		</form>
-	</div>
 	</div>
 </body>
 <!-- Footer Start -->
