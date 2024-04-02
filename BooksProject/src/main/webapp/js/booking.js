@@ -33,17 +33,28 @@ const seatNum = [];
 seats.forEach(function(seat) {
 	seat.addEventListener('click', function() {
 
-		if (!seat.classList.contains('occupied')) {
+		if (!seat.classList.contains('seatOccupied')) {
 			seat.classList.toggle('selected');
+		}
 
+
+		if (!seat.classList.contains('seatOccupied')) {
+			// 선택된 좌석의 번호를 변수에 저장
 			const seatNumber = parseInt(seat.textContent);
 
+			// 좌석의 번호가 배열에 저장되어 있는지를 확인
+			// 번호가 없다면 -1 반환, 있다면 해당 인덱스 반환
 			const index = seatNum.indexOf(seatNumber);
 			if (index === -1) {
+				// 인덱스가 -1이라면 해당 좌석의 번호를 인덱스에 저장
 				seatNum.push(seatNumber);
 			} else {
+				// 인덱스가 반환된다면, 해당 인덱스를 지우겠다. (index번호, index로부터 지울 갯수)
+				// 인덱스번호가 0이반환되다면, 지울 갯수가 1일경우, 0 을 지움
 				seatNum.splice(index, 1);
 			}
+		} else if (seat.classList.contains('seatOccupied')) {
+			alert("예매가 불가능합니다.");
 		}
 
 		console.log('선택된 좌석:', seatNum);
