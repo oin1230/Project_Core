@@ -115,19 +115,34 @@
 	</div>
 	<!-- Navbar End -->
 <body class="board">
+	<%
+	String value = request.getParameter("value");
+	String page1 = request.getParameter("page");
+	%>
 	<div class="board_wrap">
 		<div class="board_title">
-			<strong>공지사항</strong>
+			<%
+			if (value.equals("1")) {
+			%>
+			<strong>자유게시판</strong>
+			<%
+			} else if (value.equals("2")) {
+			%>
+			<strong>질문게시판</strong>
+			<%
+			} else if (value.equals("3")) {
+			%>
+			<strong>후기게시판</strong>
+			<%
+			}
+			%>
 		</div>
 		<div class="board_write_wrap">
 			<div class="board_write">
 				<div class="title">
-					<%
-					String value = request.getParameter("value");
-					String page1 = request.getParameter("page");
-					%>
 					<dl>
-						<form action="boardRegister.do?value=<%=value%>&page=<%=page1%>" method="post">
+						<form action="boardRegister.do?value=<%=value%>&page=<%=page1%>"
+							method="post">
 							<dt>제목</dt>
 							<dd>
 								<input type="text" placeholder="제목 입력" name="title">

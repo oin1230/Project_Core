@@ -161,10 +161,7 @@
 					</dd>
 				</dl>
 				<dl>
-					<dt>비밀번호</dt>
-					<dd>
-						<input type="password" placeholder="비밀번호 입력">
-					</dd>
+					
 				</dl>
 			</div>
 			<div class="cont">
