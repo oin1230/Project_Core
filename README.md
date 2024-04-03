@@ -1,41 +1,40 @@
 # :pushpin: goQuality
->고퀄리티 개발 컨텐츠 공유 서비스  
-> 데모사이트 링크
+> 버스 전세 시스템을 이용한 전자상거래
 
 </br>
 
 ## 1. 제작 기간 & 참여 인원
-- 2019년 2월 18일 ~ 4월 5일
-- 개인 프로젝트
+- 2024년 3월 18일 ~ 4월 2일
+- 5인 (박준범, 이병헌, 오인영, 정규원, 김상원)
 
 </br>
 
 ## 2. 사용 기술
 #### `Back-end`
-  - Java 8
-  - Spring Boot 2.3
-  - Gradle
-  - Spring Data JPA
-  - QueryDSL
-  - H2
-  - MySQL 5.7
-  - Spring Security
-  - Jsoup
+  - Java
+    
 #### `Front-end`
-  - Vue.js 3.0
-  - Element UI
+  - Html
+  - css
+  - Js
+    
+#### `IDE`
+  - Eclipse
+  - Visual Studio Code
+    
+#### `Server`
+  - Apache Tomcat
 
 </br>
 
 ## 3. ERD 설계
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/final_erd.png)
-![](https://github.com/JungHyung2/gitio.io/blob/master/assets/images/portfolio/p1.jpg)
+![](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/webapp/img/ERD.jpg)
 
 
 ## 4. 핵심 기능
-이 서비스의 핵심 기능은 컨텐츠 등록 기능입니다.  
-사용자는 단지 컨텐츠의 카테고리를 선택하고, URL만 입력하면 끝입니다.  
-이 단순한 기능의 흐름을 보면, 서비스가 어떻게 동작하는지 알 수 있습니다.  
+이 서비스의 핵심 기능은 콘서트를 확인 후 버스현황을 파악하고 전세버스의 좌석현황 및 예약기능입니다.</br>
+사용자는 콘서트를 예매하고 다른 지역으로 가고자 할 때 전세버스의 좌석현황을 보고 자신이 원하는 자리를 예약하면 됩니다.</br>
+기능의 상세한 설명은 다음에 준비되어있습니다.</br>
 
 <details>
 <summary><b>핵심 기능 설명 펼치기</b></summary>
