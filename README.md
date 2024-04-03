@@ -71,11 +71,15 @@
 
 ## 5. 핵심 트러블 슈팅
 ### 5.1. 메인페이지 접속 시 이벤트 목록을 불러오지 못하는 현상
+### 수정 전
 ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/95b50124-2f74-47fc-b1f2-dc5b338c3590)
 
 - 메인페이지 접속 시 마감일 임박순으로 목록을 불러와야 하지만, 목록을 불러오지 못함
-- ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/3d062cf7-9c7f-4711-bd1a-813fd967f75b)
-- 해당 코드 추가로 문제 해결
+  ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/cc3d446e-e328-4779-818f-f299433ea05f)
+- 코드 추가로 문제 해결
+### 수정 후
+  ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/6507e4f9-873c-432f-b51b-f8ba175e38d8)
+
 
 
 - 하지만 [무한스크롤, 페이징 혹은 “더보기” 버튼? 어떤 걸 써야할까](https://cyberx.tistory.com/82) 라는 글을 읽고 무한 스크롤의 단점들을 알게 되었고,  
