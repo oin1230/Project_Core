@@ -12,14 +12,12 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
 	rel="stylesheet">
 
-<!-- Icon Font Stylesheet -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 <link
@@ -31,14 +29,10 @@
 <link href="lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
-
-<!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 
-<!-- sidebar -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -47,18 +41,13 @@
 	crossorigin="anonymous"></script>
 </head>
 
-
 <body>
-	
-<!-- Spinner Start -->
+
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
 		<div class="spinner-grow text-primary" role="status"></div>
 	</div>
-	<!-- Spinner End -->
 
-
-	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -79,7 +68,8 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1"
+								class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
@@ -120,17 +110,10 @@
 			</nav>
 		</div>
 	</div>
-	<!-- Navbar End -->
 
-
-	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">QNA</h1>
 	</div>
-	<!-- Single Page Header End -->
-
-
-
 
 	<section class="notice">
 		<div class="page-title">
@@ -138,8 +121,6 @@
 				<img class="qna-img" src="./img/QnA.png" alt="">
 			</div>
 		</div>
-
-
 
 		<div id="board-list">
 			<div class="container">
@@ -161,7 +142,7 @@
 											해야하나요?</span>
 									</button>
 									<div class="answer" id="ans-1">
-									
+
 										환불에 대한 규정은 환불규정 페이지에서 자세히 확인하실 수 있습니다.<br> 고객님의 단순변심에 의한
 										환불은 질문게시판에 글을 작성해주시면 최소 1일 ~ 최장 7일까지의 소요시간에 거쳐서 환불이 진행됩니다.<br>
 										모집인원이 모이지 않아 조기 마감되었을 경우에는 고객님이 원하시는 방법으로 자동으로 환불이 진행됩니다.<br>
@@ -181,9 +162,9 @@
 											없어요 따로 신청하는 방법은 없나요?</span>
 									</button>
 									<div class="answer" id="ans-2">
-										상단의 메뉴바에 있는 BOARD에 있는 질문 게시판을 통하여 신청해주시면 확인 후 도와드릴 수
-										있습니다.<br> 신청에 의한 모집은 확정까지 다소 시간이 걸릴 수 있으니 최소 3일의 여유를 가지고
-										신청을 해주시면 감사하겠습니다.
+										상단의 메뉴바에 있는 BOARD에 있는 질문 게시판을 통하여 신청해주시면 확인 후 도와드릴 수 있습니다.<br>
+										신청에 의한 모집은 확정까지 다소 시간이 걸릴 수 있으니 최소 3일의 여유를 가지고 신청을 해주시면
+										감사하겠습니다.
 									</div>
 								</div>
 							</th>
@@ -216,26 +197,19 @@
 		</div>
 	</section>
 
-	<!-- Footer Start -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
 		<div class="pb-4 mb-4 logo"
 			style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
 			<img id="footerLogo" src="./img/ft_logo.png" alt="">
 		</div>
-		<!-- Footer End -->
 
-		<!-- Copyright Start -->
 		<div class="container">
 			<span class="text-light"><a href="#"><i
 					class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a></span> <br> <span><a
 				href="#">깃허브 주소</a></span> <br> <a href="https://smhrd.or.kr/">스마트인재개발원</a>
-			<!--깃허브 주소 넣기.-->
 		</div>
-		<!-- Copyright End -->
-
 
 		<script>
-
 
 		const items = document.querySelectorAll('.question');
 
@@ -254,12 +228,8 @@
 
 		items.forEach(item => item.addEventListener('click', openCloseAnswer));
 
-
-
 		</script>
 
-
-		<!-- JavaScript Libraries -->
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<script
@@ -269,8 +239,6 @@
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
-		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
 </body>
 

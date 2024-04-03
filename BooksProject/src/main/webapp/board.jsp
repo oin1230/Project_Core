@@ -14,45 +14,35 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
 	rel="stylesheet">
 
-<!-- Icon Font Stylesheet -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
 
-<!-- Libraries Stylesheet -->
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 <link href="lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
-
-<!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Template Stylesheet -->
 <link href="css/style.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/fdb678099a.js"
 	crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
 		<div class="spinner-grow text-primary" role="status"></div>
 	</div>
-	<!-- Spinner End -->
 
-
-	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -73,7 +63,8 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1"
+								class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
@@ -114,8 +105,6 @@
 			</nav>
 		</div>
 	</div>
-	<!-- Navbar End -->
-
 
 	<!--게시판 시작-->
 <body class="board">
@@ -157,14 +146,14 @@
 
 			</div>
 			<div class="board_page">
-			<% 
-			int startNum = (int)request.getAttribute("startNum"); 
-			int endNum = (int)request.getAttribute("endNum"); 
-			int prevPage = (int)request.getAttribute("page") - 1;
-			int nextPage = (int)request.getAttribute("page") + 1;
-			int LargeNextPage = ((int)request.getAttribute("page")/5+1)*5+1;
-			int LargePrevPage = (int)request.getAttribute("page")/5*5;
-			%>
+				<%
+				int startNum = (int) request.getAttribute("startNum");
+				int endNum = (int) request.getAttribute("endNum");
+				int prevPage = (int) request.getAttribute("page") - 1;
+				int nextPage = (int) request.getAttribute("page") + 1;
+				int LargeNextPage = ((int) request.getAttribute("page") / 5 + 1) * 5 + 1;
+				int LargePrevPage = (int) request.getAttribute("page") / 5 * 5;
+				%>
 				<c:if test="${pagePrevChecking == 'Y'}">
 					<script type="text/javascript">
 						alert("이전 페이지가 없습니다");
@@ -183,24 +172,31 @@
 					%>
 
 				</c:if>
-				
+
 				<!-- 아래 ${page} 써놓은게 현재 페이지입니다 -->
-				<a class="bt first">${page}page </a>
-				<a href="pagePrevCheck.do?value=${b_category}&page=<%=prevPage%>" class="bt prev"><</a>
-				
-			<% for(int i=startNum; i<startNum+endNum; i++){ %>
-				<a href="boardList.do?value=${b_category}&page=<%=i%>" class="num on"><%=i%></a>
-			<%}%>
-				<a href="pageNextCheck.do?value=${b_category}&page=<%=nextPage%>" class="bt next">></a>
-				
-			
+				<a class="bt first">${page}page </a> <a
+					href="pagePrevCheck.do?value=${b_category}&page=<%=prevPage%>"
+					class="bt prev"><</a>
+
+				<%
+				for (int i = startNum; i < startNum + endNum; i++) {
+				%>
+				<a href="boardList.do?value=${b_category}&page=<%=i%>"
+					class="num on"><%=i%></a>
+				<%
+				}
+				%>
+				<a href="pageNextCheck.do?value=${b_category}&page=<%=nextPage%>"
+					class="bt next">></a>
+
 			</div>
-			
+
 			<c:if test="${member != null}">
-			<div class="bt_wrap">
-				<a href="boardWrite.jsp?value=${b_category}&page=${page}" class="on" id="boardRegister">등록</a>
-				<!--<a href="#">수정</a>-->
-			</div>
+				<div class="bt_wrap">
+					<a href="boardWrite.jsp?value=${b_category}&page=${page}"
+						class="on" id="boardRegister">등록</a>
+					<!--<a href="#">수정</a>-->
+				</div>
 			</c:if>
 		</div>
 	</div>
@@ -208,32 +204,18 @@
 </body>
 <!--게시판 끝-->
 
-
-<!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
 	<div class="pb-4 mb-4 logo"
 		style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
 		<img id="footerLogo" src="./img/ft_logo.png" alt="">
 	</div>
-	<!-- Footer End -->
 
-	<!-- Copyright Start -->
 	<div class="container">
 		<span class="text-light"><a href="#"><i
 				class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a></span> <br> <span><a
 			href="#">깃허브 주소</a></span> <br> <a href="https://smhrd.or.kr/">스마트인재개발원</a>
-		<!--깃허브 주소 넣기.-->
 	</div>
-	<!-- Copyright End -->
 
-
-
-
-
-
-
-	</script>
-	<!-- JavaScript Libraries -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script
@@ -243,8 +225,6 @@
 	<script src="lib/lightbox/js/lightbox.min.js"></script>
 	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
-	<!-- Template Javascript -->
 	<script src="js/main.js"></script>
 	</body>
 </html>

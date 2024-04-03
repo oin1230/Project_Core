@@ -12,32 +12,25 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
 	rel="stylesheet">
 
-<!-- Icon Font Stylesheet -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
 
-<!-- Libraries Stylesheet -->
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 <link href="lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
-
-<!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Template Stylesheet css연결하는 곳-->
 <link href="css/style.css" rel="stylesheet">
-<!-- 슬라이드 -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script
@@ -47,19 +40,14 @@
 <script src="https://kit.fontawesome.com/fdb678099a.js"
 	crossorigin="anonymous"></script>
 
-
 </head>
 
 <body>
-	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
 		<div class="spinner-grow text-primary" role="status"></div>
 	</div>
-	<!-- Spinner End -->
 
-
-	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -122,12 +110,7 @@
 			</nav>
 		</div>
 	</div>
-	<!-- Navbar End -->
 
-
-
-
-	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<c:if test="${addReq eq 'myApply'}">
 			<h1 class="text-center text-white display-6">신청 내역</h1>
@@ -141,7 +124,6 @@
 			<h1 class="text-center text-white display-6">환불 내역</h1>
 		</c:if>
 	</div>
-	<!-- Single Page Header End -->
 
 	<br>
 	<br>
@@ -198,7 +180,7 @@
 									</tr>
 								</c:forEach>
 								<div class="modalBg hidden">
-									<div class="modal" align ="center">
+									<div class="modal" align="center">
 										<p class="modalText">취소하시겠습니까?</p>
 										<button id="cancleCheck" value="0"
 											onclick="cancleCheck(this.value)">취소하기</button>
@@ -218,8 +200,6 @@
 								</c:forEach>
 							</c:if>
 
-
-
 						</tbody>
 					</table>
 				</div>
@@ -227,29 +207,18 @@
 		</div>
 	</div>
 
-
-	<!-- Footer Start -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
 		<div class="pb-4 mb-4 logo"
 			style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
 			<img id="footerLogo" src="./img/ft_logo.png" alt="">
 		</div>
-		<!-- Footer End -->
 
-		<!-- Copyright Start -->
 		<div class="container">
 			<span class="text-light"><a href="#"><i
 					class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a></span> <br> <span><a
 				href="#">깃허브 주소</a></span> <br> <a href="https://smhrd.or.kr/">스마트인재개발원</a>
-			<!--깃허브 주소 넣기.-->
 		</div>
-		<!-- Copyright End -->
 
-
-
-
-
-		<!-- JavaScript Libraries -->
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<script
@@ -259,8 +228,6 @@
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
-		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
 		<script src="js/modal.js"></script>
 </body>

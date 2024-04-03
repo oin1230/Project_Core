@@ -12,32 +12,25 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- Google Web Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap"
 	rel="stylesheet">
 
-<!-- Icon Font Stylesheet -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
 	rel="stylesheet">
 
-<!-- Libraries Stylesheet -->
 <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 <link href="lib/owlcarousel/assets/owl.carousel.min.css"
 	rel="stylesheet">
 
-
-<!-- Customized Bootstrap Stylesheet -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Template Stylesheet css연결하는 곳-->
 <link href="css/style.css" rel="stylesheet">
-<!-- 슬라이드 -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script
@@ -47,19 +40,14 @@
 <script src="https://kit.fontawesome.com/fdb678099a.js"
 	crossorigin="anonymous"></script>
 
-
 </head>
 
 <body>
-	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
 		<div class="spinner-grow text-primary" role="status"></div>
 	</div>
-	<!-- Spinner End -->
 
-
-	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
@@ -80,7 +68,8 @@
 							</div>
 						</div>
 						<div class="nav-item dropdown">
-							<a href="boardList.do?value=1&page=1" class="nav-item nav-link dropdown-toggle"
+							<a href="boardList.do?value=1&page=1"
+								class="nav-item nav-link dropdown-toggle"
 								data-bs-toggle="dropdown">BOARD</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
 								<a href="boardList.do?value=1&page=1" class="dropdown-item">자유게시판</a>
@@ -121,21 +110,16 @@
 			</nav>
 		</div>
 	</div>
-	<!-- Navbar End -->
 
-
-	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">마이 페이지</h1>
 	</div>
-	<!-- Single Page Header End -->
 
 	<br>
 	<br>
 	<div class="container mb-4 main-container">
 		<div class="row">
 			<div class="col-lg-4 pb-5">
-				<!-- Account Sidebar-->
 				<div class="author-card pb-3">
 					<div class="author-card-profile">
 						<div class="author-card-details">
@@ -148,17 +132,17 @@
 					<nav class="list-group list-group-flush">
 						<a class="list-group-item" href="myPage.jsp" tagert="__blank"><i
 							class="fa fa-tag mr-1 text-muted"></i>마이페이지</a> <a
-							class="list-group-item" href="userUpdateUserInfo.do" target="__blank"><i
-							class="fa fa-user text-muted"></i> 회원정보 수정</a> <a
-							class="list-group-item" href="userPwEdit.jsp" tagert="__blank"><i
-							class="fa fa-heart mr-1 text-muted"></i>비밀번호 변경</a> <a
-							class="list-group-item" href="userDelete.jsp" target="__blank"><i
-							class="fa fa-user text-muted"></i> 회원탈퇴</a>
+							class="list-group-item" href="userUpdateUserInfo.do"
+							target="__blank"><i class="fa fa-user text-muted"></i> 회원정보
+							수정</a> <a class="list-group-item" href="userPwEdit.jsp"
+							tagert="__blank"><i class="fa fa-heart mr-1 text-muted"></i>비밀번호
+							변경</a> <a class="list-group-item" href="userDelete.jsp"
+							target="__blank"><i class="fa fa-user text-muted"></i> 회원탈퇴</a>
 					</nav>
 				</div>
 			</div>
-			<!-- 내역 -->
 
+			<!-- 내역 -->
 			<div class="table-responsive">
 				<!-- 예약완료 -->
 				<table class="table table-hover mb-0">
@@ -185,7 +169,6 @@
 						class="btn btn-primary btn-lg btn-block right-align">신청내역
 						더보기</button></a>
 				<!-- 탑승완료 -->
-
 				<table class="table table-hover mb-0">
 					<thead>
 						<tr class="table-name">
@@ -209,8 +192,8 @@
 				<br> <a href="myPageAddList.do?value=myEnd"><button
 						class="btn btn-primary btn-lg btn-block right-align">종료내역
 						더보기</button></a>
-				<!-- 환불내역 -->
 
+				<!-- 환불내역 -->
 				<table class="table table-hover mb-0">
 					<thead>
 						<tr class="table-name">
@@ -221,7 +204,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${myPageRefund}" var="myRefund" begin="0" end="2">
+						<c:forEach items="${myPageRefund}" var="myRefund" begin="0"
+							end="2">
 							<tr>
 								<td><span>${myRefund.book_id}</span></td>
 								<td><span>${myRefund.event_name}</span></td>
@@ -239,27 +223,18 @@
 		</div>
 	</div>
 
-
-
-	<!-- Footer Start -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
 		<div class="pb-4 mb-4 logo"
 			style="border-bottom: 1px solid rgba(226, 175, 24, 0.5);">
 			<img id="footerLogo" src="./img/ft_logo.png" alt="">
 		</div>
-		<!-- Footer End -->
 
-		<!-- Copyright Start -->
 		<div class="container">
 			<span class="text-light"><a href="#"><i
 					class="fas fa-copyright text-light me-2"></i>BUSTIVAL</a></span> <br> <span><a
 				href="#">깃허브 주소</a></span> <br> <a href="https://smhrd.or.kr/">스마트인재개발원</a>
-			<!--깃허브 주소 넣기.-->
 		</div>
-		<!-- Copyright End -->
 
-
-		<!-- JavaScript Libraries -->
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 		<script
@@ -269,8 +244,6 @@
 		<script src="lib/lightbox/js/lightbox.min.js"></script>
 		<script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-
-		<!-- Template Javascript -->
 		<script src="js/main.js"></script>
 </body>
 
