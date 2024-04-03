@@ -388,5 +388,5 @@ public Page<Post> findAllByTagName(String tagName, Pageable pageable) {
     
 </br>
 
-## 6. 회고 / 느낀점
+## 6. 팀원 소개
 >프로젝트 개발 회고 글: https://zuminternet.github.io/ZUM-Pilot-integer/
