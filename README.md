@@ -104,10 +104,9 @@ if ("gomain.do".equals(path)) {
 #### 특정 이벤트가 발생할 시, 관련된 테이블에 자동적으로 index 생성
 
 <details>
-<summary><b>Trigger</b></summary>
-<div markdown="1">
-	
-~~~java
+<summary><b>Trigger 1.</b></summary>
+<div markdown="1">	
+~~~
 셔틀 정보가 생성되면 자동으로 28인승 좌석 정보 생성
 
 DELIMITER $$
@@ -126,7 +125,35 @@ END$$
 
 DELIMITER ;
 ~~~
+</div>
+</details>
 
+<details>
+<summary><b>Trigger 2.</b></summary>
+<div markdown="1">	
+~~~
+이벤트가 등록될 때 자동으로 셔틀정보 생성
+
+DELIMITER $$
+
+CREATE TRIGGER after_event_insert
+AFTER INSERT ON EVENT_INFO
+FOR EACH ROW
+BEGIN
+    INSERT INTO SHUTTLE_INFO (START_RG, SHTL_NUM, START_DATE, END_DATE, RIDING_DATE, SHTL_STATE, EVENT_ID)
+    VALUES 
+    ('서울', 28, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'Y', NEW.EVENT_ID),
+    ('광주', 28, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'Y', NEW.EVENT_ID),
+    ('부산', 28, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'Y', NEW.EVENT_ID),
+    ('대구', 28, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'Y', NEW.EVENT_ID),
+    ('인천', 28, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'Y', NEW.EVENT_ID),
+    ('대전', 28, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'Y', NEW.EVENT_ID),
+    ('울산', 28, NOW(), DATE_ADD(NOW(), INTERVAL 20 DAY), DATE_ADD(NOW(), INTERVAL 1 MONTH), 'Y', NEW.EVENT_ID);
+END$$
+
+DELIMITER ;
+
+~~~
 </div>
 </details>
 
