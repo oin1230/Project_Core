@@ -5,22 +5,20 @@
 
 ## 1. 제작 기간 & 참여 인원
 - 2024년 3월 18일 ~ 4월 2일
-- 5인 (박준범, 이병헌, 오인영, 정규원, 김상원
+- 5인 (박준범, 이병헌, 오인영, 정규원, 김상원)
 
 </br>
 
 ## 2. 사용 기술
 #### `Back-end`
-  - Java 8
-  - QueryDSL
-  - H2
-  - MySQL 5.7
-  - Spring Security
-  - Jsoup
+  - Java
 #### `Front-end`
-  - Vue.js 3.0
-  - Element UI
-
+  - Html
+  - css
+  - Js
+#### `IDE`
+  - Eclipse
+  - Visual Studio Code
 </br>
 
 ## 3. ERD 설계
