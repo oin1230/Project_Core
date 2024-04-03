@@ -1,5 +1,3 @@
-/* 모달 */
-
 'use strict';
 // 클래스별 변수 지정
 const openBtns = document.querySelectorAll(".modalOpen");
@@ -18,7 +16,6 @@ closeBtn.addEventListener('click', closeModal);
 
 // 모달 보여주기
 function showModal() {
-	console.log("들어옴")
 	modal.classList.remove('hidden');
 	modal.classList.add('visible');
 }

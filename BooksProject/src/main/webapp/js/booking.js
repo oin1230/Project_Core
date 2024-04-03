@@ -5,10 +5,8 @@ function calculatePrice() {
 	var selectedSeats = document.querySelectorAll('.seat.selected');
 	// 총 선택된 좌석 수를 계산합니다.
 	var selectedSeatsCount = selectedSeats.length;
-	// 좌석 당 가격을 가져와서 숫자로 변환합니다.
-	// jQuery에서 가져온 텍스트를 숫자로 변환합니다.
+	// jQuery에서 가져온 좌석당 버스가격인 텍스트를 숫자로 변환합니다.
 	var pricePerSeatText = $(".allTotAmtLocD").text();
-	// 가격 가져오는거 
 	var pricePerSeat = parseInt(pricePerSeatText.replace(/,/g, ''));
 	// 총 가격을 계산합니다.
 	var totalPrice = selectedSeatsCount * pricePerSeat;
@@ -27,7 +25,6 @@ console.log("totalPrices 확인 >> ", totalPrices);
 totalPrices[1];
 
 const seats = document.querySelectorAll('.seat');
-
 const seatNum = [];
 
 seats.forEach(function(seat) {
@@ -56,11 +53,9 @@ seats.forEach(function(seat) {
 		} else if (seat.classList.contains('seatOccupied')) {
 			alert("예매가 불가능합니다.");
 		}
-
 		console.log('선택된 좌석:', seatNum);
 		$("#allTotAmtLocD").text(calculatePrice().totalPriceText);
 		$("#adltCnt").text(calculatePrice().totalSeat);
-
 	});
 });
 
