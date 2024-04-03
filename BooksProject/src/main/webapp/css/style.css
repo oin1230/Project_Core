@@ -155,7 +155,6 @@ footer {
 
 
 /*** 이벤트 목록 Start ***/
-/* 이벤트 이미지 */
 .custom-img-container {
 	padding: 5px;
 }
@@ -1044,19 +1043,15 @@ h1Title {
 	flex-grow: 1;
 }
 
-/* 화면 크기가 768px 이하일 때의 스타일 */
 @media ( max-width : 768px) {
 	.flex-container {
 		flex-direction: column;
-		/* 요소들을 세로로 정렬 */
 	}
 	.progressBarContainer, .buttons {
 		width: 100%;
-		/* 프로그레스바와 버튼들이 전체 너비를 차지하도록 함 */
 	}
 	.buttons {
 		justify-content: center;
-		/* 버튼을 중앙 정렬 */
 	}
 }
 
@@ -1134,13 +1129,12 @@ h1Title {
 	margin-top: 55%;
 }
 
-/* 반응형 웹 디자인을 위해 미디어 쿼리 추가 */
 @media screen and (max-width: 768px) {
 	.reg-flex-container {
-		flex-direction: column; /* 화면 크기가 768px 이하일 때 요소들을 세로로 나열 */
+		flex-direction: column; 
 	}
 	.map-in, .regInfo {
-		width: 100%; /* 화면이 좁아질 때 요소들이 전체 너비를 차지하도록 설정 */
+		width: 100%; 
 	}
 }
 
