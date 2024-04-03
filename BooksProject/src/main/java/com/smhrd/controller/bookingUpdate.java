@@ -47,8 +47,6 @@ public class bookingUpdate implements command {
 		Timestamp tDate = new Timestamp(System.currentTimeMillis());
 		// 시분초 까지나오는 데이터를 날짜까지 나오게 포맷
 		String todayDate = new SimpleDateFormat("yyyy/MM/dd").format(tDate);
-		System.out.println(todayDate);
-
 
 		// 데이터베이스 연결을 위한 dao 생성
 		DAO dao = new DAO();
