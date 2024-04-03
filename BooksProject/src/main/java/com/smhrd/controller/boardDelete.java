@@ -16,7 +16,6 @@ public class boardDelete implements command {
 	
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		// 해당 게시물의 b_id 받아오기
 		int b_id = Integer.parseInt(request.getParameter("ValueCategory"));
 		
 		String b_category = request.getParameter("value");
@@ -24,8 +23,6 @@ public class boardDelete implements command {
 		
 		HttpSession session = request.getSession();
 		response.setCharacterEncoding("UTF-8");
-		
-		
 		
 		UserVO userVo = (UserVO) session.getAttribute("member");
 		String email = userVo.getEmail();
@@ -36,24 +33,17 @@ public class boardDelete implements command {
 		
 		DAO dao = new DAO();
 		
-		
 		dao.boardDelete(vo);
-		
 		
 		request.setAttribute("value", b_category);
 		
-		
-		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; // 새로운 페이지 URL 생성
+		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; 
 		try {
 			response.sendRedirect(nextPageURL);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		return null;
-		
-		
-		
 	}
 		
 

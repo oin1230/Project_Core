@@ -12,7 +12,7 @@ public class UserVO {
 	private String address;
 	// user 핸드폰번호
 	private String phone;
-
+	// 새로운 비밀번호
 	private String newPw;
 
 	public UserVO(String email, String pw, String nick, String address, String phone, String newPw) {

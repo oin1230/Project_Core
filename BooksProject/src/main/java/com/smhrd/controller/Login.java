@@ -14,9 +14,6 @@ public class Login implements command {
 		String email = request.getParameter("EMAIL");
 		String pw = request.getParameter("PW");
 
-		System.out.println(email);
-		System.out.println(pw);
-
 		UserVO vo = new UserVO();
 		vo.setEmail(email);
 		vo.setPw(pw);
@@ -29,17 +26,9 @@ public class Login implements command {
 		if (resultVo != null) {
 			session.setAttribute("member", resultVo);
 			return "redirect:/gomain.do";
-			
-			// 테스트용
-			//UserVO sessionVo = (UserVO) session.getAttribute("member");
-			//String email2 = sessionVo.getEmail();
-
 		} else {
-			System.out.println("실패");
 			session.setAttribute("loginChecking", "Y");
 			session.setAttribute("loginCheckingInfo", vo);
-			//UserVO v = (UserVO) session.getAttribute("loginCheckingInfo");
-			//System.out.println(">>>>>>>>>>"+v.getEmail());
 			return "login";
 		}
 

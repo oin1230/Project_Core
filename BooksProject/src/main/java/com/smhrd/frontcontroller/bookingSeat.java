@@ -32,7 +32,6 @@ public class bookingSeat extends HttpServlet {
 		
 		  Gson gson = new Gson();
 	         String json = gson.toJson(bookingSeat);
-	         System.out.println("calscrpa json 출력 >>"+ json);
 	         PrintWriter out = response.getWriter();
 	         out.print(json);
 	         return;

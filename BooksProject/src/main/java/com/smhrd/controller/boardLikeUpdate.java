@@ -63,7 +63,6 @@ public class boardLikeUpdate implements command {
 			e.printStackTrace();
 		}
 		return null;
-
 	}
 
 }

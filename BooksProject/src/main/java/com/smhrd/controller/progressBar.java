@@ -27,7 +27,6 @@ public class progressBar implements command {
 		
 		// redirect: 데이터 보낼 수 있는 방법
 		return "concert";
-		
 	}
 
 }

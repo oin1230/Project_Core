@@ -16,6 +16,5 @@ public class eventList implements command {
 		request.setAttribute("eventlist", eventlist);
 		
 		return "enroll";
-	
 	}
 }

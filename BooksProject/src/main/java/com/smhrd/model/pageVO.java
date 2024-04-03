@@ -14,7 +14,7 @@ public class pageVO {
 	}
 
 	public pageVO() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public String getB_category() {

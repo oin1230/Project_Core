@@ -19,10 +19,8 @@ public class boardRegister implements command {
 		
 		HttpSession session = request.getSession();
 		
-		
 		UserVO sessionVo = (UserVO) session.getAttribute("member");
 		String email = sessionVo.getEmail();
-		
 		
 		String b_title = request.getParameter("title");
 		String b_content = request.getParameter("text");
@@ -33,10 +31,6 @@ public class boardRegister implements command {
 		Timestamp b_date=new Timestamp(System.currentTimeMillis());
 		//yyyy/MM/dd HH:mm:ss형식으로 변환
 		String b_date2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(b_date);
-		
-		//테스트용
-		//System.out.println("현재시간은?="+b_date);
-
 		
 		BoardVO vo = new BoardVO();
 		vo.setEmail(email);
@@ -50,8 +44,7 @@ public class boardRegister implements command {
 		
 		request.setAttribute("b_category", b_category);
 		
-
-		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; // 새로운 페이지 URL 생성
+		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page;
 		try {
 			response.sendRedirect(nextPageURL);
 		} catch (IOException e) {
@@ -59,7 +52,6 @@ public class boardRegister implements command {
 		}
 		
 		return null;
-				
 	}
 	
 	

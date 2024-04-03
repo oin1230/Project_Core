@@ -28,7 +28,6 @@ public class joinPwCheck implements command {
 		session.setAttribute("loginPwCheckingUserInfo", vo);
 		
 		
-		
 		// pw와 pw_check가 일치한지 판별
 		if(pw.equals(pw_check)) {
 			// 일치한다면 join.java로 이동

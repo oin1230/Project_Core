@@ -3,23 +3,14 @@ package com.smhrd.model;
 public class myPageVO {
 
 	private int book_id;
-
 	private String email;
-
 	private String event_name;
-
 	private String pay_state;
-
 	private int pay;
-
 	private String pay_date;
-
 	private int shtl_id;
-
 	private int seat_num;
 	
-	
-
 	public myPageVO(int book_id, String email, String event_name, String pay_state, int pay, String pay_date,
 			int shtl_id, int seat_num) {
 		this.book_id = book_id;

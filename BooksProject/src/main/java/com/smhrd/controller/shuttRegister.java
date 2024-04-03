@@ -27,9 +27,7 @@ public class shuttRegister implements command {
 		vo.setStart_date(start_date);
 		vo.setEnd_date(end_date);
 		
-		
 		int row = dao.shuttRegister(vo);
-		
 		
 		return null;
 	}

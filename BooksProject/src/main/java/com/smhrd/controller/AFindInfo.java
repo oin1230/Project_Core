@@ -20,7 +20,6 @@ public class AFindInfo implements command {
 		// ajax에서 꺼내온 값 객체로 만들기
 		UserVO vo = new UserVO();
 		
-		
 		if (request.getParameter("AInfoID") != null) {
 			// id찾기 버튼을 클릭한 경우
 			AInfo = request.getParameter("AInfoID");
@@ -29,7 +28,6 @@ public class AFindInfo implements command {
 			// pw찾기 버튼을 클릭한 경우
 			AInfo = request.getParameter("AInfoPW");
 			vo.setEmail(AInfo);
-
 		}
 
 		// dao에 AFindID 메소드 사용

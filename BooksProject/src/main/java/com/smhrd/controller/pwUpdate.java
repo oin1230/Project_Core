@@ -42,8 +42,6 @@ public class pwUpdate implements command {
 		
 		session.setAttribute("member", resultVo);
 		
-		
-
 		return "redirect:/gomyPage.do";
 
 	}

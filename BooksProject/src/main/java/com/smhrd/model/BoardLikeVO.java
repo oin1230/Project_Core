@@ -10,7 +10,7 @@ public class BoardLikeVO {
 	private int b_id;
 	// 유저 이메일
 	private String email;
-
+	// 게시판 좋아요수
 	private int b_likes;
 
 	public BoardLikeVO(int like_id, String b_like_state, int b_id, String email, int b_likes) {

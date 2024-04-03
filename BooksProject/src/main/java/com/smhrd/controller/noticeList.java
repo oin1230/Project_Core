@@ -59,8 +59,6 @@ public class noticeList implements command {
 		request.setAttribute("b_category", b_category);
 		
 		return "announcement";
-		
-
 	}
 
 }

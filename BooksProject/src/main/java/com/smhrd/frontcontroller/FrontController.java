@@ -93,11 +93,8 @@ public class FrontController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String uri = request.getRequestURI();
-		// System.out.println("요청 uri = " + uri);
 		String cp = request.getContextPath();
-		// System.out.println("요청 cp = " + cp);
 		String path = uri.substring(cp.length() + 1);
-		// System.out.println("자른path = " + path);
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charser=UTF-8");

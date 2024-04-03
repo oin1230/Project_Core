@@ -46,13 +46,10 @@ public class boardUpdate implements command {
 		vo.setB_id(b_id);
 		vo.setB_likes(b_likes);
 		
-		
 		DAO dao = new DAO();
 		dao.boardUpdate(vo);
 		
-		
 		request.setAttribute("b_category", b_category);
-		
 		
 		String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; // 새로운 페이지 URL 생성
 		try {
@@ -62,7 +59,5 @@ public class boardUpdate implements command {
 		}
 		
 		return null;
-
 	}
-
 }

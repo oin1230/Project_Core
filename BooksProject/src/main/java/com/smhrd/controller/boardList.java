@@ -63,7 +63,5 @@ public class boardList implements command {
 		request.setAttribute("b_category", b_category);
 		
 		return "board";
-		
-
 	}
 }

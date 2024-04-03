@@ -19,8 +19,6 @@ public class boardDetail implements command {
 		int b_id2 = Integer.parseInt(b_id);
 		String page = request.getParameter("page");
 		
-		
-		
 		// 조회수 업데이트--------------------------
 		BoardVO vo3 = new BoardVO();
 		vo3.setB_id(b_id2);
@@ -28,37 +26,28 @@ public class boardDetail implements command {
 		dao.boardView(vo3);
 		// -------------------------------------
 		
-		
-		
 		HttpSession session = request.getSession();
 
 		// 해당 게시물의 정보 담아주기
 		BoardVO vo = new BoardVO();
 		vo.setB_id(b_id2);
 		
-
 		BoardVO boardDetail = dao.boardDetail(vo);
 		
 		session.setAttribute("boardDetail", boardDetail);
 		
-		
 		// 해당 게시물의 댓글 리스트 담아주기
 		CommentVO vo2 = new CommentVO();
 		vo2.setB_id(b_id2);
-		
 
 		List<CommentVO> commentList = dao.commentList(vo2);
 
 		session.setAttribute("commentList", commentList);
 		
-		
-		
 		request.setAttribute("b_id", b_id2);
 		request.setAttribute("page", page);
-		
 
 		return "boardView";
-	
 	}
 
 }

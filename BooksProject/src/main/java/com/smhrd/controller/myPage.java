@@ -36,13 +36,10 @@ public class myPage implements command {
 
 		// 데이터 세션에 담아주기
 		session.setAttribute("myPageApply", myPageApply);
-		//System.out.println("myPageApply 확인 : " + myPageApply);
 
 		session.setAttribute("myPageRefund", myPageRefund);
-		//System.out.println("myPageRefund 확인 : " + myPageRefund);
 
 		session.setAttribute("myPageEnd", myPageEnd);
-		//System.out.println("myPageReEnd 확인 : " + myPageEnd);
 
 		return "myPage";
 	}

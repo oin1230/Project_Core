@@ -22,7 +22,6 @@ public class commentRegister implements command {
 		String cmt_content = request.getParameter("comment");
 		int b_id = Integer.parseInt(request.getParameter("b_id"));
 		
-		// 현재 시간 b_date변수에 저장(2024-03-26 11:27:42.979 형식)
 		Timestamp b_date = new Timestamp(System.currentTimeMillis());
 		String b_date2 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(b_date);
 		

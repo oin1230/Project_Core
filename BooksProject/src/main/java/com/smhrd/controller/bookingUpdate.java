@@ -29,12 +29,12 @@ public class bookingUpdate implements command {
 		// 요청으로부터 선택된 좌석 가져오기
 		String seatListString = request.getParameter("seatList");
 		String[] arraySeatList = seatListString.split(",");
-//		// 좌석의 배열을 int 형태로 변경하기
-//		// 1. 좌석배열의 길이만큼 int형식의 배열 선언
+		// 좌석의 배열을 int 형태로 변경하기
+		// 1. 좌석배열의 길이만큼 int형식의 배열 선언
 		// 2. 받아온 문자열의 길이만큼 반복하기
 		int[] seatList = new int[arraySeatList.length];
 		for (int i = 0; i < arraySeatList.length; i++) {
-//			// 3.seatListString[i]의 값을 seatList[i]로 변환하기
+			// 3.seatListString[i]의 값을 seatList[i]로 변환하기
 			seatList[i] = Integer.parseInt(arraySeatList[i]);
 		}
 

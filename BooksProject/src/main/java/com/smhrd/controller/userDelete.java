@@ -37,7 +37,6 @@ public class userDelete implements command {
 		// member 세션안에 있는 정보 삭제
 		session.removeAttribute("member");
 		
-
 		return "redirect:/gomain.do";
 	}
 

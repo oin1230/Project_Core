@@ -17,7 +17,6 @@ import com.smhrd.model.pageVO;
 
 public class DAO {
 
-	// git
 	private SqlSessionFactory factory = MySqlSessionManager.getSqlSessionFactory();
 
 	public int Join(UserVO vo) {
@@ -250,7 +249,6 @@ public class DAO {
 
 	}
 
-	/////////////////////// myPage///////////////////////////////////
 	public List<myPageVO> myPageApply(myPageVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -339,7 +337,6 @@ public class DAO {
 
 	}
 
-	// 24.03.28 bookingCancle 추가 - 인영
 	public int bookingCancle(myPageVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -352,7 +349,6 @@ public class DAO {
 
 	}
 
-	// 24.03.29 bookingSeat 추가 - 준범
 	public List<SeatVO> bookingSeat(SeatVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -364,7 +360,6 @@ public class DAO {
 		return resultVo;
 	}
 
-	// 24.03.29 bookingUpdate-seatUpdate 추가 - 인영
 	public int seatUpdate(SeatVO vo) {
 
 		SqlSession session = factory.openSession(true);
@@ -376,7 +371,6 @@ public class DAO {
 		return row;
 	}
 
-	// bookingUpdate-bookInsert 추가 - 인영
 	public int bookInsert(myPageVO vo) {
 
 		SqlSession session = factory.openSession(true);

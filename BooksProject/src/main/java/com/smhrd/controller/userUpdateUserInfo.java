@@ -19,7 +19,6 @@ public class userUpdateUserInfo implements command {
 		UserVO vo2 = new UserVO();
 		vo2.setEmail(email);
 
-		// dao.userInfo 기능 사용(기존에 저장돼어있는 사용자 정보 담기)
 		DAO dao = new DAO();
 		UserVO userInfo = dao.userInfo(vo2);
 		

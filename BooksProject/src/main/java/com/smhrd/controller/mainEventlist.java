@@ -16,6 +16,5 @@ public class mainEventlist implements command {
 		request.setAttribute("mainEventlist", mainEventlist);
 
 		return "main";
-
 	}
 }

@@ -4,10 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<!-- mapper 태그 : 해당하는 영역 안쪽에 SQL구문 작성 git -->
 <mapper namespace="com.smhrd.database.DAO">
-
-
 
 	<insert id="Join" parameterType="com.smhrd.model.UserVO">
 		insert into USER_INFO (email,
@@ -117,6 +114,7 @@
 		#{email}
 
 	</select>
+	
 	<insert id="boardRegister"
 		parameterType="com.smhrd.model.BoardVO">
 		insert into BOARD_INFO (b_category, b_title,
@@ -326,7 +324,6 @@
 		#{b_id}
 	</update>
 
-	<!-- 24.03.28 bookingCancle 추가 - 인영 -->
 	<update id="bookingCancle"
 		parameterType="com.smhrd.model.myPageVO">
 		UPDATE BOOK_INFO
@@ -336,14 +333,12 @@
 		WHERE BOOK_INFO.BOOK_ID = #{book_id}
 	</update>
 
-	<!-- 24.03.29 bookingSeat 추가 - 준범 -->
 	<select id="bookingSeat" parameterType="com.smhrd.model.SeatVO"
 		resultType="com.smhrd.model.SeatVO">
 		SELECT * FROM SEAT_INFO WHERE SHTL_ID = #{SHTL_ID} AND
 		SEAT_STATUS = 'Y';
 	</select>
 
-	<!-- 24.03.29 seatUpdate 추가 - 인영 -->
 	<update id="seatUpdate" parameterType="com.smhrd.model.SeatVO">
 		UPDATE SEAT_INFO
 		SET

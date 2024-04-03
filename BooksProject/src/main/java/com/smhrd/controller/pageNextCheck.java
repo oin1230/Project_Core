@@ -28,7 +28,6 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		/////////////마지막페이지 판별//////////////////////
 		int NextJulPage = page;
 
-		
 		DAO dao = new DAO();
 		int startPageNum2 = (NextJulPage-1)*5;
 		pageVO vo2 = new pageVO();
@@ -42,14 +41,14 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 			int newPage = page-1;
 			request.setAttribute("page", newPage);
 			
-			String nextPageURL = "boardList.do?value=" + b_category + "&page=" + newPage; // 새로운 페이지 URL 생성
+			String nextPageURL = "boardList.do?value=" + b_category + "&page=" + newPage; 
 			try {
 				response.sendRedirect(nextPageURL);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}else {
-			String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; // 새로운 페이지 URL 생성
+			String nextPageURL = "boardList.do?value=" + b_category + "&page=" + page; 
 			try {
 				response.sendRedirect(nextPageURL);
 			} catch (IOException e) {
@@ -58,8 +57,6 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		}
 		
 		return null;
-
-		
 	}
 
 }

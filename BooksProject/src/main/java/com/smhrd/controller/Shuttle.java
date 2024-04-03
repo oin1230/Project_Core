@@ -17,7 +17,6 @@ public class Shuttle implements command {
 		request.setAttribute("shuttlelist", shuttlelist);
 		
 		return "index";
-	
 	}
 
 }
