@@ -12,13 +12,19 @@
 ## 2. 사용 기술
 #### `Back-end`
   - Java
+    
 #### `Front-end`
   - Html
   - css
   - Js
+    
 #### `IDE`
   - Eclipse
   - Visual Studio Code
+    
+#### `Server`
+  - Apache Tomcat
+
 </br>
 
 ## 3. ERD 설계
