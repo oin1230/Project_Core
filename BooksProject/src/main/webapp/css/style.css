@@ -43,34 +43,6 @@ footer {
 	transition: .5s;
 }
 
-.btn-square {
-	width: 32px;
-	height: 32px;
-}
-
-.btn-sm-square {
-	width: 34px;
-	height: 34px;
-}
-
-.btn-md-square {
-	width: 44px;
-	height: 44px;
-}
-
-.btn-lg-square {
-	width: 56px;
-	height: 56px;
-}
-
-.btn-square, .btn-sm-square, .btn-md-square, .btn-lg-square {
-	padding: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-weight: normal;
-}
-
 .btn.border-secondary {
 	transition: 0.5s;
 }
@@ -86,43 +58,12 @@ footer {
 	background: var(--bs-white);
 	border: 0;
 }
-
-.topbar {
-	padding: 20px;
-	border-radius: 230px 100px;
-}
-
-.topbar .top-info {
-	line-height: 0;
-	letter-spacing: 1px;
-	display: flex;
-	align-items: center;
-}
-
-.topbar .top-link {
-	font-size: 15px;
-	line-height: 0;
-	letter-spacing: 1px;
-	display: flex;
-	align-items: center;
-}
-
-.topbar .top-link a {
-	letter-spacing: 1px;
-}
-
-.topbar .top-link a small:hover {
-	color: var(--bs-secondary) !important;
-	transition: 0.5s;
-}
-
-.topbar .top-link a small:hover i {
-	color: var(--bs-primary) !important;
-}
-
 /*** Topbar End ***/
 
+
+
 /*** Navbar Start ***/
+/* 로그인, 회원가입 버튼 */
 .my-auto {
 	margin-right: 15%;
 }
@@ -174,6 +115,7 @@ footer {
 	}
 }
 
+/*** Navbar start  ***/
 .dropdown .dropdown-menu a:hover {
 	background: var(--bs-secondary);
 	color: var(--bs-primary);
@@ -190,70 +132,8 @@ footer {
 
 /*** Navbar End ***/
 
-/*** Hero Header ***/
-.hero-header {
-	background: linear-gradient(rgba(248, 223, 173, 0.1),
-		rgba(248, 223, 173, 0.1)), url(../img/hero-img.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
 
-.carousel-item {
-	position: relative;
-}
-
-.carousel-item a {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 25px;
-	background: linear-gradient(rgba(255, 181, 36, 0.7),
-		rgba(255, 181, 36, 0.7));
-}
-
-.carousel-control-next, .carousel-control-prev {
-	width: 48px;
-	height: 48px;
-	border-radius: 48px;
-	border: 1px solid var(--bs-white);
-	background: var(--bs-primary);
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.carousel-control-next {
-	margin-right: 20px;
-}
-
-.carousel-control-prev {
-	margin-left: 20px;
-}
-
-.page-header {
-	position: relative;
-	background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-		url(../img/cart-page-header-img.jpg);
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-@media ( min-width : 992px) {
-	.hero-header, .page-header {
-		margin-top: 5% !important;
-	}
-}
-
-@media ( max-width : 992px) {
-	.hero-header, .page-header {
-		margin-top: 97px !important;
-	}
-}
-
-/*** Hero Header end ***/
+/*** copyRight start ***/
 .copyRight {
 	color: #81c408;
 	text-decoration: none
@@ -268,37 +148,26 @@ footer {
 	color: inherit;
 	text-decoration: none
 }
+/*** copyRight end ***/
+
+
+
+
 
 /*** 이벤트 목록 Start ***/
+/* 이벤트 이미지 */
 .custom-img-container {
 	padding: 5px;
-	/* 기본값보다 작은 패딩 값을 설정 */
 }
 
 /* 이미지 최대 크기 조절을 위한 CSS */
 .custom-img {
 	width: 100%;
-	/* 컨테이너 너비에 맞춤 */
 	height: auto;
-	/* 이미지의 원래 비율을 유지하면서 높이 조절 */
 	object-fit: cover;
-	/* 컨테이너를 꽉 채우면서 이미지 비율 유지 */
 }
 
-.container-fluid.event.py-5 {
-	width: 100%;
-	/* 너비 조정 */
-	height: 80%;
-	/* 높이 자동 조정 */
-	padding: 0px;
-	/* 내부 여백 조정 */
-	margin-top: 2%;
-}
-
-.nav-event-li {
-	margin-top: 10%;
-}
-
+/* 이벤트 목록 */
 .event .tab-class .nav-item a.active {
 	background: var(--bs-secondary) !important;
 }
@@ -345,7 +214,11 @@ footer {
 }
 /*** 이벤트 목록  End ***/
 
-/* main 페이지 및 등록할 때 h3 폰트 적용  */
+
+
+
+
+/*** main 페이지 및 등록할 때 h3 폰트 적용  ***/
 @font-face {
 	font-family: 'KCC-Hanbit';
 	src:
@@ -362,20 +235,12 @@ h3 {
 h1.login {
 	font-family: 'KCC-Hanbit';
 }
-/* main 페이지 끝 */
+/*** 폰트 적용 end ***/
 
-/* INFO CENTER 글자 바꾸기 */
-.textInfo {
-	font-family: 'KCC-Hanbit';
-}
 
-#infoB {
-	color: #6c757d
-}
 
-/* 공지사항 qna 환불 텍스트 바꾸기*/
 
-/*footer 시작*/
+/*** footer 시작 ***/
 .row .mt-5 {
 	display: inline-flex;
 	justify-content: space-evenly;
@@ -397,9 +262,12 @@ h1.login {
 .container {
 	text-align: right !important;
 }
-/*footer 끝*/
+/*** footer 끝 ***/
 
-/* 슬라이드 시작 */
+
+
+
+/*** 슬라이드 시작 ***/
 body .swiper {
 	position: relative;
 	height: 100%;
@@ -437,7 +305,10 @@ body {
 	object-fit: cover;
 }
 
-/* 슬라이드 끝 */
+/*** 슬라이드 끝 ***/
+
+
+
 
 /* 회원가입 시작 */
 .signIn {
@@ -488,14 +359,13 @@ body #login {
 }
 
 .login-wrapper {
-	/*  width: 400px;*/
 	height: 700px;
 	padding: 20px;
 	box-sizing: border-box;
 }
 
-.login-wrapper h1 {
-	margin-bottom: 10%;
+.login-wrapper h1{
+	margin-bottom: 0;
 }
 
 .login-wrapper>h2 {
@@ -506,6 +376,10 @@ body #login {
 
 #login-form {
 	width: 20%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 #login-form>input {
@@ -552,18 +426,13 @@ body #login {
 	background-size: contain;
 }
 
-#login-form {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
 .loginEtc {
 	text-align: right;
 }
-
 /*로그인 끝*/
+
+
+
 
 /*찾기 시작*/
 .find-wrapper {
@@ -606,8 +475,10 @@ body #login {
 	margin-top: 4%;
 	width: 75%;
 }
-
 /*찾기 끝*/
+
+
+
 
 /* QNA 페이지 시작 */
 table {
@@ -747,58 +618,6 @@ section.notice {
 	transition: all 0.3s;
 }
 
-.btn-dark {
-	background: #555;
-	color: #fff;
-}
-
-.btn-dark:hover, .btn-dark:focus {
-	background: #373737;
-	border-color: #373737;
-	color: #fff;
-}
-
-.btn-dark {
-	background: #555;
-	color: #fff;
-}
-
-.btn-dark:hover, .btn-dark:focus {
-	background: #373737;
-	border-color: #373737;
-	color: #fff;
-}
-
-/* reset */
-* {
-	list-style: none;
-	text-decoration: none;
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
-}
-
-.clearfix:after {
-	content: '';
-	display: block;
-	clear: both;
-}
-
-.container {
-	width: 1100px;
-	margin: 0 auto;
-}
-
-.blind {
-	position: absolute;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	margin: -1px;
-	width: 1px;
-	height: 1px;
-}
-
-/*QnA 페이지 아마도,,,,?*/
 h1Title {
 	font-family: 'KCC-Hanbit';
 }
@@ -854,8 +673,41 @@ h1Title {
 [id$="-toggle"] {
 	margin-right: 2%;
 }
+/*** QNA 페이지 끝 ***/
 
-/* QNA 페이지 끝*/
+
+
+
+/* reset */
+* {
+	list-style: none;
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.container {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+.blind {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	margin: -1px;
+	width: 1px;
+	height: 1px;
+}
+
+
 
 /* info center 바꾸기 */
 /* announcement, qna, refundPolicy */
@@ -864,8 +716,10 @@ h1Title {
 	color: inherit;
 }
 
-/* ///////////////////////////////// */
-/* 게시판 기능 : annoucement */
+
+
+
+/*** 게시판 기능 : annoucement ***/
 .bt_wrap1 {
 	display: inline-block;
 	margin-top: 2%;
@@ -999,6 +853,10 @@ h1Title {
 .info>dl h6 {
 	margin: 0;
 }
+/*** 게시판 기능 : annoucement 끝 ***/
+
+
+
 
 /* 게시판 미디어 */
 @media ( max-width : 1000px) {
@@ -1063,6 +921,9 @@ h1Title {
 
 /* 게시판 기능 */
 
+
+
+
 /* 회원 정보 수정*/
 .row .mt-5 {
 	display: inline-flex;
@@ -1120,15 +981,12 @@ h1Title {
 /*공연 정보*/
 .custom-wide {
 	max-width: 1200px;
-	/* 또는 필요에 따라 조절 */
 	margin-top: 5%;
 	margin: auto;
-	/* 가운데 정렬을 위한 설정 */
 }
 
 .flex-container {
 	display: flex;
-	/* Flexbox 레이아웃 사용 */
 	gap: 20px;
 }
 
@@ -1148,9 +1006,7 @@ h1Title {
 
 .h-100 img {
 	width: 100%;
-	/* 이미지가 부모 요소의 너비에 맞게 조정 */
 	height: auto;
-	/* 이미지의 높이를 자동으로 조정하여 비율 유지 */
 }
 
 .conInfo {
@@ -1158,6 +1014,9 @@ h1Title {
 	margin-left: 3%;
 	text-align: left;
 }
+
+
+
 
 /*프로그레스 바*/
 .progressBarContainer {
@@ -1201,9 +1060,11 @@ h1Title {
 	}
 }
 
-/*공연 정보*/
+/*** 공연 정보 끝 ***/
 
-/*내역 조회*/
+
+
+/*내역 조회 시작*/
 .pb-5 {
 	text-align: left;
 }
@@ -1225,13 +1086,16 @@ h1Title {
 	margin-top: 6%;
 }
 
-/*내역 조회*/
+/*내역 조회 끝*/
 
-/*등록*/
+
+
+
+/*등록 시작*/
 .reg-flex-container {
-	display: flex; /* Flexbox 레이아웃을 활성화 */
-	justify-content: space-around; /* 가로축에서 요소들 사이에 균등한 간격을 두고 정렬 */
-	align-items: flex-start; /* 세로축에서 시작점(위) 정렬 */
+	display: flex; 
+	justify-content: space-around; 
+	align-items: flex-start;
 }
 
 .map-in, .regInfo {
@@ -1280,7 +1144,7 @@ h1Title {
 	}
 }
 
-/*등록*/
+/*등록 폰트 변경*/
 @font-face {
 	font-family: 'SUITE-Regular';
 	src:
@@ -1311,10 +1175,9 @@ h1Title {
 	font-weight: 600;
 }
 
-/* /////////////////////////// */
-/* board 게시판 페이지들  */
 
-/* board 시자아아악 */
+
+/*** board start ***/
 .board_wrap .board {
 	font-size: 10px;
 }
@@ -1499,10 +1362,6 @@ p.boardTalk {
 	border-left: 1px solid #ddd;
 }
 
-.btWrap {
-	text-align: right;
-}
-
 .bt_wrap {
 	width: 15%;
 	height: 40px;
@@ -1514,9 +1373,9 @@ a.on {
 	font-weight: 600;
 	font-family: 'GmarketSansMedium';
 }
-/* board 끄읕 */
+/*** board end ***/
 
-/* modal 모달*/
+/*** modal 모달 ***/
 .modalBg {
 	position: absolute;
 	top: 50%;
@@ -1539,7 +1398,7 @@ a.on {
 	visibility: hidden;
 }
 
-/*//////// 버스 예약 등록 : CSS for booking ////////*/
+/*** booking start ***/
 .py-booking {
 	margin: 5%;
 	margin: 0 auto;
@@ -1551,7 +1410,6 @@ a.on {
 	text-align: center;
 }
 
-/* css for bus-container */
 .bus-container {
 	display: flex;
 	justify-content: center;
@@ -1569,7 +1427,8 @@ a.on {
 	justify-content: flex-start;
 	float: left;
 }
-/* CSS for busseat */
+
+/* 버스 좌석 */
 .showcase {
 	margin-top: 2%;
 	text-align: center;
@@ -1629,8 +1488,7 @@ a.on {
 	margin-left: 5px;
 }
 
-/* table-container */
-/* 테이블 지정 */
+/* table-container 지정 */
 .tableBooking {
 	border-collapse: separate;
 	border-spacing: 0 20px;
@@ -1688,9 +1546,5 @@ a.on {
 
 /* 버튼 */
 .btn-price {
-	/* align-items: right;
-    width: 20%;
-    margin: 0 auto;
-    font-size: 15px; */
 	justify-content: flex-start;
 }
