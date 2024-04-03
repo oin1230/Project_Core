@@ -71,22 +71,16 @@
 
 ## 5. 핵심 트러블 슈팅
 ### 5.1. 메인페이지 접속 시 이벤트 목록을 불러오지 못하는 현상
-### 수정 전
+#### 수정 전
 ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/95b50124-2f74-47fc-b1f2-dc5b338c3590)
 
 - 메인페이지 접속 시 마감일 임박순으로 목록을 불러와야 하지만, 목록을 불러오지 못함
   ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/cc3d446e-e328-4779-818f-f299433ea05f)
 - 코드 추가로 문제 해결
-### 수정 후
+#### 수정 후
   ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/6507e4f9-873c-432f-b51b-f8ba175e38d8)
 
 
-
-- 하지만 [무한스크롤, 페이징 혹은 “더보기” 버튼? 어떤 걸 써야할까](https://cyberx.tistory.com/82) 라는 글을 읽고 무한 스크롤의 단점들을 알게 되었고,  
-다양한 기준(카테고리, 사용자, 등록일, 인기도)의 게시물 필터 기능을 넣어서 이를 보완하고자 했습니다.
-
-- 그런데 게시물이 필터링 된 상태에서 무한 스크롤이 동작하면,  
-필터링 된 게시물들만 DB에 요청해야 하기 때문에 아래의 **기존 코드** 처럼 각 필터별로 다른 Query를 날려야 했습니다.
 
 <details>
 <summary><b>기존 코드</b></summary>
