@@ -41,7 +41,7 @@
 <div markdown="1">
 
 ### 4.1. 전체 흐름
-![]([https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow1.png](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/webapp/img/%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EB%8A%A5.jpg))
+![](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/webapp/img/%ED%95%B5%EC%8B%AC%20%EA%B8%B0%EB%8A%A5.jpg)
 
 ### 4.2. 사용자 요청
 ![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_vue.png)
