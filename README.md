@@ -160,4 +160,7 @@ DELIMITER ;
 
 
 ## 6. 팀원 소개
->프로젝트 개발 회고 글: https://zuminternet.github.io/ZUM-Pilot-integer/
+|박준범|오인영|이병헌|정규원|김상원|
+|:---:|:---:|:---:|:---:|:---:|
+|Front-End, <br> Back-End|Back-End|Back-End|Front-End|Front-End|
+|UX 디자인<br>메인페이지 구현<br>행사 정보 페이지 구현<br>예약하기 페이지 구현|회원정보 찾기<br>게시글 좋아요<br>마이페이지<br>예매신청,취소<br>모달창 구현|DB<br>회원가입 및 로그인<br>게시판 기능<br>댓글 기능<br>좋아요 기능<br>회원탈퇴|UI 디자인<br>PPT 제작|결제 API 구현|
