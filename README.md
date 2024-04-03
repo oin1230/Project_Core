@@ -92,7 +92,8 @@ if ("gomain.do".equals(path)) {
 </details>
 - 해당 코드를 추가하여, 메인페이지 접속 시, 데이터베이스와 연결하여, 이벤트 목록을 불러오도록 구현
 #### 수정 후
-![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/6507e4f9-873c-432f-b51b-f8ba175e38d8)
+![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/183cbd08-9235-48ed-88ff-1c8e330fe9b9)
+
 
 
 <details>
