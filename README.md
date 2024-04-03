@@ -46,17 +46,21 @@
 ### 4.2. Frontcontroller
 ![](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/webapp/img/Frontcontroller.jpg)
 
-- **페이지 이동** :pushpin: [코드 확인](https://github.com/JungHyung2/gitio.io/blob/95b4c4f06a2a5a74a00f81a3c3fcc003c994725f/index.html#L15C8-L15C26)
+- **페이지 이동** :pushpin: [코드 확인](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/java/com/smhrd/frontcontroller/FrontController.java)
   - 사용자의 페이지 이동 요청이 들어올 때마다 Frontcontroller로 이동하게됩니다.
   - init기능을 사용하여 각 controller가 실행된 후 반환 값을 가지고 다시 Frontcontroller로 이동하게 되며, 반환값.jsp로 이동하는 것으로 사용자의 요청에 응답해줍니다.
 
 
-### 4.3. Controller
+### 4.3. Data
 
-![](https://zuminternet.github.io/images/portal/post/2019-04-22-ZUM-Pilot-integer/flow_controller.png)
+![](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/webapp/img/Getdata.jpg)
 
-- **요청 처리** :pushpin: [코드 확인](https://github.com/2023-SMHRD-KDT-IOT-4/Repo/blob/94e1b3a93c48cc3fdb51d4468de151930705faa6/Middle_project12/src/main/webapp/WEB-INF/views/BoardContent.jsp#L20)
-  - Controller에서는 요청을 화면단에서 넘어온 요청을 받고, Service 계층에 로직 처리를 위임합니다.
+- **eventList** :pushpin: [코드 확인](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/java/com/smhrd/controller/eventList.java)
+- **mainEventlist** :pushpin: [코드 확인](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/java/com/smhrd/controller/mainEventlist.java)
+- **progressBar** :pushpin: [코드 확인](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/java/com/smhrd/controller/progressBar.java)
+- **bookingList** :pushpin: [코드 확인](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/java/com/smhrd/controller/bookingList.java)</br>
+
+  - Controller에서는 Frontcontroller의 요청을 받고, DAO에 접근하여 mappers 안의 mysql쿼리문을 데이터베이스에서 실행시켜 나온 데이터를 DAO로 반환받고 controller에게 넘겨준다.
 
 - **결과 응답** :pushpin: [코드 확인]()
   - Service 계층에서 넘어온 로직 처리 결과(메세지)를 화면단에 응답해줍니다.
