@@ -105,7 +105,8 @@ if ("gomain.do".equals(path)) {
 
 <details>
 <summary><b>Trigger 1.</b></summary>
-<div markdown="1">	
+<div markdown="1">
+	
 ~~~
 셔틀 정보가 생성되면 자동으로 28인승 좌석 정보 생성
 
@@ -130,7 +131,8 @@ DELIMITER ;
 
 <details>
 <summary><b>Trigger 2.</b></summary>
-<div markdown="1">	
+<div markdown="1">
+	
 ~~~
 이벤트가 등록될 때 자동으로 셔틀정보 생성
 
@@ -154,6 +156,7 @@ END$$
 DELIMITER ;
 
 ~~~
+
 </div>
 </details>
 
