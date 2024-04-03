@@ -102,35 +102,11 @@ if ("gomain.do".equals(path)) {
 
 ### 5.3. MySQL DataBase Trigger 사용
 #### 특정 이벤트가 발생할 시, 관련된 테이블에 자동적으로 index 생성
+- 크롤링한 콘서트 목록을 EVENT_INFO TABLE에 등록 될때마다 SHUTTLE_INFO,SEAT_INFO TABLE에 자동으로 많은 데이터들이 추가되어야하나
+- 이를 elipse에서 처리하기엔 코드가 너무 길어지는 문제발생해 더 간편한 방법을 찾게됨
 
 <details>
 <summary><b>Trigger 1.</b></summary>
-<div markdown="1">
-	
-~~~
-셔틀 정보가 생성되면 자동으로 28인승 좌석 정보 생성
-
-DELIMITER $$
-CREATE TRIGGER TRG_SHUTTLE_SEAT
-AFTER INSERT ON SHUTTLE_INFO 
-FOR EACH ROW 
-BEGIN 
-   DECLARE x INT DEFAULT 1;
-  
-    WHILE x <= NEW.SHTL_NUM DO 
-         INSERT INTO SEAT_INFO (SHTL_ID, SEAT_NUM) VALUES 
-            (NEW.SHTL_ID, x);
-            SET x = x + 1;
-    END WHILE;
-END$$
-
-DELIMITER ;
-~~~
-</div>
-</details>
-
-<details>
-<summary><b>Trigger 2.</b></summary>
 <div markdown="1">
 	
 ~~~
@@ -160,7 +136,31 @@ DELIMITER ;
 </div>
 </details>
 
+<details>
+<summary><b>Trigger 2.</b></summary>
+<div markdown="1">
+	
+~~~
+셔틀 정보가 생성되면 자동으로 28인승 좌석 정보 생성
 
+DELIMITER $$
+CREATE TRIGGER TRG_SHUTTLE_SEAT
+AFTER INSERT ON SHUTTLE_INFO 
+FOR EACH ROW 
+BEGIN 
+   DECLARE x INT DEFAULT 1;
+  
+    WHILE x <= NEW.SHTL_NUM DO 
+         INSERT INTO SEAT_INFO (SHTL_ID, SEAT_NUM) VALUES 
+            (NEW.SHTL_ID, x);
+            SET x = x + 1;
+    END WHILE;
+END$$
+
+DELIMITER ;
+~~~
+</div>
+</details>
 
 ## 6. 팀원 소개
 |박준범|오인영|이병헌|정규원|김상원|
