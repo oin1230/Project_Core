@@ -78,6 +78,7 @@
 <details>
 <summary><b>코드 추가</b></summary>
 <div markdown="1">
+	
 ~~~java
 if ("gomain.do".equals(path)) {
 	command eventListCommand = map.get("mainEventlist.do");
@@ -86,6 +87,7 @@ if ("gomain.do".equals(path)) {
 	}
 }
 ~~~
+
 </div>
 </details>
 - 해당 코드를 추가하여, 메인페이지 접속 시, 데이터베이스와 연결하여, 이벤트 목록을 불러오도록 구현
