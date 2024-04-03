@@ -1,4 +1,4 @@
-# :pushpin: goQuality
+# :pushpin: BUSTIVAL
 > 버스 전세 시스템을 이용한 전자상거래
 
 </br>
@@ -96,6 +96,39 @@ if ("gomain.do".equals(path)) {
 ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/183cbd08-9235-48ed-88ff-1c8e330fe9b9)
 
 ### 5.2. 데이터 수정 시 제약조건 위배되어 데이터 수정이 불가능한 현상
+#### ON DELETE CASECADE 사용
+- 특정 행 삭제시, 참조 키를 참조하여, 해당되는 데이터 전부 삭제
+![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/24498323-aa2b-461d-bd9c-a5c92664a554)
+
+### 5.3. MySQL DataBase Trigger 사용
+#### 특정 이벤트가 발생할 시, 관련된 테이블에 자동적으로 index 생성
+
+<details>
+<summary><b>Trigger</b></summary>
+<div markdown="1">
+	
+~~~java
+셔틀 정보가 생성되면 자동으로 28인승 좌석 정보 생성
+
+DELIMITER $$
+CREATE TRIGGER TRG_SHUTTLE_SEAT
+AFTER INSERT ON SHUTTLE_INFO 
+FOR EACH ROW 
+BEGIN 
+   DECLARE x INT DEFAULT 1;
+  
+    WHILE x <= NEW.SHTL_NUM DO 
+         INSERT INTO SEAT_INFO (SHTL_ID, SEAT_NUM) VALUES 
+            (NEW.SHTL_ID, x);
+            SET x = x + 1;
+    END WHILE;
+END$$
+
+DELIMITER ;
+~~~
+
+</div>
+</details>
 
 
 
