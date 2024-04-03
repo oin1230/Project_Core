@@ -60,10 +60,7 @@
 - **progressBar** :pushpin: [코드 확인](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/java/com/smhrd/controller/progressBar.java)
 - **bookingList** :pushpin: [코드 확인](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/blob/master/BooksProject/src/main/java/com/smhrd/controller/bookingList.java)</br>
 
-  - Controller에서는 Frontcontroller의 요청을 받고, DAO에 접근하여 mappers 안의 mysql쿼리문을 데이터베이스에서 실행시켜 나온 데이터를 DAO로 반환받고 controller에게 넘겨준다.
-
-- **결과 응답** :pushpin: [코드 확인]()
-  - Service 계층에서 넘어온 로직 처리 결과(메세지)를 화면단에 응답해줍니다.
+  - Frontcontroller의 요청을 받은 Controller에서는 DAO에 접근하여 mappers 안의 mysql쿼리문을 데이터베이스에서 실행시켜 얻은 데이터를 DAO로 반환받아 controller에게 넘겨준다.
 
 ### 4.4. Service
 
