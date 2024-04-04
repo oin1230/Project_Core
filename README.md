@@ -71,7 +71,7 @@
 
 ## 5. 핵심 트러블 슈팅
 ### 5.1. 메인페이지 접속 시 이벤트 목록을 불러오지 못하는 현상
-#### 수정 전
+#### #수정 전
 ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/95b50124-2f74-47fc-b1f2-dc5b338c3590)
 
 - 메인페이지 접속 시 마감일 임박순으로 목록을 불러와야 하지만, 목록을 불러오지 못함
@@ -92,7 +92,7 @@ if ("gomain.do".equals(path)) {
 </details>
 
 - 해당 코드를 추가하여, 메인페이지 접속 시, 데이터베이스와 연결하여, 이벤트 목록을 불러오도록 구현
-#### 수정 후
+#### #수정 후
 ![image](https://github.com/2024-SMHRD-KDT-BigData-23/BooksProject/assets/155136608/183cbd08-9235-48ed-88ff-1c8e330fe9b9)
 
 ### 5.2. 데이터 수정 시 제약조건 위배되어 데이터 수정이 불가능한 현상
