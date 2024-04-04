@@ -1,0 +1,319 @@
+# 웹브라우저를 자동화하기 위한 모듈
+from selenium import webdriver as wb
+
+# 웹 요소를 식별하기 위한 모듈
+from selenium.webdriver.common.by import By
+
+# 웹 요소에 키를 입력하기 위한 모듈
+from selenium.webdriver.common.keys import Keys
+
+# 시간과 관련된 모듈
+import time
+# 현재 작업의 진행 표시줄을 나타내는 모듈
+from tqdm.notebook import tqdm
+
+# 데이터 조작과 분석을 위한 모듈
+# 크롤링한 데이터를 DataFrame으로 변환하여
+# 한눈에 파악하기 위해 사용
+import pandas as pd
+
+# 파이썬에서 데이터베이스와 연결을 위해 사용하는 모듈
+from sqlalchemy import create_engine
+
+# mysql 데이터베이스에 연결하고 쿼리를 실행하는 모듈
+import pymysql
+
+# 모듈은 파일 및 디렉토리 관리, 프로세스 관리, 환경 변수 액세스 등과 같은 다양한 작업에 사용됩니다.
+# 이미지를 저장하기 위한 폴더생성을 위해 사용
+import os
+
+# 웹에서 경로를 통해 이미지, 비디오, 텍스트 파일 등을 다운로드하는 모듈
+# 크롤링한 데이터의 src를 통해 이미지 저장
+from urllib.request import urlretrieve
+
+# 이미지 처리와 조작을 위한 모듈
+# 크롤링한 이미지의 리사이징을 위해 사용
+from PIL import Image
+
+# 데이터베이스에 연결
+# hostname, port, username, password, 사용할 DATABASE 이름, 문자인코딩
+conn = pymysql.connect(host="127.0.0.1", port=3306, user="root", password="12345", db="AUTO_TEST", charset="utf8")
+
+# 데이터베이스를 사용할 때, 연결 할 변수 저장
+cur = conn.cursor()
+
+# 크롬 열기
+driver = wb.Chrome()
+
+# maximize_window() : 화면 최대화
+# 반응형 웹페이지에 대응하기 위해 화면 최대화
+driver.maximize_window()
+
+# 인터파크 예매 페이지로 이동
+driver.get("https://tickets.interpark.com/contents/genre/concert")
+# ( 콘서트의 셀렉터가 변경되는 경우가 있어, 오류 발생을 줄이기 위해 url을 통해 바로 접근하도록 변경)
+# 콘서트명 클릭하기 코드 ↓
+# concert = driver.find_element(By.CSS_SELECTOR,"#__next > div > header > div.header_wrap__abfca > div.header_menu__720a4 > menu > ul.header_genreMenu__34716 > li:nth-child(2) > a")
+# concert.click()
+
+# 1초 대기
+time.sleep(1)
+
+# 메인페이지의 슬라이드 되는 영역의 선택자 가져오기
+main = driver.find_elements(By.CSS_SELECTOR, "#contents > div.BigBanner_bigBannerWrap__ZIaFE.GBigBanner > div > div > div> a")
+
+# 정보를 담을 리스트 생성
+# 콘서트_이름, 콘서트_기간, 콘서트_위치, 콘서트_이미지의src
+# href : 메인페이지의 슬라이드 영역의 셀렉터에서 이동경로
+concert_title = []
+concert_date = []
+concert_location = []
+concert_img = []
+href = []
+
+
+# main의 href 값 추출 해서 리스트에 담기
+for i in range(len(main)) :
+    href.append(main[i].get_attribute("href"))
+
+# href[] 의 경로 방문하기
+for i in tqdm(href) :
+    # 경로 방문
+    driver.get(i)
+    
+    # 오류방지를 위한 2초
+    time.sleep(2)
+    
+    # 예매 페이지의 두가지의 상황이 있어, 각 상황에 대응하기 위한 시도
+    # 예매 페이지로 바로 갈 경우
+    try :
+        
+        # 팝업이 있다면, 팝업 먼저 닫기
+        try :
+            # 팝업의 셀렉터
+            popup = driver.find_element(By.CSS_SELECTOR, "#popup-prdGuide > div > div.popupFooter > div > a")
+            popup.click()
+            time.sleep(2)
+                
+            # 없을경우 패스
+        except :
+            pass
+        
+        # 콘서트명
+        title = driver.find_element(By.CSS_SELECTOR, "#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryTop > h2")
+        concert_title.append(title.text)
+        
+        # 콘서트기간
+        date = driver.find_element(By.CSS_SELECTOR, "#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > ul > li:nth-child(2) > div > p")
+        concert_date.append(date.text)
+        
+        # 이미지의 src
+        img = driver.find_element(By.CSS_SELECTOR, "#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > div > div.posterBoxTop > img")
+        concert_img.append(img.get_attribute("src"))
+        
+        # 장소의 경우 네가지의 상황이 있어, 각 상황에 대응하기 위한 시도
+        try :
+            
+            # 장소가 온라인인 경우, 클릭이 되질 않는다.
+            # 셀렉터에서 텍스트 추출
+            # 추출 후 리스트에 저장
+            location = driver.find_element(By.CSS_SELECTOR,"#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > ul > li:nth-child(1) > div > p")
+            concert_location.append(location.text)
+        
+        # 온라인이 아닐경우
+        except :
+         
+            # 장소를 클릭해, 상세주소를 보기위해 장소 클릭
+            loc = driver.find_element(By.CSS_SELECTOR,"#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > ul > li:nth-child(1) > div > a")
+            loc.click()
+            time.sleep(2)
+            
+            try :
+                
+                # 상세주소가  3줄 일 경우,
+                # 두번째 줄의 상세주소 가져와서 리스트에 담기
+                location = driver.find_element(By.CSS_SELECTOR,"#popup-info-place > div > div.popupBody > div > div.popPlaceInfo > p:nth-child(2) > span")
+                concert_location.append(location.text)
+                time.sleep(2)
+                
+            except :                
+                
+                try :
+                    
+                    # 상세주소가 한 줄 일 경우,
+                    location = driver.find_element(By.CSS_SELECTOR, "#popup-info-place > div > div.popupBody > div > div.popPlaceInfo > p > span")
+                    concert_location.append(location.text)
+                    time.sleep(2)
+
+                except :
+                    
+                    try : 
+                        
+                        # 상세주소가 없이, 메인주소만 있을 때
+                        location = driver.find_element(By.CSS_SELECTOR, "#popup-info-place > div > div.popupBody > div > div.popPlaceTitle > a")
+                        concert_location.append(location.text)
+                        time.sleep(2)
+                    
+                    except :
+                        
+                        # 주소가 다른페이지로 넘어 갈 때,
+                        # 해당페이지의 선택자를 선택해서 리스트에 추가
+                        location = driver.find_element(By.CSS_SELECTOR, "body > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td")
+                        concert_location.append(location.text)
+                        time.sleep(2)
+        
+        # 상세주소가 열려있다면,
+        try :
+            
+            # 상세주소창 닫기
+            close = driver.find_element(By.CSS_SELECTOR, "#popup-info-place > div > div.popupHead > button")
+            close.click()
+            time.sleep(2)
+        
+        except :
+            pass
+    
+    # 지역 선택 페이지로 갈 경우
+    except :
+        
+        # 지역 선택페이지 경로 담을 리스트 새로이 생성
+        location_href = []
+        
+        # 지역 선택 셀렉터들 가져오기
+        location_title = driver.find_elements(By.CSS_SELECTOR, "body > table > tbody > tr:nth-child(2) > td:nth-child(3) > div > div > div > div > div.g_1 > a")
+        
+        # 지역 선택 셀렉터의 경로들을 location_href 리스트에 담기
+        for i in range(len(location_title)) :
+            
+            location_href.append(location_title[i].get_attribute("href"))
+        
+        # location_href 방문
+        # 상동
+        for j in location_href :
+            
+            driver.get(j)
+            time.sleep(2)
+            
+            try :
+                
+                popup = driver.find_element(By.CSS_SELECTOR, "#popup-prdGuide > div > div.popupFooter > div > a")
+                popup.click()
+                time.sleep(2)
+                
+            except :
+                pass
+            
+            title = driver.find_element(By.CSS_SELECTOR, "#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryTop > h2")
+            concert_title.append(title.text)
+        
+            date = driver.find_element(By.CSS_SELECTOR, "#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > ul > li:nth-child(2) > div > p")
+            concert_date.append(date.text)
+        
+            img = driver.find_element(By.CSS_SELECTOR, "#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > div > div.posterBoxTop > img")
+            concert_img.append(img.get_attribute("src"))
+         
+            try :
+                location = driver.find_element(By.CSS_SELECTOR,"#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > ul > li:nth-child(1) > div > p")
+                concert_location.append(location.text)
+                
+            except :
+                
+                loc = driver.find_element(By.CSS_SELECTOR,"#container > div.contents > div.productWrapper > div.productMain > div.productMainTop > div > div.summaryBody > ul > li:nth-child(1) > div > a")
+                loc.click()
+                time.sleep(2)
+                    
+                try :
+                    
+                    location = driver.find_element(By.CSS_SELECTOR,"#popup-info-place > div > div.popupBody > div > div.popPlaceInfo > p:nth-child(2) > span")
+                    concert_location.append(location.text)
+                    time.sleep(2)
+
+                except :
+                    
+                    try :
+                       
+                        location = driver.find_element(By.CSS_SELECTOR, "#popup-info-place > div > div.popupBody > div > div.popPlaceInfo > p > span")
+                        concert_location.append(location.text)
+                        time.sleep(2)
+                    
+                   
+                    except :
+                        
+                        try :
+                            
+                            location = driver.find_element(By.CSS_SELECTOR, "#popup-info-place > div > div.popupBody > div > div.popPlaceTitle > a")
+                            concert_location.append(location.text)
+                            time.sleep(2)
+                            
+                        except :
+                            
+                            location = driver.find_element(By.CSS_SELECTOR, "body > table > tbody > tr:nth-child(2) > td:nth-child(3) > table > tbody > tr:nth-child(2) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td")
+                            concert_location.append(location.text)
+                            time.sleep(2)
+                            
+                try :
+                    
+                    close = driver.find_element(By.CSS_SELECTOR, "#popup-info-place > div > div.popupHead > button")
+                    close.click()
+                    time.sleep(2)
+                
+                except :
+                    
+                    pass
+# 끝났다면, 크롬창 닫기                    
+driver.close()
+
+# 각 데이터별 길이 확인해보기
+print(len(concert_title))
+print(len(concert_date))
+print(len(concert_location))
+print(len(concert_img))
+
+# 딕셔너리 형태로 만들기
+data = {
+    # 컬렴명 : 인덱스값(리스트 타입)
+    "Title" : concert_title,
+    "Date" : concert_date,
+    "Location" : concert_location,
+    "Img" : concert_img
+}
+
+# 데이터베이스에서 기존에 있는 값 가져오기
+cur.execute("SELECT EVENT_NAME FROM EVENT_INFO")
+
+# 결과를 가져옴( 가져올 때, 2차원 형식의 튜플 형태로 가져와짐)
+db_titles = cur.fetchall()
+
+# 불러온 튜플 값을 리스트 형식으로 저장 할 새로운 리스트 만들기
+db_list = []
+
+# 데이터베이스에서 가져온 값을 비교를 위해 1차원 형태의 리스트로 바꿔주기
+    # 데이터베이스에서 가져온 값은
+    # 2차원 배열인데, 제목값은 0번 인덱스에 들어있음
+for i in db_titles :
+    
+    db_list.append(i[0])
+
+# 크롤링한 데이터의 Title 값의 길이만큼 반복
+for i in range(len(data["Title"])):
+    
+    # 이미 데이터베이스에 존재하는지 확인
+    if data["Title"][i] in db_list:
+        # 데이터가 있다면 넘어감
+        pass
+    
+    else:
+        # 없다면 타이틀을 출력하고, 추가하는 쿼리문 진행
+        print(f"{data['Title'][i]}를 데이터베이스에 추가합니다.")
+        insert_query = f"""
+        INSERT INTO EVENT_INFO (EVENT_NAME, EVENT_DATE, EVENT_LOC, EVENT_IMG) 
+        VALUES ('{data['Title'][i]}', '{data['Date'][i]}', '{data['Location'][i]}', '{data['Img'][i]}')
+        """
+        cur.execute(insert_query)
+        
+# 변경사항을 커밋
+conn.commit()
+
+# DB 닫기
+cur.close()
+conn.close()
