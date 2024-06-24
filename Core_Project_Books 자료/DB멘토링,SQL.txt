@@ -1,0 +1,522 @@
+팀명: Books
+팀원: 박준범, 오인영, 정규원, 박상원, 이병헌
+주제 : 버스 대절 서비스
+--> router128@hanmail.net
+
+
+> 모델링 주소 1
+
+URL : https://aquerytool.com/aquerymain/index/?rurl=4ded288e-6ee1-4027-adee-83a0b502d61a&
+Password : 651km0
+
+
+
+
+> 셔틀버스 정보가 입력된 경우, 좌석을 자동으로 생성해주는 기능
+
+for (int i = 1, i < 좌석수; i++)
+{
+    // 좌석수 테이블에 insert ;
+}
+
+DECLARE x INT DEFAULT 1;
+
+WHILE (조건식) DO 
+
+   // 실행문
+
+END WHILE;
+
+WHILE x < 좌석수 DO 
+   // 좌석수 테이블에 insert ;
+   SET x = x + 1;
+END WHILE;
+-----------------------------------------------------------------------------
+DELIMITER $$
+CREATE TRIGGER TRG_SHUTTLE_SEAT
+AFTER INSERT ON SHUTTLE_INFO 
+FOR EACH ROW 
+BEGIN 
+	DECLARE x INT DEFAULT 1;
+  
+    WHILE x <= NEW.SHTL_NUM DO 
+			INSERT INTO SEAT_INFO (SHTL_ID, SEAT_NUM) VALUES 
+            (NEW.SHTL_ID, x);
+            SET x = x + 1;
+    END WHILE;
+END$$
+
+DELIMITER ;
+------------------------------------------------------------------------- 
+> 외래키 제약 조건 때문에 테이블의 데이터가 삭제가 안되는 경우 
+
+SET FOREIGN_KEY_CHECKS = 0;
+
+TRUNCATE TABLE SEAT_INFO;
+SELECT * FROM SEAT_INFO;
+
+SET FOREIGN_KEY_CHECKS = 1;
+--------------------------------------------------------------------------
+
+> 데이터베이스 설계순서 
+
+  요구사항분석 > 개념설계 > 논리설계 > 물리설계 > 데이터베이스구현 (개.눈.물)
+
+> ERD 
+  ER-Diagram 
+  Entity Relationship Diagram 
+
+> DDL, Data Definition Language   - 정의 명령어 : CREATE, ALTER, DROP (TABLE)
+  DML, Data Manipulation Language - 조작 명령어 : INSERT, UPDATE, DELETE * SELECT는 아님(주의!: 정처기/SQLD 시험에서 SELECT를 DML 취급함)
+  DCL, Data Control Language      - 제어 명령어 : GRANT, REVOKE, COMMIT, ROLLBACK
+  DQL, Data Query Language        - 질의 명령어 : SELECT문
+* TCL, Transaction Control Language : DCL 중에서 COMMIT과 ROLLBACK을 따로 떼이서 TCL이라고 부르기도함.
+
+> VO = DTO = Java Model = Java Bean = POJO 
+
+
+> 말풍선(Verbose, 말이 많은) : 상세모드
+
+
+> DATETIME, TIMESTAMP 
+
+DATETIME  : '2024-03-14 10:00:00'
+TIMESTAMP : '2024-03-14 10:00:00' (UTC+09:00) <-- 타임존
+
+
+> 회원(user_info) -------------- 게시판(board)
+
+       1                :        0, 1, N (Numerous, 여러개의)
+
+
+
+  Relation     : 일반적인 관계('날씨와 우산판매량의 관계')
+  Relations    : 국가적인 관계(relations) between the two countries.
+  Relationship : 개인적인 관계
+
+
+
+> 파일의 처리 
+
+  file_folder = 'd:/uploads/'
+  file_name = 'image0001.jpg' (basename : image0001, ext: jpg)
+  file_rname = 'image0001+62dd98f0-bd8e-11ed-93ab-325096b39f47.jpg'
+  file_path = file_folder + file_name 
+  file_size = 4512341
+  file_ext = jpg 
+
+
+  UUID(Universal Unique IDentifier, 우주에서 유일한 식별자) : 초당 100만번 * 86년 
+  # 62dd98f0-bd8e-11ed-93ab-325096b39f47
+  # 62ef98f0-bd8e-11ed-93ab-325096b39f47
+
+
+> 비밀번호 암호화 알고리즘 
+
+  SELECT COUNT(*) FROM USER_INFO;
+
+-- 비밀번호 암호화 알고리즘 : AES/MD5/SHA(SHA1)/SHA2
+
+SELECT MD5('1234'); # 128bit, 32characters # 81dc9bdb52d04dc20036dbd8313ed055
+SELECT SHA('1234'); # 7110eda4d09e062aa5e4a390b0a572ac0d2c0220
+SELECT SHA2('1234', 224); # (56글자)  99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319
+SELECT SHA2('1234', 256); # (64글자)  03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+SELECT SHA2('1234', 384); # (96글자)  504f008c8fcf8b2ed5dfcde752fc5464ab8ba064215d9c5b5fc486af3d9ab8c81b14785180d2ad7cee1ab792ad44798c
+SELECT SHA2('1234', 512); # (128글자) d404559f602eab6fd602ac7680dacbfaadd13630335e951f097af3900e9de176b6db28512f2e000b9d04fba5133e8b1c6e8df59db3a8ab9d60be4b97cc9e81db
+
+INSERT INTO USER_INFO (EMAIL, PW, NICK, ADDRESS) VALUES ('EMAIL 1', MD5('PW 1'), 'NICK 1', 'ADDRESS 1');
+
+SELECT * FROM USER_INFO WHERE EMAIL = 'EMAIL 1';
+
+-- 자바에서 INSERT를 할 때, 
+-- INSERT INTO USER_INFO VALUES(?, MD5(?), ?, ?, ...);
+
+-- 자바에러 LOGIN 처리, 
+   SELECT COUNT(*) 
+   FROM USER_INFO 
+   WHERE EMAIL = P_EMAIL AND PW = P_PW;
+      
+-- login = SELECT COUNT(*) 
+-- FROM USER_INFO 
+-- WHERE EMAIL = 'EMAIL 1' AND PW = MD5('PW 1');
+-- if login > 0 then '로그인 성공' else '로그인 실패';
+
+
+
+
+SELECT LENGTH('81dc9bdb52d04dc20036dbd8313ed055');
+
+
+
+  VO(Value Object)
+  DTO(Data Transfer Object)
+  POJO(Plain Old Java Object)
+
+
+  UserVO.java, MemberDTO.java 
+  // 게시판 
+public class BoardVO {
+
+    // 글 식별자 
+    private long B_ID;
+
+    // 글 카테고리 
+    private String B_CATEGORY;
+
+    // 글 제목 
+    private String B_TITLE;
+
+    // 글 내용 
+    private String B_CONTENT;
+
+    // 글 작성일자 
+    private Timestamp B_DATE;
+
+    // 회원 아이디 
+    private String EMAIL;
+
+    // 글 조회수 
+    private Integer B_VIEWS;
+
+    // 글 좋아요수 
+    private Integer B_LIKES;
+
+    // 글 첨부파일1 
+    private String B_FILE01;
+
+    // 글 첨부파일2 
+    private String B_FILE02;
+
+    // 글 첨부파일3 
+    private String B_FILE03;
+
+    public <unknown type> getBId() {
+        return B_ID;
+    }
+
+    public void setBId(<unknown type> bId) {
+        this.B_ID = B_ID;
+    }
+
+    public String getBCategory() {
+        return B_CATEGORY;
+    }
+
+    public void setBCategory(String bCategory) {
+        this.B_CATEGORY = B_CATEGORY;
+    }
+
+    public String getBTitle() {
+        return B_TITLE;
+    }
+
+    public void setBTitle(String bTitle) {
+        this.B_TITLE = B_TITLE;
+    }
+
+    public String getBContent() {
+        return B_CONTENT;
+    }
+
+    public void setBContent(String bContent) {
+        this.B_CONTENT = B_CONTENT;
+    }
+
+    public Timestamp getBDate() {
+        return B_DATE;
+    }
+
+    public void setBDate(Timestamp bDate) {
+        this.B_DATE = B_DATE;
+    }
+
+    public String getEmail() {
+        return EMAIL;
+    }
+
+    public void setEmail(String email) {
+        this.EMAIL = EMAIL;
+    }
+
+    public Integer getBViews() {
+        return B_VIEWS;
+    }
+
+    public void setBViews(Integer bViews) {
+        this.B_VIEWS = B_VIEWS;
+    }
+
+    public Integer getBLikes() {
+        return B_LIKES;
+    }
+
+    public void setBLikes(Integer bLikes) {
+        this.B_LIKES = B_LIKES;
+    }
+
+    public String getBFile01() {
+        return B_FILE01;
+    }
+
+    public void setBFile01(String bFile01) {
+        this.B_FILE01 = B_FILE01;
+    }
+
+    public String getBFile02() {
+        return B_FILE02;
+    }
+
+    public void setBFile02(String bFile02) {
+        this.B_FILE02 = B_FILE02;
+    }
+
+    public String getBFile03() {
+        return B_FILE03;
+    }
+
+    public void setBFile03(String bFile03) {
+        this.B_FILE03 = B_FILE03;
+    }
+
+    // BOARD_INFO 모델 복사
+    public void CopyData(BOARD_INFO param)
+    {
+        this.B_ID = param.getBId();
+        this.B_CATEGORY = param.getBCategory();
+        this.B_TITLE = param.getBTitle();
+        this.B_CONTENT = param.getBContent();
+        this.B_DATE = param.getBDate();
+        this.EMAIL = param.getEmail();
+        this.B_VIEWS = param.getBViews();
+        this.B_LIKES = param.getBLikes();
+        this.B_FILE01 = param.getBFile01();
+        this.B_FILE02 = param.getBFile02();
+        this.B_FILE03 = param.getBFile03();
+    }
+}
+--------------------------------------------------------------
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- EVENT_INFO Table Create SQL
+-- 테이블 생성 SQL - EVENT_INFO
+CREATE TABLE EVENT_INFO
+(
+    `EVENT_ID`        INT UNSIGNED     NOT NULL    AUTO_INCREMENT COMMENT '행사 식별자', 
+    `EVENT_NAME`      VARCHAR(50)      NOT NULL    COMMENT '행사 명', 
+    `EVENT_DATE`      DATETIME         NOT NULL    COMMENT '행사 날짜', 
+    `EVENT_LOC`       VARCHAR(1000)    NOT NULL    COMMENT '행사 장소', 
+    `EVENT_CATEGORY`  VARCHAR(40)      NOT NULL    COMMENT '행사 카테고리', 
+    `EVENT_IMG`       VARCHAR(1000)    NOT NULL    COMMENT '행사 사진', 
+     PRIMARY KEY (EVENT_ID)
+);
+
+-- 테이블 Comment 설정 SQL - EVENT_INFO
+ALTER TABLE EVENT_INFO COMMENT '행사목록';
+
+
+-- USER_INFO Table Create SQL
+-- 테이블 생성 SQL - USER_INFO
+CREATE TABLE USER_INFO
+(
+    `EMAIL`    VARCHAR(30)    NOT NULL    COMMENT '회원 아이디', 
+    `PW`       VARCHAR(30)    NOT NULL    COMMENT '회원 비밀번호', 
+    `NICK`     VARCHAR(30)    NOT NULL    COMMENT '회원 닉네임', 
+    `ADDRESS`  VARCHAR(50)    NOT NULL    COMMENT '회원 주소', 
+     PRIMARY KEY (EMAIL)
+);
+
+-- 테이블 Comment 설정 SQL - USER_INFO
+ALTER TABLE USER_INFO COMMENT '회원';
+
+
+-- SHUTTLE_INFO Table Create SQL
+-- 테이블 생성 SQL - SHUTTLE_INFO
+CREATE TABLE SHUTTLE_INFO
+(
+    `SHTL_ID`      INT UNSIGNED    NOT NULL    AUTO_INCREMENT COMMENT '셔틀 식별자', 
+    `START_RG`     VARCHAR(10)     NOT NULL    COMMENT '셔틀 출발지역', 
+    `SHTL_NUM`     INT             NOT NULL    COMMENT '셔틀 총인원수', 
+    `START_DATE`   DATE            NOT NULL    COMMENT '셔틀 모집시작일', 
+    `END_DATE`     DATE            NOT NULL    COMMENT '셔틀 모집종료일', 
+    `PRICE`        VARCHAR(10)     NOT NULL    COMMENT '셔틀 가격', 
+    `RIDING_DATE`  DATETIME        NOT NULL    COMMENT '셔틀 탑승일', 
+    `SHTL_STATE`   VARCHAR(1)      NOT NULL    COMMENT '진행상태', 
+    `EVENT_ID`     INT UNSIGNED    NOT NULL    COMMENT '행사 식별자', 
+     PRIMARY KEY (SHTL_ID)
+);
+
+-- 테이블 Comment 설정 SQL - SHUTTLE_INFO
+ALTER TABLE SHUTTLE_INFO COMMENT '셔틀버스 정보';
+
+-- Index 설정 SQL - SHUTTLE_INFO(EVENT_ID)
+CREATE INDEX fk_SHUTTLE_EVENT1_idx
+    ON SHUTTLE_INFO(EVENT_ID);
+
+-- Foreign Key 설정 SQL - SHUTTLE_INFO(EVENT_ID) -> EVENT_INFO(EVENT_ID)
+ALTER TABLE SHUTTLE_INFO
+    ADD CONSTRAINT FK_SHUTTLE_INFO_EVENT_ID_EVENT_INFO_EVENT_ID FOREIGN KEY (EVENT_ID)
+        REFERENCES EVENT_INFO (EVENT_ID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - SHUTTLE_INFO(EVENT_ID)
+-- ALTER TABLE SHUTTLE_INFO
+-- DROP FOREIGN KEY FK_SHUTTLE_INFO_EVENT_ID_EVENT_INFO_EVENT_ID;
+
+
+-- SEAT_INFO Table Create SQL
+-- 테이블 생성 SQL - SEAT_INFO
+CREATE TABLE SEAT_INFO
+(
+    `SEAT_ID`          INT UNSIGNED    NOT NULL    AUTO_INCREMENT COMMENT '좌석 식별자', 
+    `BUS_LIST`         INT UNSIGNED    NOT NULL    COMMENT '셔틀 식별자', 
+    `SEAT_NUM`         VARCHAR(5)      NOT NULL    COMMENT '좌석 번호', 
+    `SHUTTLE_SHTL_ID`  CHAR(1)         NOT NULL    DEFAULT 'N' COMMENT '좌석 상태', 
+     PRIMARY KEY (SEAT_ID)
+);
+
+-- 테이블 Comment 설정 SQL - SEAT_INFO
+ALTER TABLE SEAT_INFO COMMENT '좌석정보';
+
+-- Index 설정 SQL - SEAT_INFO(SHUTTLE_SHTL_ID)
+CREATE INDEX fk_SEAT_SHUTTLE1_idx
+    ON SEAT_INFO(SHUTTLE_SHTL_ID);
+
+-- Foreign Key 설정 SQL - SEAT_INFO(BUS_LIST) -> SHUTTLE_INFO(SHTL_ID)
+ALTER TABLE SEAT_INFO
+    ADD CONSTRAINT FK_SEAT_INFO_BUS_LIST_SHUTTLE_INFO_SHTL_ID FOREIGN KEY (BUS_LIST)
+        REFERENCES SHUTTLE_INFO (SHTL_ID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - SEAT_INFO(BUS_LIST)
+-- ALTER TABLE SEAT_INFO
+-- DROP FOREIGN KEY FK_SEAT_INFO_BUS_LIST_SHUTTLE_INFO_SHTL_ID;
+
+
+-- BOARD_INFO Table Create SQL
+-- 테이블 생성 SQL - BOARD_INFO
+CREATE TABLE BOARD_INFO
+(
+    `B_ID`        INT UNSIGNED     NOT NULL    AUTO_INCREMENT COMMENT '글 식별자', 
+    `B_CATEGORY`  VARCHAR(10)      NOT NULL    COMMENT '글 카테고리', 
+    `B_TITLE`     VARCHAR(1000)    NOT NULL    COMMENT '글 제목', 
+    `B_CONTENT`   TEXT             NOT NULL    COMMENT '글 내용', 
+    `B_DATE`      TIMESTAMP        NOT NULL    DEFAULT CURRENT_TIMESTAMP COMMENT '글 작성일자', 
+    `EMAIL`       VARCHAR(30)      NOT NULL    COMMENT '회원 아이디', 
+    `B_VIEWS`     INT              NOT NULL    DEFAULT 0 COMMENT '글 조회수', 
+    `B_LIKES`     INT              NOT NULL    DEFAULT 0 COMMENT '글 좋아요수', 
+    `B_FILE01`    VARCHAR(1000)    NULL        COMMENT '글 첨부파일1', 
+    `B_FILE02`    VARCHAR(1000)    NULL        COMMENT '글 첨부파일2', 
+    `B_FILE03`    VARCHAR(1000)    NULL        COMMENT '글 첨부파일3', 
+     PRIMARY KEY (B_ID)
+);
+
+-- 테이블 Comment 설정 SQL - BOARD_INFO
+ALTER TABLE BOARD_INFO COMMENT '게시판';
+
+-- Index 설정 SQL - BOARD_INFO(EMAIL)
+CREATE INDEX fk_BOARD_USER_INFO1_idx
+    ON BOARD_INFO(EMAIL);
+
+-- Foreign Key 설정 SQL - BOARD_INFO(EMAIL) -> USER_INFO(EMAIL)
+ALTER TABLE BOARD_INFO
+    ADD CONSTRAINT FK_BOARD_INFO_EMAIL_USER_INFO_EMAIL FOREIGN KEY (EMAIL)
+        REFERENCES USER_INFO (EMAIL) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - BOARD_INFO(EMAIL)
+-- ALTER TABLE BOARD_INFO
+-- DROP FOREIGN KEY FK_BOARD_INFO_EMAIL_USER_INFO_EMAIL;
+
+
+-- COMMENT_INFO Table Create SQL
+-- 테이블 생성 SQL - COMMENT_INFO
+CREATE TABLE COMMENT_INFO
+(
+    `CMT_ID`       INT UNSIGNED     NOT NULL    AUTO_INCREMENT COMMENT '댓글 식별자', 
+    `B_ID`         INT UNSIGNED     NOT NULL    COMMENT '원글 식별자', 
+    `CMT_CONTENT`  VARCHAR(1000)    NOT NULL    COMMENT '댓글 내용', 
+    `CMT_DATE`     TIMESTAMP        NOT NULL    COMMENT '댓글 작성일자', 
+    `EMAIL`        VARCHAR(30)      NOT NULL    COMMENT '댓글 작성자', 
+    `CMT_LIKES`    INT              NOT NULL    COMMENT '댓글 좋아요수', 
+     PRIMARY KEY (CMT_ID)
+);
+
+-- 테이블 Comment 설정 SQL - COMMENT_INFO
+ALTER TABLE COMMENT_INFO COMMENT '댓글';
+
+-- Foreign Key 설정 SQL - COMMENT_INFO(B_ID) -> BOARD_INFO(B_ID)
+ALTER TABLE COMMENT_INFO
+    ADD CONSTRAINT FK_COMMENT_INFO_B_ID_BOARD_INFO_B_ID FOREIGN KEY (B_ID)
+        REFERENCES BOARD_INFO (B_ID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - COMMENT_INFO(B_ID)
+-- ALTER TABLE COMMENT_INFO
+-- DROP FOREIGN KEY FK_COMMENT_INFO_B_ID_BOARD_INFO_B_ID;
+
+-- Foreign Key 설정 SQL - COMMENT_INFO(EMAIL) -> USER_INFO(EMAIL)
+ALTER TABLE COMMENT_INFO
+    ADD CONSTRAINT FK_COMMENT_INFO_EMAIL_USER_INFO_EMAIL FOREIGN KEY (EMAIL)
+        REFERENCES USER_INFO (EMAIL) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - COMMENT_INFO(EMAIL)
+-- ALTER TABLE COMMENT_INFO
+-- DROP FOREIGN KEY FK_COMMENT_INFO_EMAIL_USER_INFO_EMAIL;
+
+
+-- BOOK_INFO Table Create SQL
+-- 테이블 생성 SQL - BOOK_INFO
+CREATE TABLE BOOK_INFO
+(
+    `BOOK_ID`   INT UNSIGNED    NOT NULL    AUTO_INCREMENT COMMENT '예약 식별자', 
+    `EMAIL`     VARCHAR(30)     NOT NULL    COMMENT '회원 아이디', 
+    `SEAT_ID`   INT UNSIGNED    NOT NULL    COMMENT '좌석 식별자', 
+    `PAY`       INT             NOT NULL    COMMENT '결제 금액', 
+    `PAY_TIME`  DATETIME        NOT NULL    COMMENT '결제 시간', 
+     PRIMARY KEY (BOOK_ID)
+);
+
+-- 테이블 Comment 설정 SQL - BOOK_INFO
+ALTER TABLE BOOK_INFO COMMENT '예약정보';
+
+-- Foreign Key 설정 SQL - BOOK_INFO(EMAIL) -> USER_INFO(EMAIL)
+ALTER TABLE BOOK_INFO
+    ADD CONSTRAINT FK_BOOK_INFO_EMAIL_USER_INFO_EMAIL FOREIGN KEY (EMAIL)
+        REFERENCES USER_INFO (EMAIL) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - BOOK_INFO(EMAIL)
+-- ALTER TABLE BOOK_INFO
+-- DROP FOREIGN KEY FK_BOOK_INFO_EMAIL_USER_INFO_EMAIL;
+
+-- Foreign Key 설정 SQL - BOOK_INFO(SEAT_ID) -> SEAT_INFO(SEAT_ID)
+ALTER TABLE BOOK_INFO
+    ADD CONSTRAINT FK_BOOK_INFO_SEAT_ID_SEAT_INFO_SEAT_ID FOREIGN KEY (SEAT_ID)
+        REFERENCES SEAT_INFO (SEAT_ID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - BOOK_INFO(SEAT_ID)
+-- ALTER TABLE BOOK_INFO
+-- DROP FOREIGN KEY FK_BOOK_INFO_SEAT_ID_SEAT_INFO_SEAT_ID;
+
+-- 테이블 생성 SQL - CRAWLING_IMG_INFO
+CREATE TABLE CRAWLING_IMG_INFO
+(
+    `IMG_IDX`    INT UNSIGNED     NOT NULL    AUTO_INCREMENT COMMENT '이미지 식별자', 
+    `IMG_RNAME`  VARCHAR(1000)    NOT NULL    COMMENT '파일 이름', 
+    `IMG_SIZE`   INT              NOT NULL    COMMENT '파일 사이즈', 
+    `IMG_EXT`    VARCHAR(10)      NOT NULL    COMMENT '파일 확장자', 
+    `IMG_DATE`   DATETIME         NOT NULL    COMMENT '등록 일자', 
+    `EVENT_ID`   INT UNSIGNED     NOT NULL    COMMENT '행사 식별자', 
+     PRIMARY KEY (IMG_IDX)
+);
+
+-- 테이블 Comment 설정 SQL - CRAWLING_IMG_INFO
+ALTER TABLE CRAWLING_IMG_INFO COMMENT '크롤링 이미지';
+
+-- Foreign Key 설정 SQL - CRAWLING_IMG_INFO(EVENT_ID) -> EVENT_INFO(EVENT_ID)
+ALTER TABLE CRAWLING_IMG_INFO
+    ADD CONSTRAINT FK_CRAWLING_IMG_INFO_EVENT_ID_EVENT_INFO_EVENT_ID FOREIGN KEY (EVENT_ID)
+        REFERENCES EVENT_INFO (EVENT_ID) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- Foreign Key 삭제 SQL - CRAWLING_IMG_INFO(EVENT_ID)
+-- ALTER TABLE CRAWLING_IMG_INFO
+-- DROP FOREIGN KEY FK_CRAWLING_IMG_INFO_EVENT_ID_EVENT_INFO_EVENT_ID;
+
+
+
+
